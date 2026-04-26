@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Azure Luxury Charters · Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#c9a96e;--gold-dim:rgba(201,169,110,0.2);--gold-border:rgba(201,169,110,0.3);
+  --navy:#07111f;--navy2:#0e2240;--dark:#04090e;
+  --text:#e8ddd0;--muted:rgba(255,255,255,0.45);--border:rgba(255,255,255,0.08)
+}
+body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--text);font-size:14px;min-height:100vh}
+
+/* TOPBAR */
+.topbar{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:0.9rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--gold-border);position:sticky;top:0;z-index:100;backdrop-filter:blur(10px)}
+.topbar-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold);font-weight:400;letter-spacing:0.05em}
+.topbar-logo span{font-style:italic}
+.topbar-sub{font-size:0.68rem;color:var(--muted);margin-top:2px;letter-spacing:0.06em;text-transform:uppercase}
+.topbar-badge{background:var(--gold-dim);color:var(--gold);border:1px solid var(--gold-border);font-size:0.62rem;padding:0.22rem 0.75rem;border-radius:20px;letter-spacing:0.08em;text-transform:uppercase}
+
+/* CONTENT */
+.content{padding:2rem;max-width:1200px;margin:0 auto}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
+.stat-card{background:rgba(255,255,255,0.03);border:1px solid var(--gold-border);border-left:3px solid var(--gold);border-radius:6px;padding:1.4rem 1.5rem}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--gold);line-height:1}
+.stat-label{font-size:0.65rem;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:0.12em}
+.stat-sub{font-size:0.72rem;color:var(--muted);margin-top:6px;opacity:0.7}
+
+/* SECTION TITLE */
+.section-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:400;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+
+/* TABLA */
+.table-wrap{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:2rem}
+table{width:100%;border-collapse:collapse}
+thead{background:linear-gradient(135deg,var(--navy),var(--navy2))}
+thead th{color:var(--gold);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:12px 16px;text-align:left;font-weight:500;border-bottom:1px solid var(--gold-border)}
+tbody tr{border-bottom:1px solid var(--border);transition:background 0.15s}
+tbody tr:hover{background:rgba(201,169,110,0.04)}
+tbody tr:last-child{border-bottom:none}
+td{padding:11px 16px;font-size:0.82rem;color:var(--text);vertical-align:middle}
+
+/* BADGES */
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:3px;font-size:0.68rem;font-weight:500;letter-spacing:0.04em}
+.badge.confirmada{background:rgba(201,169,110,0.15);color:var(--gold);border:1px solid var(--gold-border)}
+.badge.cancelada{background:rgba(239,68,68,0.12);color:#f87171;border:1px solid rgba(239,68,68,0.25)}
+.badge.barco-as{background:rgba(201,169,110,0.1);color:var(--gold)}
+.badge.barco-hb{background:rgba(123,179,201,0.1);color:#7bb3c9}
+.badge.barco-mb{background:rgba(168,196,184,0.1);color:#a8c4b8}
+
+/* BOTONES */
+.btn-cancel{background:transparent;border:1px solid var(--border);padding:4px 11px;border-radius:3px;font-size:0.7rem;cursor:pointer;color:var(--muted);transition:all 0.2s;font-family:'Inter',sans-serif}
+.btn-cancel:hover{border-color:#EF4444;color:#f87171}
+.btn-confirm{background:transparent;border:1px solid var(--gold-border);padding:4px 11px;border-radius:3px;font-size:0.7rem;cursor:pointer;color:var(--gold);transition:all 0.2s;font-family:'Inter',sans-serif}
+.btn-confirm:hover{background:var(--gold-dim)}
+.refresh-btn{background:var(--gold-dim);color:var(--gold);border:1px solid var(--gold-border);padding:0.45rem 1.1rem;border-radius:3px;font-size:0.75rem;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s}
+.refresh-btn:hover{background:rgba(201,169,110,0.3)}
+
+/* FILTROS */
+.filter-row{display:flex;gap:0.75rem;margin-bottom:1rem;align-items:center;flex-wrap:wrap}
+.filter-select{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text);padding:0.4rem 0.85rem;border-radius:3px;font-size:0.78rem;font-family:'Inter',sans-serif;outline:none;transition:border-color 0.2s}
+.filter-select:focus{border-color:var(--gold)}
+
+/* EMPTY */
+.empty{text-align:center;padding:3rem;color:var(--muted);font-size:0.85rem;font-style:italic}
+
+/* MOBILE */
+@media(max-width:768px){
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .content{padding:1rem}
+  table{font-size:0.74rem}
+  thead th,td{padding:8px 10px}
+  .topbar{padding:0.75rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="topbar-logo"><span>Azure</span> Luxury Charters</div>
+    <div class="topbar-sub">Panel de Administración · Mediterráneo</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:1rem">
+    <div style="text-align:right">
+      <div id="lastUpdate" style="font-size:0.72rem;color:var(--muted)"></div>
+      <div class="topbar-badge" style="margin-top:4px">Admin · Plan Profesional</div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- STATS -->
+  <div class="stats-grid" id="statsGrid">
+    <div class="stat-card"><div class="stat-num" id="statTotal">–</div><div class="stat-label">Total Reservas</div><div class="stat-sub">Activas</div></div>
+    <div class="stat-card"><div class="stat-num" id="statMes">–</div><div class="stat-label">Este Mes</div><div class="stat-sub">Nuevas reservas</div></div>
+    <div class="stat-card"><div class="stat-num" id="statIngresos">–</div><div class="stat-label">Ingresos Est.</div><div class="stat-sub">Total confirmadas</div></div>
+    <div class="stat-card"><div class="stat-num" id="statBarco">–</div><div class="stat-label">Barco Popular</div><div class="stat-sub">Más reservado</div></div>
+  </div>
+
+  <!-- TABLA RESERVAS -->
+  <div class="section-title">⚓ Reservas de <em style="font-style:italic;color:rgba(201,169,110,0.8)">embarcaciones</em></div>
+
+  <div class="filter-row">
+    <select class="filter-select" id="filtroEstado" onchange="renderTabla()">
+      <option value="">Todos los estados</option>
+      <option value="confirmada">Confirmadas</option>
+      <option value="cancelada">Canceladas</option>
+    </select>
+    <select class="filter-select" id="filtroBarco" onchange="renderTabla()">
+      <option value="">Todos los barcos</option>
+      <option value="azure_sovereign">Azure Sovereign</option>
+      <option value="horizon_bleu">Horizon Bleu</option>
+      <option value="mistral_blanc">Mistral Blanc</option>
+    </select>
+    <button class="refresh-btn" onclick="cargarDatos()">↺ Actualizar</button>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Ref.</th>
+          <th>Cliente</th>
+          <th>Barco</th>
+          <th>Ruta</th>
+          <th>Fecha salida</th>
+          <th>Huéspedes</th>
+          <th>Precio/día</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tablaBody">
+        <tr><td colspan="9" class="empty">Cargando reservas...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+const BASE = window.location.protocol === 'file:'
+  ? 'https://azure-luxury-charters-production.up.railway.app'
+  : window.location.origin;
+
+let allReservas = [];
+
+const BARCOS = {
+  'azure_sovereign': { nombre: 'Azure Sovereign', badge: 'barco-as' },
+  'horizon_bleu':    { nombre: 'Horizon Bleu',    badge: 'barco-hb' },
+  'mistral_blanc':   { nombre: 'Mistral Blanc',   badge: 'barco-mb' },
+};
+
+const RUTAS = {
+  'formentera':'Formentera','menorca':'Menorca','amalfi':'Capri & Amalfi',
+  'mallorca':'Mallorca','ibiza':'Ibiza','personalizada':'Personalizada'
+};
+
+async function cargarDatos() {
+  document.getElementById('lastUpdate').textContent = 'Actualizando...';
+  try {
+    const [res, stats] = await Promise.all([
+      fetch(BASE + '/reservas').then(r => r.json()),
+      fetch(BASE + '/stats').then(r => r.json())
+    ]);
+    allReservas = res;
+
+    // Stats
+    document.getElementById('statTotal').textContent = stats.total || 0;
+    document.getElementById('statMes').textContent = stats.mes || 0;
+    document.getElementById('statIngresos').textContent = stats.ingresos
+      ? '€' + Math.round(stats.ingresos).toLocaleString()
+      : '€0';
+    // Barco más popular
+    const topBarco = (stats.porBarco || []).sort((a,b) => b.n - a.n)[0];
+    document.getElementById('statBarco').textContent = topBarco
+      ? (BARCOS[topBarco.barco]?.nombre || topBarco.barco).split(' ')[0]
+      : '–';
+
+    renderTabla();
+    document.getElementById('lastUpdate').textContent = 'Actualizado: ' + new Date().toLocaleTimeString('es-ES', {hour:'2-digit',minute:'2-digit'});
+  } catch (e) {
+    document.getElementById('lastUpdate').textContent = 'Error al cargar datos';
+  }
+}
+
+function renderTabla() {
+  const filtroEstado = document.getElementById('filtroEstado').value;
+  const filtroBarco  = document.getElementById('filtroBarco').value;
+  let reservas = allReservas.filter(r => {
+    if (filtroEstado && r.estado !== filtroEstado) return false;
+    if (filtroBarco  && r.barco  !== filtroBarco)  return false;
+    return true;
+  });
+
+  const tbody = document.getElementById('tablaBody');
+  if (!reservas.length) {
+    tbody.innerHTML = '<tr><td colspan="9" class="empty">No hay reservas con estos filtros.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = reservas.map(r => {
+    const barco = BARCOS[r.barco] || { nombre: r.barco, badge: '' };
+    const ruta = RUTAS[r.ruta] || (r.ruta || '–');
+    return `
+    <tr>
+      <td><span style="color:var(--gold);font-weight:500">#AL-${r.id}</span></td>
+      <td>
+        <div style="font-weight:500;color:var(--text)">${r.nombre}</div>
+        <div style="font-size:0.7rem;color:var(--muted);margin-top:2px">${r.email || ''}${r.telefono ? ' · '+r.telefono : ''}</div>
+      </td>
+      <td><span class="badge ${barco.badge}">${barco.nombre}</span></td>
+      <td style="font-size:0.78rem;color:var(--muted)">${ruta}</td>
+      <td style="font-size:0.82rem">${r.fecha_salida}</td>
+      <td style="text-align:center">${r.huespedes}</td>
+      <td style="color:var(--gold);font-weight:500">${r.precio_total ? '€'+Number(r.precio_total).toLocaleString() : '–'}</td>
+      <td><span class="badge ${r.estado}">${r.estado === 'confirmada' ? 'Confirmada' : 'Cancelada'}</span></td>
+      <td>
+        ${r.estado !== 'cancelada'
+          ? `<button class="btn-cancel" onclick="cancelar(${r.id})">Cancelar</button>`
+          : `<button class="btn-confirm" onclick="confirmar(${r.id})">Restaurar</button>`}
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+async function cancelar(id) {
+  if (!confirm('¿Cancelar la reserva #AL-' + id + '?')) return;
+  await fetch(BASE + '/reservas/' + id + '/cancelar', { method: 'PATCH' });
+  cargarDatos();
+}
+
+async function confirmar(id) {
+  await fetch(BASE + '/reservas/' + id + '/confirmar', { method: 'PATCH' });
+  cargarDatos();
+}
+
+// Cargar al arrancar y cada 60s
+cargarDatos();
+setInterval(cargarDatos, 60000);
+</script>
+</body>
+</html>
