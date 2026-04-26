@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Azure Luxury Charters · Mediterranean Charter</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+.leaflet-container{background:#0a1628}
+.leaflet-tile-pane{filter:brightness(0.9) saturate(0.8)}
+.route-popup{background:rgba(4,9,18,0.95);border:1px solid rgba(201,169,110,0.4);color:#e8ddd0;padding:0.4rem 0.8rem;border-radius:4px;font-family:"Inter",sans-serif;font-size:0.72rem;box-shadow:0 4px 16px rgba(0,0,0,0.5)}
+.route-popup .day{color:#c9a96e;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2px}
+.leaflet-popup-content-wrapper{background:transparent;border:none;box-shadow:none;padding:0}
+.leaflet-popup-content{margin:0}
+.leaflet-popup-tip-container{display:none}
+</style>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -462,6 +472,7 @@ footer{background:var(--navy);padding:2.5rem;text-align:center;border-top:1px so
   </div>
 </div>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 var currentLang='es';
 var T={es:{'boat.type.motor':'Yate de Motor','boat.type.cat':'Catamarán','boat.type.sail':'Velero','boat.badge.available':'Disponibilidad inmediata','boat.badge.family':'Ideal familias','boat.badge.classic':'Experiencia clásica','exp.tag1':'Más popular','exp.tag2':'Exclusivo','exp.tag3':'Premium','exp.title1':'Puesta de sol en Formentera','exp.title2':'Calas Secretas de Menorca','exp.title3':'Capri & Costa Amalfitana','exp.dur1':'7 días','exp.dur2':'5 días','exp.dur3':'10 días','exp.price1':'desde €2.800/día','exp.price2':'desde €1.900/día','exp.price3':'desde €4.500/día','exp.desc1':'Zarpa desde Ibiza al amanecer, fondea en Ses Illetes y contempla el atardecer sobre el Mediterráneo en una de las rutas más solicitadas del año.','exp.desc2':'Descubre calas vírgenes accesibles únicamente desde el mar. Aguas de turquesa puro y playas de arena blanca sin turistas.','exp.desc3':'La ruta italiana más icónica: Capri, Positano y Amalfi desde el mar. Una sinfonía de acantilados, limoneros y aguas color zafiro.','exp.day1':'Día 1','exp.day2':'Día 2','exp.day3':'Días 3-5','exp.day4':'Día 6','exp.day5':'Día 7','exp.btn1':'Reservar Esta Ruta','exp.btn2':'Itinerario','test.loc1':'Ibiza · Junio 2025','test.loc2':'Menorca · Agosto 2025','test.loc3':'Formentera · Julio 2025','test.text1':'Una experiencia absolutamente sublime. El servicio a bordo superó todas nuestras expectativas. Volveremos sin duda.','test.text2':'La tripulación fue impecable. Cada detalle, desde el amanecer hasta el fondeo, estuvo cuidado con maestría.','test.text3':'We sailed to coves impossible to reach any other way. Azure redefined our idea of luxury at sea.','nav.fleet':'Flota','nav.experiences':'Experiencias','nav.gallery':'Galería','nav.testimonials':'Testimonios','nav.cta':'Reservar','hero.sub':'Mediterráneo · Caribe · Atlántico','hero.title':'Navega más allá<br>de lo <em>ordinario</em>','hero.desc':'Experiencias náuticas de lujo a medida. Tres embarcaciones excepcionales, rutas irrepetibles y un servicio concierge disponible 24/7.','hero.btn1':'Ver la flota','hero.btn2':'Reservar ahora','hero.badge1':'Embarcaciones','hero.badge2':'Destinos','hero.badge3':'AI Concierge','hero.scroll':'Descubrir','fleet.sub':'Nuestra Flota','fleet.title':'Embarcaciones de <em>Excepción</em>','fleet.hint':'Haz clic en una tarjeta para ver las especificaciones completas.','fleet.all':'Toda la Flota','fleet.captain':'Con Patrón','fleet.nocaptain':'Sin Patrón','fleet.reserve':'Reservar','fleet.details':'+ Detalles','exp.sub':'Rutas & Destinos','exp.title':'Experiencias <em>Únicas</em>','gallery.sub':'Galería','gallery.title':'Momentos <em>Únicos</em>','test.sub':'Testimonios','test.title':'Lo que dicen nuestros <em>clientes</em>','res.sub':'Reserva Directa · Mejor Precio Garantizado','res.title':'Reserve su <em>Experiencia</em>','res.desc':'O use el AI Concierge — le ayuda a reservar directamente desde el chat ⚓','form.name':'Nombre completo','form.name.ph':'Su nombre','form.phone':'Teléfono','form.date':'Fecha de salida','form.boat':'Embarcación','form.boat.ph':'Seleccionar barco...','form.guests':'Nº de huéspedes','form.guests.ph':'Seleccionar...','form.route':'Destino / Ruta','form.route.ph':'Seleccionar destino...','form.route.formentera':'Puesta de sol en Formentera · 7 días','form.route.menorca':'Calas Secretas de Menorca · 5 días','form.route.amalfi':'Capri & Costa Amalfitana · 10 días','form.route.mallorca':'Calas de Mallorca · 3 días','form.route.ibiza':'Ibiza & Formentera · 5 días','form.route.custom':'Ruta personalizada','form.notes':'Notas especiales (celebraciones, alergias, etc.)','form.notes.ph':'Opcional...','form.submit':'Solicitar Reserva','form.note':'Confirmación en menos de 24h · Cancelación gratuita hasta 48h antes','form.success.title':'✓ Solicitud recibida','form.success.desc':'Nuestro equipo le contactará en menos de 24 horas para confirmar los detalles.','sticky.text':'Reserva directa — <strong>Mejor precio garantizado</strong> · Cancelación gratuita 48h','sticky.btn':'Consultar disponibilidad','search.dest':'Destino','search.dest.ph':'¿A dónde navegamos?','search.from':'Llegada','search.to':'Salida','search.btn':'Buscar','chat.status':'AI Concierge · En línea','chat.welcome':'Bienvenido a Azure Luxury Charters. Soy su asistente personal — puedo ayudarle a elegir embarcación, diseñar su ruta y gestionar su reserva en español, inglés o alemán. ⚓','chat.ph':'Escríbanos en cualquier idioma...','chat.sug1':'¿Qué barco recomienda para 8 personas?','chat.sug2':'Quiero navegar por Formentera en julio','chat.sug3':'¿Qué incluye la ruta de Capri?','concierge.label':'AI Concierge','bubble.welcome':'Bienvenido. ¿Puedo ayudarle a encontrar la embarcación perfecta en el Mediterráneo?','proactive.flota':'Nuestros tres barcos están disponibles para la temporada 2026. ¿Tiene fechas en mente?','proactive.exp':'Estas rutas son las más solicitadas del Mediterráneo. ¿Le gustaría personalizar alguna?','proactive.gallery':'Cada imagen es un destino real. ¿Le ayudo a elegir el itinerario perfecto para su grupo?','proactive.test':'Nuestros clientes repiten cada temporada. ¿Desea una experiencia similar?','proactive.reserva':'¿Puedo ayudarle a completar su reserva? Confirmación en menos de 24 horas.','boat.captain.yes':'✓ Incluido','boat.captain.no':'Licencia','boat.guests.label':'Huéspedes','boat.cabins.label':'Cabinas','boat.speed.label':'Velocidad','boat.range.label':'Autonomía'},en:{'boat.type.motor':'Motor Yacht','boat.type.cat':'Catamaran','boat.type.sail':'Sailing Yacht','boat.badge.available':'Immediate availability','boat.badge.family':'Ideal for families','boat.badge.classic':'Classic experience','exp.tag1':'Most popular','exp.tag2':'Exclusive','exp.tag3':'Premium','exp.title1':'Sunset in Formentera','exp.title2':'Secret Coves of Menorca','exp.title3':'Capri & Amalfi Coast','exp.dur1':'7 days','exp.dur2':'5 days','exp.dur3':'10 days','exp.price1':'from €2,800/day','exp.price2':'from €1,900/day','exp.price3':'from €4,500/day','exp.desc1':'Set sail from Ibiza at dawn, anchor at Ses Illetes and watch the sunset over the Mediterranean on one of the most sought-after routes of the year.','exp.desc2':'Discover virgin coves accessible only by sea. Crystal-clear turquoise waters and white sand beaches free from tourists.','exp.desc3':"Italy's most iconic route: Capri, Positano and Amalfi from the sea. A symphony of cliffs, lemon trees and sapphire-blue waters.",'exp.day1':'Day 1','exp.day2':'Day 2','exp.day3':'Days 3-5','exp.day4':'Day 6','exp.day5':'Day 7','exp.btn1':'Book This Route','exp.btn2':'Itinerary','test.loc1':'Ibiza · June 2025','test.loc2':'Menorca · August 2025','test.loc3':'Formentera · July 2025','test.text1':'An absolutely sublime experience. The on-board service exceeded all our expectations. We will definitely return.','test.text2':'The crew was impeccable. Every detail, from sunrise to anchor, was handled with mastery.','test.text3':'We sailed to coves impossible to reach any other way. Azure redefined our idea of luxury at sea.','nav.fleet':'Fleet','nav.experiences':'Experiences','nav.gallery':'Gallery','nav.testimonials':'Reviews','nav.cta':'Book Now','hero.sub':'Mediterranean · Caribbean · Atlantic','hero.title':'Sail beyond<br>the <em>ordinary</em>','hero.desc':'Bespoke luxury nautical experiences. Three exceptional vessels, unforgettable routes and a 24/7 AI concierge service.','hero.btn1':'View the fleet','hero.btn2':'Book now','hero.badge1':'Vessels','hero.badge2':'Destinations','hero.badge3':'AI Concierge','hero.scroll':'Discover','fleet.sub':'Our Fleet','fleet.title':'Exceptional <em>Vessels</em>','fleet.hint':'Click a card to expand the full technical specifications.','fleet.all':'All Fleet','fleet.captain':'With Skipper','fleet.nocaptain':'Without Skipper','fleet.reserve':'Book','fleet.details':'+ Details','exp.sub':'Routes & Destinations','exp.title':'Unique <em>Experiences</em>','gallery.sub':'Gallery','gallery.title':'Unique <em>Moments</em>','test.sub':'Testimonials','test.title':'What our <em>clients</em> say','res.sub':'Direct Booking · Best Price Guaranteed','res.title':'Book your <em>Experience</em>','res.desc':'Or use the AI Concierge — helps you book directly from the chat ⚓','form.name':'Full name','form.name.ph':'Your name','form.phone':'Phone','form.date':'Departure date','form.boat':'Vessel','form.boat.ph':'Select vessel...','form.guests':'No. of guests','form.guests.ph':'Select...','form.route':'Destination / Route','form.route.ph':'Select destination...','form.route.formentera':'Sunset in Formentera · 7 days','form.route.menorca':'Secret Coves of Menorca · 5 days','form.route.amalfi':'Capri & Amalfi Coast · 10 days','form.route.mallorca':'Mallorca Coves · 3 days','form.route.ibiza':'Ibiza & Formentera · 5 days','form.route.custom':'Custom route','form.notes':'Special notes (celebrations, allergies, etc.)','form.notes.ph':'Optional...','form.submit':'Request Booking','form.note':'Confirmation within 24h · Free cancellation 48h before','form.success.title':'✓ Request received','form.success.desc':'Our team will contact you within 24 hours to confirm the details.','sticky.text':'Direct booking — <strong>Best price guaranteed</strong> · Free cancellation 48h','sticky.btn':'Check availability','search.dest':'Destination','search.dest.ph':'Where are we sailing?','search.from':'Arrival','search.to':'Departure','search.btn':'Search','chat.status':'AI Concierge · Online','chat.welcome':"Welcome to Azure Luxury Charters. I'm your personal assistant — I can help you choose a vessel, design your route and manage your reservation in Spanish, English or German. ⚓",'chat.ph':'Write to us in any language...','chat.sug1':'What vessel do you recommend for 8 people?','chat.sug2':'I want to sail around Formentera in July',"chat.sug3":"What's included in the Capri route?",'concierge.label':'AI Concierge','bubble.welcome':'Welcome. May I help you find the perfect vessel in the Mediterranean?','proactive.flota':'All three vessels are available for the 2026 season. Do you have dates in mind?','proactive.exp':'These are our most requested routes. Would you like to customize one?','proactive.gallery':'Every image is a real destination. May I help you choose the perfect itinerary?','proactive.test':'Our guests return every season. Would you like a similar experience?','proactive.reserva':'May I help you complete your booking? Confirmation within 24 hours.','boat.captain.yes':'✓ Included','boat.captain.no':'Licence req.','boat.guests.label':'Guests','boat.cabins.label':'Cabins','boat.speed.label':'Speed','boat.range.label':'Range'},de:{'boat.type.motor':'Motoryacht','boat.type.cat':'Katamaran','boat.type.sail':'Segelyacht','boat.badge.available':'Sofort verfügbar','boat.badge.family':'Ideal für Familien','boat.badge.classic':'Klassisches Erlebnis','exp.tag1':'Beliebteste','exp.tag2':'Exklusiv','exp.tag3':'Premium','exp.title1':'Sonnenuntergang auf Formentera','exp.title2':'Geheime Buchten von Menorca','exp.title3':'Capri & Amalfiküste','exp.dur1':'7 Tage','exp.dur2':'5 Tage','exp.dur3':'10 Tage','exp.price1':'ab €2.800/Tag','exp.price2':'ab €1.900/Tag','exp.price3':'ab €4.500/Tag','exp.desc1':'Starten Sie bei Sonnenaufgang von Ibiza, ankern Sie in Ses Illetes und genießen Sie den Sonnenuntergang über dem Mittelmeer.','exp.desc2':'Entdecken Sie unberührte Buchten, die nur vom Meer aus erreichbar sind. Kristallklares türkisfarbenes Wasser.','exp.desc3':'Italiens ikonischste Route: Capri, Positano und Amalfi vom Meer aus. Eine Symphonie aus Klippen und saphirblauen Gewässern.','exp.day1':'Tag 1','exp.day2':'Tag 2','exp.day3':'Tage 3-5','exp.day4':'Tag 6','exp.day5':'Tag 7','exp.btn1':'Diese Route buchen','exp.btn2':'Reiseprogramm','test.loc1':'Ibiza · Juni 2025','test.loc2':'Menorca · August 2025','test.loc3':'Formentera · Juli 2025','test.text1':'Ein absolut erhabenes Erlebnis. Der Service an Bord hat alle unsere Erwartungen übertroffen. Wir kommen definitiv wieder.','test.text2':'Die Crew war tadellos. Jedes Detail, vom Sonnenaufgang bis zum Anker, war mit Meisterschaft gepflegt.','test.text3':'Wir segelten zu Buchten, die auf anderem Wege unmöglich zu erreichen sind. Azure hat unsere Vorstellung von Luxus neu definiert.','nav.fleet':'Flotte','nav.experiences':'Routen','nav.gallery':'Galerie','nav.testimonials':'Bewertungen','nav.cta':'Buchen','hero.sub':'Mittelmeer · Karibik · Atlantik','hero.title':'Segeln jenseits<br>des <em>Gewöhnlichen</em>','hero.desc':'Maßgeschneiderte Luxus-Segelabenteuer. Drei außergewöhnliche Schiffe, unvergessliche Routen und ein 24/7 KI-Concierge.','hero.btn1':'Flotte ansehen','hero.btn2':'Jetzt buchen','hero.badge1':'Schiffe','hero.badge2':'Ziele','hero.badge3':'KI-Concierge','hero.scroll':'Entdecken','fleet.sub':'Unsere Flotte','fleet.title':'Außergewöhnliche <em>Schiffe</em>','fleet.hint':'Klicken Sie auf eine Karte für vollständige technische Daten.','fleet.all':'Alle Schiffe','fleet.captain':'Mit Skipper','fleet.nocaptain':'Ohne Skipper','fleet.reserve':'Buchen','fleet.details':'+ Details','exp.sub':'Routen & Ziele','exp.title':'Einzigartige <em>Erlebnisse</em>','gallery.sub':'Galerie','gallery.title':'Einzigartige <em>Momente</em>','test.sub':'Bewertungen','test.title':'Was unsere <em>Gäste</em> sagen','res.sub':'Direktbuchung · Bestpreis-Garantie','res.title':'Buchen Sie Ihr <em>Erlebnis</em>','res.desc':'Oder nutzen Sie den KI-Concierge — hilft Ihnen direkt im Chat zu buchen ⚓','form.name':'Vollständiger Name','form.name.ph':'Ihr Name','form.phone':'Telefon','form.date':'Abfahrtsdatum','form.boat':'Schiff','form.boat.ph':'Schiff auswählen...','form.guests':'Anzahl Gäste','form.guests.ph':'Auswählen...','form.route':'Ziel / Route','form.route.ph':'Ziel auswählen...','form.route.formentera':'Sonnenuntergang auf Formentera · 7 Tage','form.route.menorca':'Geheime Buchten von Menorca · 5 Tage','form.route.amalfi':'Capri & Amalfiküste · 10 Tage','form.route.mallorca':'Mallorca-Buchten · 3 Tage','form.route.ibiza':'Ibiza & Formentera · 5 Tage','form.route.custom':'Individuelle Route','form.notes':'Besondere Wünsche (Feiern, Allergien, etc.)','form.notes.ph':'Optional...','form.submit':'Anfrage senden','form.note':'Bestätigung innerhalb von 24h · Kostenlose Stornierung 48h vorher','form.success.title':'✓ Anfrage erhalten','form.success.desc':'Unser Team wird Sie innerhalb von 24 Stunden kontaktieren.','sticky.text':'Direktbuchung — <strong>Bestpreis-Garantie</strong> · Kostenlose Stornierung 48h','sticky.btn':'Verfügbarkeit prüfen','search.dest':'Ziel','search.dest.ph':'Wohin segeln wir?','search.from':'Ankunft','search.to':'Abfahrt','search.btn':'Suchen','chat.status':'KI-Concierge · Online','chat.welcome':'Willkommen bei Azure Luxury Charters. Ich bin Ihr persönlicher Assistent ⚓','chat.ph':'Schreiben Sie uns in jeder Sprache...','chat.sug1':'Welches Schiff empfehlen Sie für 8 Personen?','chat.sug2':'Ich möchte im Juli um Formentera segeln','chat.sug3':'Was ist in der Capri-Route enthalten?','concierge.label':'KI-Concierge','bubble.welcome':'Willkommen. Darf ich Ihnen helfen, das perfekte Schiff zu finden?','proactive.flota':'Alle drei Schiffe sind für die Saison 2026 verfügbar. Haben Sie Termine im Sinn?','proactive.exp':'Dies sind unsere meistgebuchten Routen. Möchten Sie eine anpassen?','proactive.gallery':'Jedes Bild ist ein echtes Reiseziel. Darf ich das perfekte Programm vorschlagen?','proactive.test':'Unsere Gäste kommen jede Saison wieder. Möchten Sie ein ähnliches Erlebnis?','proactive.reserva':'Darf ich Ihnen bei der Buchung helfen? Bestätigung innerhalb von 24 Stunden.','boat.captain.yes':'✓ Inkl.','boat.captain.no':'Führerschein','boat.guests.label':'Gäste','boat.cabins.label':'Kabinen','boat.speed.label':'Geschw.','boat.range.label':'Reichweite'}};
@@ -499,9 +510,21 @@ var BOATS=[
   {id:'mistral_blanc',name:'Mistral Blanc',typeKey:'boat.type.sail',length:52,beam:14,draft:2.8,price:1900,captain:true,guests:6,cabins:2,speed:12,range:1200,img:'https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1200&q=90',accent:'#a8c4b8',badgeKey:'boat.badge.classic'}
 ];
 var EXPERIENCES=[
-  {id:1,tagKey:'exp.tag1',titleKey:'exp.title1',durKey:'exp.dur1',priceKey:'exp.price1',descKey:'exp.desc1',img:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=85',routeColor:'#c9a96e',waypoints:[{label:'Ibiza',x:'22%',y:'35%',dayKey:'exp.day1'},{label:'Es Vedrà',x:'30%',y:'55%',dayKey:'exp.day2'},{label:'Formentera',x:'42%',y:'68%',dayKey:'exp.day3'},{label:'Espalmador',x:'52%',y:'58%',dayKey:'exp.day4'},{label:'Ibiza',x:'22%',y:'35%',dayKey:'exp.day5',end:true}]},
-  {id:2,tagKey:'exp.tag2',titleKey:'exp.title2',durKey:'exp.dur2',priceKey:'exp.price2',descKey:'exp.desc2',img:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=85',routeColor:'#7bb3c9',waypoints:[{label:'Mahón',x:'72%',y:'28%',dayKey:'exp.day1'},{label:'Cala Trebalúger',x:'48%',y:'52%',dayKey:'exp.day2'},{label:'Cala Macarella',x:'30%',y:'62%',dayKey:'exp.day3'},{label:'Ciudadela',x:'18%',y:'38%',dayKey:'exp.day4'}]},
-  {id:3,tagKey:'exp.tag3',titleKey:'exp.title3',durKey:'exp.dur3',priceKey:'exp.price3',descKey:'exp.desc3',img:'https://images.unsplash.com/photo-1519491050282-cf00c82424b0?w=900&q=85',routeColor:'#c9a96e',waypoints:[{label:'Nápoles',x:'28%',y:'25%',dayKey:'exp.day1'},{label:'Capri',x:'35%',y:'55%',dayKey:'exp.day2'},{label:'Positano',x:'52%',y:'42%',dayKey:'exp.day3'},{label:'Amalfi',x:'62%',y:'50%',dayKey:'exp.day4'},{label:'Ravello',x:'68%',y:'38%',dayKey:'exp.day5',end:true}]}
+  {id:1,tagKey:'exp.tag1',titleKey:'exp.title1',durKey:'exp.dur1',priceKey:'exp.price1',descKey:'exp.desc1',
+   img:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=85',routeColor:'#c9a96e',
+   mapCenter:[38.82,1.35],mapZoom:10,
+   coords:[[38.9071,1.4320],[38.8608,1.2008],[38.7364,1.4208],[38.7920,1.4050],[38.9071,1.4320]],
+   waypoints:[{label:'Ibiza',x:'22%',y:'35%',dayKey:'exp.day1',latlng:[38.9071,1.4320]},{label:'Es Vedrà',x:'30%',y:'55%',dayKey:'exp.day2',latlng:[38.8608,1.2008]},{label:'Formentera',x:'42%',y:'68%',dayKey:'exp.day3',latlng:[38.7364,1.4208]},{label:'Espalmador',x:'52%',y:'58%',dayKey:'exp.day4',latlng:[38.7920,1.4050]},{label:'Ibiza',x:'22%',y:'35%',dayKey:'exp.day5',end:true,latlng:[38.9071,1.4320]}]},
+  {id:2,tagKey:'exp.tag2',titleKey:'exp.title2',durKey:'exp.dur2',priceKey:'exp.price2',descKey:'exp.desc2',
+   img:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=85',routeColor:'#7bb3c9',
+   mapCenter:[39.93,4.03],mapZoom:10,
+   coords:[[39.8885,4.2658],[39.9321,3.9847],[39.8875,3.8320],[40.0031,3.8333]],
+   waypoints:[{label:'Mahón',x:'72%',y:'28%',dayKey:'exp.day1',latlng:[39.8885,4.2658]},{label:'Cala Trebalúger',x:'48%',y:'52%',dayKey:'exp.day2',latlng:[39.9321,3.9847]},{label:'Cala Macarella',x:'30%',y:'62%',dayKey:'exp.day3',latlng:[39.8875,3.8320]},{label:'Ciudadela',x:'18%',y:'38%',dayKey:'exp.day4',latlng:[40.0031,3.8333]}]},
+  {id:3,tagKey:'exp.tag3',titleKey:'exp.title3',durKey:'exp.dur3',priceKey:'exp.price3',descKey:'exp.desc3',
+   img:'https://images.unsplash.com/photo-1519491050282-cf00c82424b0?w=900&q=85',routeColor:'#c9a96e',
+   mapCenter:[40.60,14.42],mapZoom:10,
+   coords:[[40.8518,14.2681],[40.5500,14.2417],[40.6280,14.4840],[40.6340,14.6026],[40.6479,14.6127]],
+   waypoints:[{label:'Nápoles',x:'28%',y:'25%',dayKey:'exp.day1',latlng:[40.8518,14.2681]},{label:'Capri',x:'35%',y:'55%',dayKey:'exp.day2',latlng:[40.5500,14.2417]},{label:'Positano',x:'52%',y:'42%',dayKey:'exp.day3',latlng:[40.6280,14.4840]},{label:'Amalfi',x:'62%',y:'50%',dayKey:'exp.day4',latlng:[40.6340,14.6026]},{label:'Ravello',x:'68%',y:'38%',dayKey:'exp.day5',end:true,latlng:[40.6479,14.6127]}]}
 ];
 var GALLERY=[
   {src:'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=1600&q=95',thumb:'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=700&q=85',cap:'Azure Sovereign · Ibiza'},
@@ -573,7 +596,8 @@ function renderFlota(){
 renderFlota();
 
 var activeExp=0;
-var routeAnimId=null;
+var leafletMap=null;
+
 function renderExps(){
   document.getElementById('expTabs').innerHTML=EXPERIENCES.map(function(e,i){
     return '<button class="exp-tab'+(i===activeExp?' active':'')+'" onclick="setExp('+i+')">'+
@@ -589,15 +613,8 @@ function renderExps(){
   var wayptsHtml=e.waypoints.map(function(w,j){return '<div class="exp-wp"><div class="wp-dot" style="background:'+(j===0||w.end?e.routeColor:'rgba(255,255,255,0.2)')+'"></div><span class="wp-day">'+t(w.dayKey)+'</span><span class="wp-lbl" style="color:'+(j===0||w.end?e.routeColor:'#9ba8b5')+'">'+w.label+'</span></div>';}).join('');
   document.getElementById('expContent').innerHTML=
     '<div class="exp-panel">'+
-      '<div class="exp-map-side">'+
-        '<img class="exp-map-img" src="'+e.img+'" alt="'+t(e.titleKey)+'">'+
-        '<div class="exp-map-overlay"></div>'+
-        '<svg class="exp-map-svg" viewBox="0 0 100 100" preserveAspectRatio="none">'+
-          '<polyline points="'+polyAll+'" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.35" stroke-dasharray="0.8 0.6"/>'+
-          '<polyline id="routeLine" points="'+pts.slice(0,2).map(function(p){return p.x+','+p.y;}).join(' ')+'" fill="none" stroke="'+e.routeColor+'" stroke-width="0.45" stroke-linecap="round" stroke-linejoin="round" opacity="0"/>'+
-          dotsHtml+
-        '</svg>'+
-        labelsHtml+
+      '<div class="exp-map-side" id="expMapContainer" style="min-height:400px;position:relative">'+
+        '<div id="leafletMap" style="width:100%;height:100%;min-height:400px;position:absolute;inset:0"></div>'+
       '</div>'+
       '<div class="exp-info-side">'+
         '<div>'+
@@ -612,29 +629,59 @@ function renderExps(){
         '</div>'+
       '</div>'+
     '</div>';
-  animateRoute(e,pts);
+  setTimeout(function(){initLeafletMap(e);},50);
 }
-function animateRoute(e,pts){
-  if(routeAnimId)cancelAnimationFrame(routeAnimId);
-  var line=document.getElementById('routeLine');
-  if(!line)return;
-  var start=null,dur=900;
-  function step(ts){
-    if(!start)start=ts;
-    var prog=Math.min((ts-start)/dur,1);
-    var n=Math.max(2,Math.ceil(prog*pts.length));
-    line.setAttribute('points',pts.slice(0,n).map(function(p){return p.x+','+p.y;}).join(' '));
-    line.setAttribute('opacity',Math.min(prog*2,1));
-    pts.forEach(function(_,i){
-      var el=document.getElementById('wpDot'+i),lb=document.getElementById('wpLabel'+i);
-      var show=prog>i/(pts.length-1)*0.9?1:0;
-      if(el)el.setAttribute('opacity',show);
-      if(lb)lb.style.opacity=show;
+function initLeafletMap(e){
+  if(leafletMap){leafletMap.remove();leafletMap=null;}
+  var mapEl=document.getElementById('leafletMap');
+  if(!mapEl||typeof L==='undefined')return;
+
+  // Crear el mapa con tiles oscuros CartoDB
+  var map=L.map('leafletMap',{
+    center:e.mapCenter,zoom:e.mapZoom,
+    zoomControl:false,attributionControl:false,
+    scrollWheelZoom:false,dragging:true,
+    tap:false
+  });
+  leafletMap=map;
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_matter_no_labels/{z}/{x}/{y}{r}.png',{
+    attribution:'',subdomains:'abcd',maxZoom:19
+  }).addTo(map);
+
+  // Línea de la ruta con color del tema
+  var polyline=L.polyline(e.coords,{
+    color:e.routeColor,weight:2.5,opacity:0.9,
+    dashArray:null,smoothFactor:1.5
+  }).addTo(map);
+
+  // Marcadores personalizados para cada waypoint
+  e.waypoints.forEach(function(wp,i){
+    if(!wp.latlng)return;
+    var isStart=i===0,isEnd=!!wp.end;
+    var size=isStart||isEnd?12:8;
+    var icon=L.divIcon({
+      className:'',
+      html:'<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;background:'+(isStart||isEnd?e.routeColor:'#e8ddd0')+';border:2px solid '+(isStart||isEnd?'rgba(255,255,255,0.3)':e.routeColor)+';box-shadow:0 0 8px rgba(0,0,0,0.6)"></div>',
+      iconSize:[size,size],iconAnchor:[size/2,size/2]
     });
-    if(prog<1)routeAnimId=requestAnimationFrame(step);
+    var marker=L.marker(wp.latlng,{icon:icon}).addTo(map);
+    // Tooltip permanente con día y nombre
+    var tooltip=L.tooltip({
+      permanent:true,direction:'top',className:'route-popup',offset:[0,-6]
+    }).setContent(
+      '<div class="day">'+t(wp.dayKey)+'</div>'+
+      '<div>'+wp.label+'</div>'
+    );
+    marker.bindTooltip(tooltip).openTooltip();
+  });
+
+  // Ajustar vista a la ruta con padding
+  if(e.coords.length>1){
+    map.fitBounds(L.latLngBounds(e.coords),{padding:[32,32]});
   }
-  routeAnimId=requestAnimationFrame(step);
 }
+
 function setExp(i){activeExp=i;renderExps();}
 renderExps();
 
