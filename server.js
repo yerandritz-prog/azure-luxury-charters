@@ -9,7 +9,10 @@ const { Resend } = require('resend');
 const app = express();
 app.use(cors({ origin: '*', methods: ['GET', 'POST', 'PATCH'], allowedHeaders: ['Content-Type'] }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname)));
+// Servir archivos estáticos desde el directorio actual
+app.use(express.static(__dirname));
+// También intentar desde subdirectorios por si acaso
+app.use(express.static(path.join(__dirname, 'public')));
 
 // ─── BASE DE DATOS ─────────────────────────────────────────────
 const db = new Database('reservas.db');
@@ -414,8 +417,23 @@ app.get('/stats', (req, res) => {
   res.json({ total: total.n, mes: mes.n, ingresos: ingresos.total || 0, porBarco });
 });
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
-app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'admin.html')));
+// Diagnóstico — ver qué archivos tiene Railway
+app.get('/health', (req, res) => {
+  const fs = require('fs');
+  const files = fs.readdirSync(__dirname);
+  res.json({ status: 'ok', dirname: __dirname, files });
+});
+
+app.get('/', (req, res) => {
+  const indexPath = path.join(__dirname, 'index.html');
+  console.log('Sirviendo index desde:', indexPath);
+  res.sendFile(indexPath);
+});
+app.get('/admin', (req, res) => {
+  const adminPath = path.join(__dirname, 'admin.html');
+  console.log('Sirviendo admin desde:', adminPath);
+  res.sendFile(adminPath);
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Azure Luxury Charters corriendo en http://localhost:${PORT}`));
