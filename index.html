@@ -3,172 +3,186 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Azure Luxury Charters &middot; Mediterranean Charter</title>
+<title>Azure Luxury Charters · Mediterranean Charter</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--gold:#c9a96e;--gold2:rgba(201,169,110,0.2);--gold3:rgba(201,169,110,0.3);--dark:#04090e;--navy:#07111f;--navy2:#0e2240;--text:#e8ddd0;--muted:rgba(255,255,255,0.55);--border:rgba(255,255,255,0.08)}
+:root{--gold:#c9a96e;--gold2:rgba(201,169,110,0.15);--gold3:rgba(201,169,110,0.3);--dark:#04090e;--navy:#07111f;--navy2:#0e2240;--text:#e8ddd0;--muted:rgba(255,255,255,0.55);--border:rgba(255,255,255,0.08)}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--text);overflow-x:hidden}
-.pf{font-family:'Playfair Display',Georgia,serif}
-
-/* NAV */
+body{font-family:"Inter",sans-serif;background:var(--dark);color:var(--text);overflow-x:hidden}
+.pf{font-family:"Playfair Display",Georgia,serif}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:#1a2f4a;border-radius:3px}
 nav{position:fixed;top:0;width:100%;z-index:200;padding:1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;transition:all 0.4s}
-nav.scrolled{background:rgba(4,9,18,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--gold3)}
-.nav-logo{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--gold);letter-spacing:0.06em;font-weight:400}
+nav.scrolled{background:rgba(4,9,18,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--gold3)}
+.nav-logo{font-family:"Playfair Display",serif;font-size:1.15rem;color:var(--gold);letter-spacing:0.06em;font-weight:400}
 .nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{font-size:0.72rem;color:rgba(255,255,255,0.6);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a{font-size:0.72rem;color:rgba(255,255,255,0.6);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;position:relative}
+.nav-links a::after{content:"";position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s}
 .nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
 .nav-right{display:flex;align-items:center;gap:1rem}
 .lang-selector{display:flex;gap:0.25rem}
-.lang-btn{background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);padding:0.28rem 0.55rem;font-size:0.62rem;font-weight:600;letter-spacing:0.06em;cursor:pointer;border-radius:2px;transition:all 0.2s;font-family:'Inter',sans-serif}
+.lang-btn{background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.45);padding:0.28rem 0.55rem;font-size:0.62rem;font-weight:600;cursor:pointer;border-radius:2px;transition:all 0.2s;font-family:"Inter",sans-serif}
 .lang-btn:hover{border-color:rgba(201,169,110,0.5);color:rgba(201,169,110,0.8)}
 .lang-btn.active{border-color:var(--gold);color:var(--gold);background:var(--gold2)}
-.nav-cta{background:var(--gold);color:var(--dark);padding:0.5rem 1.4rem;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border:none;border-radius:2px;transition:all 0.2s;font-family:'Inter',sans-serif}
+.nav-cta{background:var(--gold);color:var(--dark);padding:0.5rem 1.4rem;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border:none;border-radius:2px;transition:all 0.2s;font-family:"Inter",sans-serif}
 .nav-cta:hover{background:#d4b07a}
-
-/* HERO */
-.hero{height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=1600&q=85');background-size:cover;background-position:center 30%}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(4,9,18,0.85) 0%,rgba(4,9,18,0.4) 60%,rgba(4,9,18,0.7) 100%)}
-.hero-content{position:relative;padding:0 4rem;max-width:680px;animation:fadeUp 0.9s ease both}
-.hero-sub{font-size:0.68rem;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:1.4rem}
-.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:400;line-height:1.05;color:#f5f0e8;margin-bottom:1.4rem}
+.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;overflow:hidden}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,9,14,0.55) 0%,rgba(4,9,14,0.1) 35%,rgba(4,9,14,0.05) 55%,rgba(4,9,14,0.92) 100%)}
+.hero-overlay2{position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,9,14,0.4) 0%,transparent 60%)}
+.hero-content{position:relative;padding:0 4rem;max-width:700px;animation:fadeUp 0.8s ease both}
+.hero-sub{font-size:0.68rem;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase}
+.hero-title{font-family:"Playfair Display",serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:400;line-height:1.05;color:#f8f4ee;margin:1.2rem 0}
 .hero-title em{color:var(--gold);font-style:italic}
-.hero-desc{font-size:0.92rem;color:var(--muted);line-height:1.85;max-width:420px;margin-bottom:2.5rem;font-weight:300}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-gold{background:var(--gold);color:var(--dark);border:none;padding:0.9rem 2.2rem;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all 0.2s;font-family:'Inter',sans-serif}
+.hero-desc{font-size:0.92rem;color:var(--muted);line-height:1.85;max-width:460px;font-weight:300}
+.hero-btns{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:var(--dark);border:none;padding:0.9rem 2.2rem;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all 0.2s;font-family:"Inter",sans-serif}
 .btn-gold:hover{background:#d4b07a}
-.btn-ghost{background:transparent;color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.4);padding:0.9rem 2.2rem;font-size:0.75rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all 0.2s;font-family:'Inter',sans-serif}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.4);padding:0.9rem 2.2rem;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all 0.2s;font-family:"Inter",sans-serif}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
 .hero-badges{display:flex;gap:3rem;margin-top:3.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1)}
-.badge-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold)}
+.badge-num{font-family:"Playfair Display",serif;font-size:2rem;color:var(--gold)}
 .badge-lbl{font-size:0.62rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:3px}
-.scroll-ind{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--muted);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase}
-.scroll-line{width:1px;height:40px;background:linear-gradient(var(--gold),transparent);animation:scrollPulse 2s ease-in-out infinite}
-
-/* SECCIONES */
+.scroll-ind{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--muted);font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase}
+.scroll-line{width:1px;height:48px;background:linear-gradient(var(--gold),transparent);animation:scrollPulse 2.2s ease-in-out infinite}
+.search-wrap{position:absolute;bottom:5.5rem;left:50%;transform:translateX(-50%);width:100%;max-width:880px;padding:0 2rem;z-index:10;animation:fadeUp 0.8s ease 0.3s both}
+.search-bar{background:rgba(4,9,18,0.82);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.1);display:grid;grid-template-columns:1fr 1fr 1fr auto;box-shadow:0 24px 48px rgba(0,0,0,0.4)}
+.search-cell{padding:1rem 1.2rem;border-right:1px solid rgba(255,255,255,0.07);transition:background 0.2s;cursor:pointer}
+.search-cell:hover{background:rgba(255,255,255,0.03)}
+.search-label{font-size:0.5rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:5px;font-family:"Inter",sans-serif}
+.search-val{font-size:0.85rem;color:rgba(255,255,255,0.35);font-family:"Inter",sans-serif}
+.search-input{background:transparent;border:none;outline:none;color:rgba(255,255,255,0.7);font-size:0.85rem;font-family:"Inter",sans-serif;width:100%;cursor:pointer;color-scheme:dark}
+.search-btn{padding:0 2rem;background:var(--gold);color:var(--dark);border:none;font-family:"Inter",sans-serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.18em;font-weight:700;cursor:pointer;min-width:120px;transition:opacity 0.2s}
+.search-btn:hover{opacity:0.88}
+.search-chips{display:flex;gap:0.5rem;margin-top:0.7rem;flex-wrap:wrap}
+.chip{padding:0.25rem 0.75rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);color:#6a7f94;font-size:0.62rem;cursor:pointer;font-family:"Inter",sans-serif;transition:all 0.2s}
+.chip:hover{color:var(--gold);border-color:rgba(201,169,110,0.3)}
 section{padding:7rem 2.5rem}
 .section-sub{font-size:0.65rem;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:#f5f0e8;margin-bottom:1.2rem}
+.section-title{font-family:"Playfair Display",serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:#f5f0e8;margin-bottom:1.2rem}
 .section-title em{color:var(--gold);font-style:italic}
-
-/* FLOTA */
-#az-flota{background:var(--dark)}
-.flota-filters{display:flex;gap:1rem;margin-bottom:3rem;flex-wrap:wrap}
-.flota-filter{background:transparent;border:1px solid var(--border);color:var(--muted);padding:0.45rem 1.2rem;font-size:0.72rem;cursor:pointer;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s;font-family:'Inter',sans-serif;border-radius:2px}
-.flota-filter:hover,.flota-filter.active{border-color:var(--gold);color:var(--gold);background:var(--gold2)}
-.flota-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
-.boat-card{position:relative;border-radius:6px;overflow:hidden;border:1px solid var(--border);background:rgba(255,255,255,0.02);transition:transform 0.3s,box-shadow 0.3s;cursor:pointer}
-.boat-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.5);border-color:var(--gold3)}
-.boat-img{height:240px;overflow:hidden;position:relative}
-.boat-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
-.boat-card:hover .boat-img img{transform:scale(1.05)}
-.boat-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,9,18,0.9),transparent 55%)}
-.boat-tag{position:absolute;top:0.75rem;left:0.75rem;background:var(--gold2);border:1px solid var(--gold3);color:var(--gold);font-size:0.6rem;padding:0.2rem 0.65rem;border-radius:2px;letter-spacing:0.1em;text-transform:uppercase}
-.boat-price{position:absolute;bottom:0.85rem;right:0.9rem;text-align:right}
-.boat-price-from{font-size:0.5rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px}
-.boat-price-num{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--gold)}
-.boat-price-per{font-size:0.6rem;color:var(--muted)}
-.boat-info{padding:1.2rem 1.4rem}
-.boat-name{font-family:'Playfair Display',serif;font-size:1.2rem;color:#f5f0e8;font-weight:400;margin-bottom:0.3rem}
-.boat-type{font-size:0.65rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem}
-.boat-specs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem}
-.spec{font-size:0.68rem;color:var(--muted);line-height:1.6}
-.spec strong{display:block;color:var(--text);font-weight:500;font-size:0.75rem}
-
-/* EXPERIENCIAS */
-#az-experiencias{background:rgba(255,255,255,0.015)}
-.exp-tabs{display:flex;gap:0.75rem;margin-bottom:3rem;flex-wrap:wrap}
-.exp-tab{padding:0.45rem 1.4rem;border:1px solid var(--border);color:var(--muted);font-size:0.72rem;cursor:pointer;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s;font-family:'Inter',sans-serif;border-radius:2px;background:transparent}
-.exp-tab:hover,.exp-tab.active{border-color:var(--gold);color:var(--gold);background:var(--gold2)}
-.exp-content{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.exp-img{height:400px;border-radius:6px;overflow:hidden;position:relative;border:1px solid var(--gold3)}
-.exp-img img{width:100%;height:100%;object-fit:cover}
-.exp-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,9,18,0.7),transparent 60%)}
-.exp-tag{position:absolute;top:1rem;left:1rem;background:var(--gold);color:var(--dark);font-size:0.6rem;padding:0.22rem 0.65rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600}
-.exp-duration{position:absolute;bottom:1rem;left:1rem;color:var(--gold);font-size:0.78rem}
-.exp-price-tag{position:absolute;bottom:1rem;right:1rem;text-align:right}
-.exp-info{display:flex;flex-direction:column;gap:1.5rem}
-.exp-desc{font-size:0.9rem;color:var(--muted);line-height:1.9;font-weight:300}
-.exp-waypoints{display:flex;flex-direction:column;gap:0.5rem}
-.waypoint{display:flex;align-items:center;gap:0.75rem;font-size:0.8rem}
-.waypoint-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0}
-.waypoint-day{color:var(--gold);font-size:0.65rem;min-width:55px;letter-spacing:0.06em}
-.waypoint-line{flex:1;height:1px;background:var(--gold3);display:none}
-
-/* GALERÍA */
+.section-divider{height:1px;background:linear-gradient(to right,transparent,rgba(255,255,255,0.1),transparent);margin-bottom:5rem}
+#az-flota{background:var(--dark);position:relative;overflow:hidden}
+.blob{position:absolute;border-radius:50%;pointer-events:none}
+.flota-filters{display:flex;gap:0.6rem;margin-bottom:3rem;flex-wrap:wrap}
+.flota-filter{background:transparent;border:1px solid var(--border);color:var(--muted);padding:0.48rem 1.4rem;font-size:0.68rem;cursor:pointer;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.25s;font-family:"Inter",sans-serif;border-radius:2px}
+.flota-filter.active,.flota-filter:hover{border-color:var(--gold);color:var(--gold);background:var(--gold2)}
+.flota-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1rem}
+.boat-card{position:relative;height:480px;border:1px solid rgba(255,255,255,0.1);overflow:hidden;cursor:pointer;transition:all 0.55s cubic-bezier(0.25,0.46,0.45,0.94);box-shadow:0 8px 32px rgba(0,0,0,0.35)}
+.boat-card:hover{box-shadow:0 32px 64px rgba(0,0,0,0.5),0 0 0 1px rgba(201,169,110,0.15)}
+.boat-img-full{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.85s cubic-bezier(0.25,0.46,0.45,0.94)}
+.boat-card:hover .boat-img-full{transform:scale(1.08)}
+.boat-gradient{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,10,22,0.98) 0%,rgba(4,10,22,0.65) 35%,rgba(4,10,22,0.12) 65%,rgba(4,10,22,0.35) 100%)}
+.boat-badges{position:absolute;top:1rem;left:1rem;right:1rem;display:flex;justify-content:space-between}
+.boat-badge-avail{padding:0.25rem 0.75rem;background:rgba(201,169,110,0.1);border:1px solid rgba(201,169,110,0.4);backdrop-filter:blur(12px);font-size:0.56rem;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;font-family:"Inter",sans-serif}
+.boat-badge-type{padding:0.25rem 0.75rem;background:rgba(9,18,31,0.6);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(12px);font-size:0.56rem;letter-spacing:0.14em;color:rgba(232,228,222,0.8);text-transform:uppercase;font-family:"Inter",sans-serif}
+.glass-panel{position:absolute;bottom:0;left:0;right:0;background:rgba(6,14,28,0.75);backdrop-filter:blur(24px);border-top:1px solid rgba(255,255,255,0.1);padding:1.4rem 1.5rem 1.5rem}
+.glass-hdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1rem}
+.boat-type-lbl{font-family:"Inter",sans-serif;font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:5px}
+.boat-name-big{font-family:"Playfair Display",serif;font-size:1.55rem;font-weight:500;color:#f5f1eb;line-height:1}
+.boat-from-lbl{font-family:"Inter",sans-serif;font-size:0.52rem;color:rgba(77,96,112,1);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px;text-align:right}
+.boat-price-big{font-family:"Playfair Display",serif;font-size:1.45rem;font-weight:500;line-height:1}
+.boat-specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem 0;border-top:1px solid rgba(255,255,255,0.07);padding-top:1rem;margin-bottom:1rem}
+.spec-item{border-right:1px solid rgba(255,255,255,0.06);padding-right:0.5rem}
+.spec-lbl{font-family:"Inter",sans-serif;font-size:0.48rem;color:rgba(61,80,96,1);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:3px}
+.spec-val{font-family:"Inter",sans-serif;font-size:0.8rem;font-weight:500;color:#c9bfb5}
+.boat-cta-row{display:flex;gap:0.6rem}
+.boat-cta-main{flex:1;padding:0.62rem;border:none;font-family:"Inter",sans-serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.18em;font-weight:700;cursor:pointer;transition:opacity 0.25s;color:#04090e}
+.boat-cta-main:hover{opacity:0.85}
+.boat-cta-sec{padding:0.62rem 1rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:#9ba8b5;font-family:"Inter",sans-serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;cursor:pointer;white-space:nowrap;transition:all 0.25s}
+.boat-cta-sec:hover{border-color:rgba(255,255,255,0.25);color:#e8e4de}
+#az-experiencias{background:rgba(255,255,255,0.012)}
+.exp-tabs{display:flex;gap:0.7rem;margin-bottom:2rem;flex-wrap:wrap}
+.exp-tab{padding:0.65rem 1.4rem;border:1px solid var(--border);color:var(--muted);font-size:0.68rem;cursor:pointer;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.25s;font-family:"Inter",sans-serif;background:transparent;text-align:left}
+.exp-tab.active{border-color:var(--gold);color:var(--gold);background:rgba(201,169,110,0.08)}
+.exp-tab:hover:not(.active){border-color:rgba(201,169,110,0.3)}
+.exp-tab-tag{display:block;font-size:0.52rem;margin-bottom:3px}
+.exp-panel{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(255,255,255,0.1);overflow:hidden;min-height:480px}
+.exp-map-side{position:relative;min-height:400px;overflow:hidden}
+.exp-map-img{width:100%;height:100%;object-fit:cover;filter:brightness(0.38) saturate(0.6)}
+.exp-map-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(9,18,31,0.5),rgba(9,18,31,0.1))}
+.exp-map-svg{position:absolute;inset:0;width:100%;height:100%}
+.exp-info-side{padding:3rem;background:rgba(255,255,255,0.02);display:flex;flex-direction:column;justify-content:space-between}
+.exp-tag-badge{display:inline-block;padding:0.25rem 0.75rem;border:1px solid rgba(201,169,110,0.35);background:rgba(201,169,110,0.06);font-family:"Inter",sans-serif;font-size:0.55rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem}
+.exp-h3{font-family:"Playfair Display",serif;font-size:2rem;font-weight:400;color:#f5f1eb;line-height:1.15;margin-bottom:1rem}
+.exp-desc{font-family:"Inter",sans-serif;color:#6a7f94;line-height:1.85;font-weight:300;margin-bottom:2rem}
+.exp-waypoints{display:flex;flex-direction:column;gap:0.7rem}
+.exp-wp{display:flex;align-items:center;gap:1rem}
+.wp-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.wp-day{font-family:"Inter",sans-serif;font-size:0.58rem;color:#3d5060;letter-spacing:0.1em;min-width:45px}
+.wp-lbl{font-family:"Inter",sans-serif;font-size:0.82rem}
+.exp-cta-row{display:flex;gap:0.65rem;margin-top:2.5rem}
+.exp-btn1{flex:1;padding:0.8rem;background:var(--gold);color:var(--dark);border:1px solid var(--gold);font-family:"Inter",sans-serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.16em;font-weight:700;cursor:pointer}
+.exp-btn2{padding:0.8rem 1.2rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#9ba8b5;font-family:"Inter",sans-serif;font-size:0.68rem;cursor:pointer}
+.map-lbl{position:absolute;transform:translate(-50%,-210%);pointer-events:none;text-align:center;white-space:nowrap;line-height:1.2;transition:opacity 0.4s}
+.map-lbl-day{font-size:0.5rem;letter-spacing:0.12em;text-transform:uppercase;font-family:"Inter",sans-serif;font-weight:600}
+.map-lbl-name{font-size:0.62rem;color:#f0ece4;font-family:"Inter",sans-serif;margin-top:2px}
+.map-lbl-line{width:1px;height:7px;margin:3px auto 0;opacity:0.6}
 #az-galeria{background:var(--dark)}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto;gap:1rem}
-.gal-item{overflow:hidden;border-radius:4px;position:relative;cursor:pointer}
-.gal-item:nth-child(1){grid-column:span 2;height:280px}
-.gal-item:nth-child(6){grid-column:span 2;height:220px}
-.gal-item:not(:nth-child(1)):not(:nth-child(6)){height:200px}
-.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
-.gal-item:hover img{transform:scale(1.06)}
-.gal-overlay{position:absolute;inset:0;background:rgba(4,9,18,0);transition:background 0.3s;display:flex;align-items:flex-end;padding:1rem}
-.gal-item:hover .gal-overlay{background:rgba(4,9,18,0.5)}
-.gal-caption{color:rgba(255,255,255,0);font-size:0.75rem;font-family:'Playfair Display',serif;font-style:italic;transition:color 0.3s}
-.gal-item:hover .gal-caption{color:rgba(255,255,255,0.9)}
-
-/* TESTIMONIALES */
-#az-testimoniales{background:rgba(255,255,255,0.015)}
-.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.test-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:6px;padding:2rem;transition:all 0.3s}
-.test-card:hover{border-color:var(--gold3);background:rgba(201,169,110,0.04)}
-.test-stars{color:var(--gold);font-size:0.85rem;margin-bottom:1.2rem;letter-spacing:2px}
-.test-text{font-family:'Playfair Display',serif;font-size:0.92rem;font-style:italic;color:var(--muted);line-height:1.85;margin-bottom:1.5rem;font-weight:400}
-.test-author{font-size:0.72rem;color:var(--gold);letter-spacing:0.06em}
-.test-loc{font-size:0.65rem;color:var(--muted);margin-top:2px}
-
-/* RESERVA */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,270px);gap:0.4rem}
+.gal-item{overflow:hidden;position:relative;cursor:pointer}
+.gal-item:nth-child(1),.gal-item:nth-child(5){grid-column:span 2}
+.gal-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94)}
+.gal-item:hover img{transform:scale(1.07)}
+.gal-overlay{position:absolute;inset:0;background:rgba(4,9,14,0);transition:background 0.35s;display:flex;flex-direction:column;justify-content:space-between;padding:1.1rem}
+.gal-item:hover .gal-overlay{background:linear-gradient(to top,rgba(4,9,14,0.82) 0%,rgba(4,9,14,0.1) 55%,rgba(4,9,14,0.25) 100%)}
+.gal-zoom{align-self:flex-end;width:34px;height:34px;border:1px solid rgba(255,255,255,0.45);display:flex;align-items:center;justify-content:center;background:rgba(4,9,14,0.4);backdrop-filter:blur(6px);color:#f0ece4;font-size:1rem;opacity:0;transition:opacity 0.3s}
+.gal-item:hover .gal-zoom{opacity:1}
+.gal-cap-wrap{opacity:0;transition:opacity 0.35s}
+.gal-item:hover .gal-cap-wrap{opacity:1}
+.gal-cap-lbl{font-family:"Inter",sans-serif;font-size:0.58rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:3px}
+.gal-cap-txt{font-family:"Playfair Display",serif;font-size:1rem;color:#f5f1eb;font-style:italic}
+#az-testimoniales{background:rgba(255,255,255,0.012)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.test-card{padding:1.75rem;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);transition:transform 0.35s,border-color 0.35s}
+.test-card:hover{transform:translateY(-4px);border-color:rgba(201,169,110,0.3)}
+.test-stars{color:var(--gold);font-size:0.9rem;margin-bottom:1rem;letter-spacing:2px}
+.test-text{font-family:"Playfair Display",serif;font-size:0.95rem;font-style:italic;color:#7a8fa0;line-height:1.85;margin-bottom:1.5rem}
+.test-footer{border-top:1px solid rgba(255,255,255,0.07);padding-top:0.9rem;display:flex;justify-content:space-between;align-items:center}
+.test-name{font-family:"Inter",sans-serif;font-size:0.82rem;color:#c9bfb5;font-weight:500}
+.test-loc{font-family:"Inter",sans-serif;font-size:0.6rem;color:var(--gold);letter-spacing:0.08em}
 #az-reserva{background:var(--dark)}
 .reserva-inner{max-width:700px;margin:0 auto}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
 .form-group{display:flex;flex-direction:column;gap:0.4rem}
 .form-group.full{grid-column:span 2}
 .form-label{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
-.form-input,.form-select{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text);padding:0.8rem 1rem;border-radius:3px;font-size:0.85rem;font-family:'Inter',sans-serif;outline:none;transition:border-color 0.2s;width:100%}
+.form-input,.form-select{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text);padding:0.8rem 1rem;border-radius:2px;font-size:0.85rem;font-family:"Inter",sans-serif;outline:none;transition:border-color 0.2s;width:100%}
 .form-input:focus,.form-select:focus{border-color:var(--gold)}
 .form-input::placeholder{color:rgba(255,255,255,0.2)}
 .form-select option{background:var(--dark)}
-.btn-reserva{width:100%;background:var(--gold);color:var(--dark);border:none;padding:1rem;font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:3px;margin-top:0.5rem;font-family:'Inter',sans-serif;transition:all 0.2s}
+.btn-reserva{width:100%;background:var(--gold);color:var(--dark);border:none;padding:1rem;font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;margin-top:0.5rem;font-family:"Inter",sans-serif;transition:all 0.2s}
 .btn-reserva:hover{background:#d4b07a}
 .form-note{font-size:0.7rem;color:var(--muted);text-align:center;margin-top:0.75rem;line-height:1.6}
-.form-success{display:none;background:rgba(201,169,110,0.1);border:1px solid var(--gold3);border-radius:6px;padding:1.5rem;text-align:center;margin-top:1rem}
-.form-success h4{color:var(--gold);font-family:'Playfair Display',serif;font-weight:400;margin-bottom:0.5rem}
+.form-success{display:none;background:rgba(201,169,110,0.1);border:1px solid var(--gold3);border-radius:4px;padding:1.5rem;text-align:center;margin-top:1rem}
+.form-success h4{color:var(--gold);font-family:"Playfair Display",serif;font-weight:400;margin-bottom:0.5rem}
 .form-success p{font-size:0.82rem;color:var(--muted)}
-
-/* LIGHTBOX */
-.lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(4,9,18,0.97);backdrop-filter:blur(20px);align-items:center;justify-content:center;padding:1rem}
+.lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(4,9,18,0.97);backdrop-filter:blur(24px);align-items:center;justify-content:center}
 .lightbox.open{display:flex}
-.lightbox-img{max-width:800px;width:100%;border-radius:4px;border:1px solid var(--gold3)}
-.lightbox-caption{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-family:'Playfair Display',serif;font-style:italic;color:var(--muted);font-size:0.85rem}
-.lightbox-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer}
-.lightbox-prev,.lightbox-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.08);border:1px solid var(--border);color:var(--text);width:44px;height:44px;font-size:1.2rem;cursor:pointer;border-radius:3px}
-.lightbox-prev{left:1rem}.lightbox-next{right:1rem}
-
-/* STICKY BAR */
-.sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(4,9,18,0.97);border-top:1px solid var(--gold3);backdrop-filter:blur(12px);padding:0.75rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.sticky-text{font-size:0.72rem;color:var(--muted);letter-spacing:0.06em}
-.sticky-text strong{color:var(--gold)}
-.sticky-btn{background:var(--gold);color:var(--dark);border:none;padding:0.6rem 1.8rem;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border-radius:2px;font-family:'Inter',sans-serif;transition:all 0.2s;white-space:nowrap}
+.lb-img{max-width:88vw;max-height:80vh;object-fit:contain;display:block;animation:lbIn 0.28s ease}
+.lb-caption{font-family:"Playfair Display",serif;font-style:italic;color:#c9bfb5;font-size:0.9rem;margin-top:0.8rem;text-align:center}
+.lb-close{position:absolute;top:1.5rem;right:2rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:var(--text);width:42px;height:42px;font-size:0.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:var(--text);width:50px;height:50px;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lb-prev{left:1.5rem}.lb-next{right:1.5rem}
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(4,9,18,0.97);border-top:1px solid var(--gold3);backdrop-filter:blur(16px);padding:0.75rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;box-shadow:0 -8px 32px rgba(0,0,0,0.4)}
+.sticky-left{display:flex;align-items:center;gap:1rem}
+.sticky-logo{font-family:"Playfair Display",serif;font-size:0.95rem;color:#f5f1eb;white-space:nowrap}
+.sticky-divider{width:1px;height:24px;background:rgba(255,255,255,0.1)}
+.sticky-text{font-size:0.72rem;color:var(--muted)}
+.sticky-btn{background:var(--gold);color:var(--dark);border:none;padding:0.6rem 1.8rem;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;font-family:"Inter",sans-serif;transition:all 0.2s;white-space:nowrap;border-radius:2px}
 .sticky-btn:hover{background:#d4b07a}
-
-/* FOOTER */
 footer{background:var(--navy);padding:2.5rem;text-align:center;border-top:1px solid var(--gold3)}
-footer .logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);margin-bottom:0.5rem}
-footer .sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;text-transform:uppercase}
-
-/* AI CONCIERGE */
-.concierge-wrap{position:fixed;bottom:5rem;right:1.5rem;z-index:500;display:flex;flex-direction:column;align-items:flex-end;gap:0.65rem}
-.concierge-badge{background:rgba(4,9,18,0.9);backdrop-filter:blur(8px);color:rgba(201,169,110,0.9);font-size:0.58rem;padding:0.22rem 0.75rem;border-radius:20px;letter-spacing:0.12em;text-transform:uppercase;border:1px solid var(--gold3);white-space:nowrap;font-family:'Inter',sans-serif}
-.concierge-bubble{max-width:260px;background:rgba(4,9,18,0.97);border:1px solid var(--gold3);border-radius:12px;border-bottom-right-radius:3px;padding:0.85rem 1rem;box-shadow:0 8px 28px rgba(0,0,0,0.6);position:relative;animation:bubbleIn 0.3s cubic-bezier(0.34,1.56,0.64,1) both}
+.footer-logo{font-family:"Playfair Display",serif;font-size:1.1rem;color:var(--gold);margin-bottom:0.5rem}
+.footer-sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;text-transform:uppercase}
+.concierge-wrap{position:fixed;bottom:4.5rem;right:1.5rem;z-index:500;display:flex;flex-direction:column;align-items:flex-end;gap:0.65rem}
+.concierge-badge{background:rgba(4,9,18,0.9);backdrop-filter:blur(8px);color:rgba(201,169,110,0.9);font-size:0.58rem;padding:0.22rem 0.75rem;border-radius:20px;letter-spacing:0.12em;text-transform:uppercase;border:1px solid var(--gold3);white-space:nowrap;font-family:"Inter",sans-serif}
+.concierge-bubble{max-width:260px;background:rgba(4,9,18,0.97);border:1px solid var(--gold3);border-radius:12px;border-bottom-right-radius:3px;padding:0.85rem 1rem;box-shadow:0 8px 28px rgba(0,0,0,0.6);position:relative;display:none}
 .concierge-bubble p{font-size:0.8rem;color:#c9bfb5;line-height:1.55;font-family:Georgia,serif;margin-bottom:0.65rem;padding-right:1rem}
-.concierge-bubble-x{position:absolute;top:6px;right:8px;background:none;border:none;color:rgba(255,255,255,0.3);font-size:0.72rem;cursor:pointer}
-.concierge-bubble-cta{background:var(--gold2);color:var(--gold);border:1px solid var(--gold3);border-radius:6px;padding:0.35rem 0.85rem;font-size:0.7rem;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.04em;transition:all 0.2s}
-.concierge-bubble-cta:hover{background:rgba(201,169,110,0.3)}
-.concierge-bubble::after{content:'';position:absolute;bottom:-8px;right:16px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:9px solid var(--gold3)}
+.concierge-bubble::after{content:"";position:absolute;bottom:-8px;right:16px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:9px solid var(--gold3)}
+.bubble-x{position:absolute;top:6px;right:8px;background:none;border:none;color:rgba(255,255,255,0.3);font-size:0.72rem;cursor:pointer}
+.bubble-cta{background:var(--gold2);color:var(--gold);border:1px solid var(--gold3);border-radius:6px;padding:0.35rem 0.85rem;font-size:0.7rem;cursor:pointer;font-family:"Inter",sans-serif;transition:all 0.2s}
+.bubble-cta:hover{background:rgba(201,169,110,0.3)}
 .chat-win{width:min(320px,calc(100vw - 2rem));background:rgba(4,9,18,0.98);border:1px solid var(--gold3);backdrop-filter:blur(20px);border-radius:14px;overflow:hidden;display:none;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.7)}
 .chat-win.open{display:flex}
 .chat-hdr{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:0.85rem 1rem;display:flex;align-items:center;gap:0.65rem;border-bottom:1px solid var(--gold3)}
@@ -187,7 +201,6 @@ footer .sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;t
 .chat-sug:hover{background:var(--gold2);color:var(--gold)}
 .chat-inp-row{display:flex;border-top:1px solid var(--border);background:rgba(4,9,18,0.7)}
 .chat-inp{flex:1;background:transparent;border:none;outline:none;padding:0.72rem 0.9rem;color:#e8ddd0;font-size:0.78rem;font-family:Georgia,serif}
-.chat-inp::placeholder{color:rgba(255,255,255,0.2)}
 .chat-send{background:var(--gold);border:none;padding:0 1rem;color:var(--dark);font-size:0.95rem;cursor:pointer;font-weight:700;transition:background 0.2s}
 .chat-send:hover{background:#d4b07a}
 .concierge-launcher{display:flex;align-items:center;gap:0.55rem;cursor:pointer}
@@ -195,40 +208,34 @@ footer .sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;t
 .concierge-avatar{width:52px;height:52px;background:linear-gradient(135deg,var(--navy),var(--navy2));border:1.5px solid rgba(201,169,110,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:0 4px 20px rgba(0,0,0,0.6);position:relative;transition:transform 0.2s}
 .concierge-launcher:hover .concierge-avatar{transform:scale(1.06)}
 .avatar-dot{position:absolute;bottom:1px;right:1px;width:12px;height:12px;background:#4ade80;border-radius:50%;border:2px solid var(--dark)}
-.typing-dots{display:flex;gap:4px;padding:2px 0;align-items:center}
+.typing-dots{display:flex;gap:4px;align-items:center}
 .typing-dots span{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:typDot 1.2s ease-in-out infinite}
 .typing-dots span:nth-child(2){animation-delay:.2s}
 .typing-dots span:nth-child(3){animation-delay:.4s}
-
-/* ANIMACIONES */
+.ping-ring{position:absolute;inset:-5px;border-radius:50%;border:1.5px solid rgba(201,169,110,0.5);animation:azPing 1.8s ease-out infinite;display:none}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes scrollPulse{0%,100%{opacity:0.3}50%{opacity:1}}
-@keyframes bubbleIn{from{opacity:0;transform:translateY(8px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes azPing{0%{transform:scale(1);opacity:0.7}100%{transform:scale(1.6);opacity:0}}
+@keyframes lbIn{from{opacity:0;transform:scale(0.93)}to{opacity:1;transform:scale(1)}}
+@keyframes azPing{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.6);opacity:0}}
 @keyframes typDot{0%,80%,100%{opacity:.3;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
-.ping-ring{position:absolute;inset:-5px;border-radius:50%;border:1.5px solid rgba(201,169,110,0.5);animation:azPing 1.8s ease-out infinite;display:none}
-
-/* MOBILE */
+@keyframes bubbleIn{from{opacity:0;transform:translateY(6px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(max-width:768px){
   nav{padding:0.8rem 1.2rem}
-  .nav-links{display:none}
+  .nav-links,.search-wrap{display:none}
   .hero-content{padding:0 1.5rem}
   section{padding:4rem 1.2rem}
-  .exp-content,.test-grid{grid-template-columns:1fr}
-  .gallery-grid{grid-template-columns:1fr 1fr}
-  .gal-item:nth-child(1),.gal-item:nth-child(6){grid-column:span 2}
-  .form-grid{grid-template-columns:1fr}
-  .form-group.full{grid-column:span 1}
+  .exp-panel,.test-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,180px)}
+  .gal-item:nth-child(1),.gal-item:nth-child(5){grid-column:span 2}
+  .form-grid,.form-group.full{grid-template-columns:1fr;grid-column:span 1}
+  .flota-grid{grid-template-columns:1fr}
   .sticky-bar{padding:0.75rem 1rem}
-  .concierge-wrap{bottom:4.5rem;right:1rem}
 }
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav id="nav">
-  <div class="nav-logo pf">Azure · <em>Luxury</em></div>
+  <div class="nav-logo pf">Azure <span style="color:var(--gold)">·</span> <em>Luxury</em></div>
   <ul class="nav-links">
     <li><a href="#az-flota" data-i18n="nav.fleet">Flota</a></li>
     <li><a href="#az-experiencias" data-i18n="nav.experiences">Experiencias</a></li>
@@ -245,13 +252,22 @@ footer .sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;t
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=1920&q=85"
+    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" id="heroVideo">
+    <source src="https://assets.mixkit.co/videos/preview/mixkit-yacht-sailing-on-the-sea-4693-large.mp4" type="video/mp4">
+  </video>
+  <img id="heroFallback" src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=1920&q=90" alt=""
+    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;display:none">
   <div class="hero-overlay"></div>
+  <div class="hero-overlay2"></div>
   <div class="hero-content">
-    <div class="hero-sub" data-i18n="hero.sub">Mediterráneo · Caribe · Atlántico</div>
-    <h1 class="hero-title pf" data-i18n="hero.title">Navega más allá<br>de lo <em>ordinario</em></h1>
+    <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:1.2rem">
+      <div style="height:1px;width:36px;background:linear-gradient(to right,transparent,var(--gold))"></div>
+      <div class="hero-sub" data-i18n="hero.sub">Mediterráneo · Caribe · Atlántico</div>
+      <div style="height:1px;width:36px;background:linear-gradient(to left,transparent,var(--gold))"></div>
+    </div>
+    <h1 class="hero-title" data-i18n="hero.title">Navega más allá<br>de lo <em>ordinario</em></h1>
     <p class="hero-desc" data-i18n="hero.desc">Experiencias náuticas de lujo a medida. Tres embarcaciones excepcionales, rutas irrepetibles y un servicio concierge disponible 24/7.</p>
     <div class="hero-btns">
       <button class="btn-gold" data-i18n="hero.btn1" onclick="document.getElementById('az-flota').scrollIntoView({behavior:'smooth'})">Ver la flota</button>
@@ -263,17 +279,42 @@ footer .sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;t
       <div><div class="badge-num pf">24/7</div><div class="badge-lbl" data-i18n="hero.badge3">AI Concierge</div></div>
     </div>
   </div>
+  <div class="search-wrap">
+    <div class="search-bar">
+      <div class="search-cell" onclick="document.getElementById('az-flota').scrollIntoView({behavior:'smooth'})">
+        <div class="search-label" data-i18n="search.dest">Destino</div>
+        <div class="search-val" data-i18n="search.dest.ph">¿A dónde navegamos?</div>
+      </div>
+      <div class="search-cell">
+        <div class="search-label" data-i18n="search.from">Llegada</div>
+        <input type="date" class="search-input">
+      </div>
+      <div class="search-cell">
+        <div class="search-label" data-i18n="search.to">Salida</div>
+        <input type="date" class="search-input">
+      </div>
+      <button class="search-btn" data-i18n="search.btn" onclick="document.getElementById('az-flota').scrollIntoView({behavior:'smooth'})">Buscar</button>
+    </div>
+    <div class="search-chips">
+      <button class="chip" onclick="document.getElementById('az-flota').scrollIntoView({behavior:'smooth'})">✦ Ibiza · Julio</button>
+      <button class="chip" onclick="document.getElementById('az-flota').scrollIntoView({behavior:'smooth'})">✦ Formentera · Agosto</button>
+      <button class="chip" onclick="document.getElementById('az-flota').scrollIntoView({behavior:'smooth'})">✦ Menorca · Septiembre</button>
+    </div>
+  </div>
   <div class="scroll-ind">
     <div class="scroll-line"></div>
-    <span>Descubrir</span>
+    <span data-i18n="hero.scroll">Descubrir</span>
   </div>
 </section>
 
-<!-- FLOTA -->
 <section id="az-flota">
-  <div style="max-width:1100px;margin:0 auto">
+  <div class="blob" style="top:10%;left:-5%;width:500px;height:500px;background:rgba(30,50,90,0.35);filter:blur(90px)"></div>
+  <div class="blob" style="bottom:5%;right:-5%;width:400px;height:400px;background:rgba(14,35,65,0.5);filter:blur(80px)"></div>
+  <div class="blob" style="top:50%;left:40%;width:300px;height:300px;background:rgba(20,45,80,0.3);filter:blur(70px)"></div>
+  <div style="max-width:1100px;margin:0 auto;position:relative">
     <div class="section-sub" data-i18n="fleet.sub">Nuestra Flota</div>
-    <h2 class="section-title pf" data-i18n="fleet.title">Embarcaciones de <em>Excepción</em></h2>
+    <h2 class="section-title" data-i18n="fleet.title">Embarcaciones de <em>Excepción</em></h2>
+    <p style="font-size:0.88rem;color:#6a7f94;max-width:480px;margin:0 0 2.5rem;line-height:1.8;font-weight:300" data-i18n="fleet.hint">Haz clic en una tarjeta para ver las especificaciones completas.</p>
     <div class="flota-filters">
       <button class="flota-filter active" data-i18n="fleet.all" onclick="filterFlota('all',this)">Toda la Flota</button>
       <button class="flota-filter" data-i18n="fleet.captain" onclick="filterFlota('patron',this)">Con Patrón</button>
@@ -283,118 +324,116 @@ footer .sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;t
   </div>
 </section>
 
-<!-- EXPERIENCIAS -->
 <section id="az-experiencias">
   <div style="max-width:1100px;margin:0 auto">
+    <div class="section-divider"></div>
     <div class="section-sub" data-i18n="exp.sub">Rutas & Destinos</div>
-    <h2 class="section-title pf" data-i18n="exp.title">Experiencias <em>Únicas</em></h2>
+    <h2 class="section-title" data-i18n="exp.title">Experiencias <em>Únicas</em></h2>
+    <p style="font-size:0.88rem;color:#6a7f94;max-width:500px;margin:0 0 2.5rem;line-height:1.8;font-weight:300">No vendemos travesías, creamos memorias.</p>
     <div class="exp-tabs" id="expTabs"></div>
-    <div class="exp-content" id="expContent"></div>
+    <div id="expContent"></div>
   </div>
 </section>
 
-<!-- GALERÍA -->
 <section id="az-galeria">
   <div style="max-width:1100px;margin:0 auto">
+    <div class="section-divider"></div>
     <div class="section-sub" data-i18n="gallery.sub">Galería</div>
-    <h2 class="section-title pf" style="margin-bottom:2.5rem" data-i18n="gallery.title">Momentos <em>Únicos</em></h2>
+    <h2 class="section-title" style="margin-bottom:2.5rem" data-i18n="gallery.title">Momentos <em>Únicos</em></h2>
     <div class="gallery-grid" id="galleryGrid"></div>
   </div>
 </section>
 
-<!-- TESTIMONIALES -->
 <section id="az-testimoniales">
   <div style="max-width:1100px;margin:0 auto">
+    <div class="section-divider"></div>
     <div class="section-sub" data-i18n="test.sub">Testimonios</div>
-    <h2 class="section-title pf" style="margin-bottom:3rem" data-i18n="test.title">Lo que dicen nuestros <em>clientes</em></h2>
+    <h2 class="section-title" style="margin-bottom:3rem" data-i18n="test.title">Lo que dicen nuestros <em>clientes</em></h2>
     <div class="test-grid" id="testGrid"></div>
   </div>
 </section>
 
-<!-- RESERVA -->
 <section id="az-reserva">
   <div class="reserva-inner">
     <div style="text-align:center;margin-bottom:3rem">
       <div class="section-sub" data-i18n="res.sub">Reserva Directa · Mejor Precio Garantizado</div>
-      <h2 class="section-title pf" data-i18n="res.title">Reserve su <em>Experiencia</em></h2>
-      <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;margin-top:0.75rem" data-i18n="res.desc">O use el AI Concierge — le ayuda a reservar directamente desde el chat ⚓</p>
+      <h2 class="section-title" data-i18n="res.title">Reserve su <em>Experiencia</em></h2>
+      <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;margin-top:0.75rem" data-i18n="res.desc">O use el AI Concierge ⚓</p>
     </div>
     <div class="form-grid">
-      <div class="form-group"><div class="form-label" data-i18n="form.name">Nombre completo</div><input class="form-input" id="fNombre" type="text" data-i18n-ph="form.name.ph" placeholder="Su nombre"></div>
+      <div class="form-group"><div class="form-label" data-i18n="form.name">Nombre</div><input class="form-input" id="fNombre" type="text" data-i18n-ph="form.name.ph" placeholder="Su nombre"></div>
       <div class="form-group"><div class="form-label">Email</div><input class="form-input" id="fEmail" type="email" placeholder="su@email.com"></div>
       <div class="form-group"><div class="form-label" data-i18n="form.phone">Teléfono</div><input class="form-input" id="fTel" type="tel" placeholder="+34 600..."></div>
-      <div class="form-group"><div class="form-label" data-i18n="form.date">Fecha de salida</div><input class="form-input" id="fFecha" type="date"></div>
-      <div class="form-group"><div class="form-label" data-i18n="form.boat">Embarcación</div>
+      <div class="form-group"><div class="form-label" data-i18n="form.date">Fecha</div><input class="form-input" id="fFecha" type="date"></div>
+      <div class="form-group"><div class="form-label" data-i18n="form.boat">Barco</div>
         <select class="form-select" id="fBarco">
-          <option value="" data-i18n="form.boat.ph">Seleccionar barco...</option>
-          <option value="azure_sovereign">Azure Sovereign · Yate de Motor · €4.500/día</option>
+          <option value="" data-i18n="form.boat.ph">Seleccionar...</option>
+          <option value="azure_sovereign">Azure Sovereign · Yate · €4.500/día</option>
           <option value="horizon_bleu">Horizon Bleu · Catamarán · €2.800/día</option>
           <option value="mistral_blanc">Mistral Blanc · Velero · €1.900/día</option>
         </select>
       </div>
-      <div class="form-group"><div class="form-label" data-i18n="form.guests">Nº de huéspedes</div>
+      <div class="form-group"><div class="form-label" data-i18n="form.guests">Huéspedes</div>
         <select class="form-select" id="fHuespedes">
           <option value="" data-i18n="form.guests.ph">Seleccionar...</option>
           <option>2</option><option>4</option><option>6</option><option>8</option><option>10</option><option>12</option>
         </select>
       </div>
-      <div class="form-group full"><div class="form-label" data-i18n="form.route">Destino / Ruta</div>
+      <div class="form-group full"><div class="form-label" data-i18n="form.route">Ruta</div>
         <select class="form-select" id="fRuta">
-          <option value="" data-i18n="form.route.ph">Seleccionar destino...</option>
-          <option value="formentera" data-i18n="form.route.formentera">Puesta de sol en Formentera · 7 días</option>
-          <option value="menorca" data-i18n="form.route.menorca">Calas Secretas de Menorca · 5 días</option>
-          <option value="amalfi" data-i18n="form.route.amalfi">Capri & Costa Amalfitana · 10 días</option>
-          <option value="mallorca" data-i18n="form.route.mallorca">Calas de Mallorca · 3 días</option>
-          <option value="ibiza" data-i18n="form.route.ibiza">Ibiza & Formentera · 5 días</option>
-          <option value="personalizada" data-i18n="form.route.custom">Ruta personalizada</option>
+          <option value="" data-i18n="form.route.ph">Seleccionar...</option>
+          <option value="formentera" data-i18n="form.route.formentera">Formentera · 7 días</option>
+          <option value="menorca" data-i18n="form.route.menorca">Menorca · 5 días</option>
+          <option value="amalfi" data-i18n="form.route.amalfi">Capri & Amalfi · 10 días</option>
+          <option value="mallorca" data-i18n="form.route.mallorca">Mallorca · 3 días</option>
+          <option value="ibiza" data-i18n="form.route.ibiza">Ibiza · 5 días</option>
+          <option value="personalizada" data-i18n="form.route.custom">Personalizada</option>
         </select>
       </div>
-      <div class="form-group full"><div class="form-label" data-i18n="form.notes">Notas especiales (celebraciones, alergias, etc.)</div>
+      <div class="form-group full"><div class="form-label" data-i18n="form.notes">Notas</div>
         <input class="form-input" id="fNotas" type="text" data-i18n-ph="form.notes.ph" placeholder="Opcional...">
       </div>
     </div>
     <button class="btn-reserva" id="btnReservar" data-i18n="form.submit" onclick="enviarReserva()">Solicitar Reserva</button>
     <div id="formSuccess" class="form-success">
-      <h4 data-i18n="form.success.title">✓ Solicitud recibida</h4>
-      <p data-i18n="form.success.desc">Nuestro equipo le contactará en menos de 24 horas para confirmar los detalles.</p>
+      <h4 data-i18n="form.success.title">Solicitud recibida</h4>
+      <p id="successMsg" data-i18n="form.success.desc">Le contactaremos en 24 horas.</p>
     </div>
-    <p class="form-note" data-i18n="form.note">Confirmación en menos de 24h · Cancelación gratuita hasta 48h antes</p>
+    <p class="form-note" data-i18n="form.note">Confirmación en 24h · Cancelación gratuita 48h antes</p>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="logo pf">Azure · <em>Luxury</em> Charters</div>
-  <div class="sub" style="margin-top:0.5rem">Mediterráneo · reservas@azureluxury.com · Web by Yer.AI · Plan Profesional</div>
+  <div class="footer-logo pf">Azure <span style="color:var(--gold)">·</span> <em>Luxury</em> Charters</div>
+  <div class="footer-sub" style="margin-top:0.5rem">Mediterráneo · reservas@azureluxury.com · Web by Yer.AI · Plan Profesional</div>
 </footer>
 
-<!-- STICKY BAR -->
 <div class="sticky-bar">
-  <div class="sticky-text">Reserva directa &mdash; <strong>Mejor precio garantizado</strong> · Cancelación gratuita 48h</div>
-  <button class="sticky-btn" onclick="document.getElementById('az-reserva').scrollIntoView({behavior:'smooth'})">Consultar disponibilidad</button>
-</div>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-  <button class="lightbox-prev" onclick="event.stopPropagation();moveLightbox(-1)">‹</button>
-  <img class="lightbox-img" id="lightboxImg" src="" alt="">
-  <button class="lightbox-next" onclick="event.stopPropagation();moveLightbox(1)">›</button>
-  <div class="lightbox-caption" id="lightboxCaption"></div>
-</div>
-
-<!-- AI CONCIERGE -->
-<div class="concierge-wrap" id="conciergeWrap">
-  <div class="concierge-badge" id="conciergeBadge">✦ AI Concierge · Plan Profesional</div>
-
-  <!-- Burbuja proactiva -->
-  <div class="concierge-bubble" id="conciergeBubble" style="display:none">
-    <button class="concierge-bubble-x" id="bubbleX">✕</button>
-    <p id="bubbleText">Bienvenido. ¿Puedo ayudarle a encontrar la embarcación perfecta?</p>
-    <button class="concierge-bubble-cta" id="bubbleCta">Responder →</button>
+  <div class="sticky-left">
+    <div class="sticky-logo pf">Azure · Luxury</div>
+    <div class="sticky-divider"></div>
+    <div class="sticky-text" data-i18n="sticky.text">Reserva directa</div>
   </div>
+  <button class="sticky-btn" data-i18n="sticky.btn" onclick="document.getElementById('az-reserva').scrollIntoView({behavior:'smooth'})">Consultar disponibilidad</button>
+</div>
 
-  <!-- Chat -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-prev" onclick="event.stopPropagation();moveLightbox(-1)">&#8249;</button>
+  <div onclick="event.stopPropagation()" style="text-align:center">
+    <img class="lb-img" id="lbImg" src="" alt="">
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+  <button class="lb-next" onclick="event.stopPropagation();moveLightbox(1)">&#8250;</button>
+</div>
+
+<div class="concierge-wrap" id="conciergeWrap">
+  <div class="concierge-badge">✦ AI Concierge · Plan Profesional</div>
+  <div class="concierge-bubble" id="conciergeBubble">
+    <button class="bubble-x" onclick="dismissBubble()">✕</button>
+    <p id="bubbleText">Bienvenido. Puedo ayudarle a encontrar la embarcación perfecta.</p>
+    <button class="bubble-cta" onclick="openFromBubble()">Responder →</button>
+  </div>
   <div class="chat-win" id="chatWin">
     <div class="chat-hdr">
       <div class="chat-av">⚓</div>
@@ -405,526 +444,295 @@ footer .sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;t
       <button class="chat-close-btn" onclick="toggleChat()">✕</button>
     </div>
     <div class="chat-msgs" id="chatMsgs">
-      <div class="chat-msg bot">Bienvenido a Azure Luxury Charters. Soy su asistente personal — puedo ayudarle a elegir embarcación, diseñar su ruta y gestionar su reserva en español, inglés o alemán. ⚓</div>
+      <div class="chat-msg bot">Bienvenido a Azure Luxury Charters. Soy su asistente personal ⚓</div>
     </div>
     <div class="chat-sugs" id="chatSugs">
-      <button class="chat-sug" onclick="quickMsg('¿Qué barco recomienda para 8 personas?')">¿Qué barco recomienda para 8 personas?</button>
-      <button class="chat-sug" onclick="quickMsg('Quiero navegar por Formentera en julio')">Quiero navegar por Formentera en julio</button>
-      <button class="chat-sug" onclick="quickMsg(\"What's included in the Capri route?\")">What's included in the Capri route?</button>
+      <button class="chat-sug" onclick="quickMsg(this.textContent)">¿Qué barco recomienda para 8 personas?</button>
+      <button class="chat-sug" onclick="quickMsg(this.textContent)">Quiero navegar por Formentera en julio</button>
+      <button class="chat-sug" onclick="quickMsg(this.textContent)">What is included in the Capri route?</button>
     </div>
     <div class="chat-inp-row">
       <input class="chat-inp" id="chatInp" placeholder="Escríbanos en cualquier idioma..." onkeydown="if(event.key==='Enter')sendMsg()">
-      <button class="chat-send" onclick="sendMsg()">↑</button>
+      <button class="chat-send" onclick="sendMsg()">&#8593;</button>
     </div>
   </div>
-
-  <!-- Launcher -->
   <div class="concierge-launcher" id="conciergeLauncher" onclick="openFromBubble()">
     <span class="concierge-launcher-label">AI Concierge</span>
-    <div class="concierge-avatar">
-      ⚓
-      <div class="ping-ring" id="pingRing"></div>
-      <div class="avatar-dot"></div>
-    </div>
+    <div class="concierge-avatar">⚓<div class="ping-ring" id="pingRing"></div><div class="avatar-dot"></div></div>
   </div>
 </div>
 
 <script>
-// ── SISTEMA DE TRADUCCIONES ──────────────────────────────────────
-let currentLang = 'es';
+var currentLang='es';
+var T={es:{'boat.type.motor':'Yate de Motor','boat.type.cat':'Catamarán','boat.type.sail':'Velero','boat.badge.available':'Disponibilidad inmediata','boat.badge.family':'Ideal familias','boat.badge.classic':'Experiencia clásica','exp.tag1':'Más popular','exp.tag2':'Exclusivo','exp.tag3':'Premium','exp.title1':'Puesta de sol en Formentera','exp.title2':'Calas Secretas de Menorca','exp.title3':'Capri & Costa Amalfitana','exp.dur1':'7 días','exp.dur2':'5 días','exp.dur3':'10 días','exp.price1':'desde €2.800/día','exp.price2':'desde €1.900/día','exp.price3':'desde €4.500/día','exp.desc1':'Zarpa desde Ibiza al amanecer, fondea en Ses Illetes y contempla el atardecer sobre el Mediterráneo en una de las rutas más solicitadas del año.','exp.desc2':'Descubre calas vírgenes accesibles únicamente desde el mar. Aguas de turquesa puro y playas de arena blanca sin turistas.','exp.desc3':'La ruta italiana más icónica: Capri, Positano y Amalfi desde el mar. Una sinfonía de acantilados, limoneros y aguas color zafiro.','exp.day1':'Día 1','exp.day2':'Día 2','exp.day3':'Días 3-5','exp.day4':'Día 6','exp.day5':'Día 7','exp.btn1':'Reservar Esta Ruta','exp.btn2':'Itinerario','test.loc1':'Ibiza · Junio 2025','test.loc2':'Menorca · Agosto 2025','test.loc3':'Formentera · Julio 2025','test.text1':'Una experiencia absolutamente sublime. El servicio a bordo superó todas nuestras expectativas. Volveremos sin duda.','test.text2':'La tripulación fue impecable. Cada detalle, desde el amanecer hasta el fondeo, estuvo cuidado con maestría.','test.text3':'We sailed to coves impossible to reach any other way. Azure redefined our idea of luxury at sea.','nav.fleet':'Flota','nav.experiences':'Experiencias','nav.gallery':'Galería','nav.testimonials':'Testimonios','nav.cta':'Reservar','hero.sub':'Mediterráneo · Caribe · Atlántico','hero.title':'Navega más allá<br>de lo <em>ordinario</em>','hero.desc':'Experiencias náuticas de lujo a medida. Tres embarcaciones excepcionales, rutas irrepetibles y un servicio concierge disponible 24/7.','hero.btn1':'Ver la flota','hero.btn2':'Reservar ahora','hero.badge1':'Embarcaciones','hero.badge2':'Destinos','hero.badge3':'AI Concierge','hero.scroll':'Descubrir','fleet.sub':'Nuestra Flota','fleet.title':'Embarcaciones de <em>Excepción</em>','fleet.hint':'Haz clic en una tarjeta para ver las especificaciones completas.','fleet.all':'Toda la Flota','fleet.captain':'Con Patrón','fleet.nocaptain':'Sin Patrón','fleet.reserve':'Reservar','fleet.details':'+ Detalles','exp.sub':'Rutas & Destinos','exp.title':'Experiencias <em>Únicas</em>','gallery.sub':'Galería','gallery.title':'Momentos <em>Únicos</em>','test.sub':'Testimonios','test.title':'Lo que dicen nuestros <em>clientes</em>','res.sub':'Reserva Directa · Mejor Precio Garantizado','res.title':'Reserve su <em>Experiencia</em>','res.desc':'O use el AI Concierge — le ayuda a reservar directamente desde el chat ⚓','form.name':'Nombre completo','form.name.ph':'Su nombre','form.phone':'Teléfono','form.date':'Fecha de salida','form.boat':'Embarcación','form.boat.ph':'Seleccionar barco...','form.guests':'Nº de huéspedes','form.guests.ph':'Seleccionar...','form.route':'Destino / Ruta','form.route.ph':'Seleccionar destino...','form.route.formentera':'Puesta de sol en Formentera · 7 días','form.route.menorca':'Calas Secretas de Menorca · 5 días','form.route.amalfi':'Capri & Costa Amalfitana · 10 días','form.route.mallorca':'Calas de Mallorca · 3 días','form.route.ibiza':'Ibiza & Formentera · 5 días','form.route.custom':'Ruta personalizada','form.notes':'Notas especiales (celebraciones, alergias, etc.)','form.notes.ph':'Opcional...','form.submit':'Solicitar Reserva','form.note':'Confirmación en menos de 24h · Cancelación gratuita hasta 48h antes','form.success.title':'✓ Solicitud recibida','form.success.desc':'Nuestro equipo le contactará en menos de 24 horas para confirmar los detalles.','sticky.text':'Reserva directa — <strong>Mejor precio garantizado</strong> · Cancelación gratuita 48h','sticky.btn':'Consultar disponibilidad','search.dest':'Destino','search.dest.ph':'¿A dónde navegamos?','search.from':'Llegada','search.to':'Salida','search.btn':'Buscar','chat.status':'AI Concierge · En línea','chat.welcome':'Bienvenido a Azure Luxury Charters. Soy su asistente personal — puedo ayudarle a elegir embarcación, diseñar su ruta y gestionar su reserva en español, inglés o alemán. ⚓','chat.ph':'Escríbanos en cualquier idioma...','chat.sug1':'¿Qué barco recomienda para 8 personas?','chat.sug2':'Quiero navegar por Formentera en julio','chat.sug3':'¿Qué incluye la ruta de Capri?','concierge.label':'AI Concierge','bubble.welcome':'Bienvenido. ¿Puedo ayudarle a encontrar la embarcación perfecta en el Mediterráneo?','proactive.flota':'Nuestros tres barcos están disponibles para la temporada 2026. ¿Tiene fechas en mente?','proactive.exp':'Estas rutas son las más solicitadas del Mediterráneo. ¿Le gustaría personalizar alguna?','proactive.gallery':'Cada imagen es un destino real. ¿Le ayudo a elegir el itinerario perfecto para su grupo?','proactive.test':'Nuestros clientes repiten cada temporada. ¿Desea una experiencia similar?','proactive.reserva':'¿Puedo ayudarle a completar su reserva? Confirmación en menos de 24 horas.','boat.captain.yes':'✓ Incluido','boat.captain.no':'Licencia','boat.guests.label':'Huéspedes','boat.cabins.label':'Cabinas','boat.speed.label':'Velocidad','boat.range.label':'Autonomía'},en:{'boat.type.motor':'Motor Yacht','boat.type.cat':'Catamaran','boat.type.sail':'Sailing Yacht','boat.badge.available':'Immediate availability','boat.badge.family':'Ideal for families','boat.badge.classic':'Classic experience','exp.tag1':'Most popular','exp.tag2':'Exclusive','exp.tag3':'Premium','exp.title1':'Sunset in Formentera','exp.title2':'Secret Coves of Menorca','exp.title3':'Capri & Amalfi Coast','exp.dur1':'7 days','exp.dur2':'5 days','exp.dur3':'10 days','exp.price1':'from €2,800/day','exp.price2':'from €1,900/day','exp.price3':'from €4,500/day','exp.desc1':'Set sail from Ibiza at dawn, anchor at Ses Illetes and watch the sunset over the Mediterranean on one of the most sought-after routes of the year.','exp.desc2':'Discover virgin coves accessible only by sea. Crystal-clear turquoise waters and white sand beaches free from tourists.','exp.desc3':"Italy's most iconic route: Capri, Positano and Amalfi from the sea. A symphony of cliffs, lemon trees and sapphire-blue waters.",'exp.day1':'Day 1','exp.day2':'Day 2','exp.day3':'Days 3-5','exp.day4':'Day 6','exp.day5':'Day 7','exp.btn1':'Book This Route','exp.btn2':'Itinerary','test.loc1':'Ibiza · June 2025','test.loc2':'Menorca · August 2025','test.loc3':'Formentera · July 2025','test.text1':'An absolutely sublime experience. The on-board service exceeded all our expectations. We will definitely return.','test.text2':'The crew was impeccable. Every detail, from sunrise to anchor, was handled with mastery.','test.text3':'We sailed to coves impossible to reach any other way. Azure redefined our idea of luxury at sea.','nav.fleet':'Fleet','nav.experiences':'Experiences','nav.gallery':'Gallery','nav.testimonials':'Reviews','nav.cta':'Book Now','hero.sub':'Mediterranean · Caribbean · Atlantic','hero.title':'Sail beyond<br>the <em>ordinary</em>','hero.desc':'Bespoke luxury nautical experiences. Three exceptional vessels, unforgettable routes and a 24/7 AI concierge service.','hero.btn1':'View the fleet','hero.btn2':'Book now','hero.badge1':'Vessels','hero.badge2':'Destinations','hero.badge3':'AI Concierge','hero.scroll':'Discover','fleet.sub':'Our Fleet','fleet.title':'Exceptional <em>Vessels</em>','fleet.hint':'Click a card to expand the full technical specifications.','fleet.all':'All Fleet','fleet.captain':'With Skipper','fleet.nocaptain':'Without Skipper','fleet.reserve':'Book','fleet.details':'+ Details','exp.sub':'Routes & Destinations','exp.title':'Unique <em>Experiences</em>','gallery.sub':'Gallery','gallery.title':'Unique <em>Moments</em>','test.sub':'Testimonials','test.title':'What our <em>clients</em> say','res.sub':'Direct Booking · Best Price Guaranteed','res.title':'Book your <em>Experience</em>','res.desc':'Or use the AI Concierge — helps you book directly from the chat ⚓','form.name':'Full name','form.name.ph':'Your name','form.phone':'Phone','form.date':'Departure date','form.boat':'Vessel','form.boat.ph':'Select vessel...','form.guests':'No. of guests','form.guests.ph':'Select...','form.route':'Destination / Route','form.route.ph':'Select destination...','form.route.formentera':'Sunset in Formentera · 7 days','form.route.menorca':'Secret Coves of Menorca · 5 days','form.route.amalfi':'Capri & Amalfi Coast · 10 days','form.route.mallorca':'Mallorca Coves · 3 days','form.route.ibiza':'Ibiza & Formentera · 5 days','form.route.custom':'Custom route','form.notes':'Special notes (celebrations, allergies, etc.)','form.notes.ph':'Optional...','form.submit':'Request Booking','form.note':'Confirmation within 24h · Free cancellation 48h before','form.success.title':'✓ Request received','form.success.desc':'Our team will contact you within 24 hours to confirm the details.','sticky.text':'Direct booking — <strong>Best price guaranteed</strong> · Free cancellation 48h','sticky.btn':'Check availability','search.dest':'Destination','search.dest.ph':'Where are we sailing?','search.from':'Arrival','search.to':'Departure','search.btn':'Search','chat.status':'AI Concierge · Online','chat.welcome':"Welcome to Azure Luxury Charters. I'm your personal assistant — I can help you choose a vessel, design your route and manage your reservation in Spanish, English or German. ⚓",'chat.ph':'Write to us in any language...','chat.sug1':'What vessel do you recommend for 8 people?','chat.sug2':'I want to sail around Formentera in July',"chat.sug3":"What's included in the Capri route?",'concierge.label':'AI Concierge','bubble.welcome':'Welcome. May I help you find the perfect vessel in the Mediterranean?','proactive.flota':'All three vessels are available for the 2026 season. Do you have dates in mind?','proactive.exp':'These are our most requested routes. Would you like to customize one?','proactive.gallery':'Every image is a real destination. May I help you choose the perfect itinerary?','proactive.test':'Our guests return every season. Would you like a similar experience?','proactive.reserva':'May I help you complete your booking? Confirmation within 24 hours.','boat.captain.yes':'✓ Included','boat.captain.no':'Licence req.','boat.guests.label':'Guests','boat.cabins.label':'Cabins','boat.speed.label':'Speed','boat.range.label':'Range'},de:{'boat.type.motor':'Motoryacht','boat.type.cat':'Katamaran','boat.type.sail':'Segelyacht','boat.badge.available':'Sofort verfügbar','boat.badge.family':'Ideal für Familien','boat.badge.classic':'Klassisches Erlebnis','exp.tag1':'Beliebteste','exp.tag2':'Exklusiv','exp.tag3':'Premium','exp.title1':'Sonnenuntergang auf Formentera','exp.title2':'Geheime Buchten von Menorca','exp.title3':'Capri & Amalfiküste','exp.dur1':'7 Tage','exp.dur2':'5 Tage','exp.dur3':'10 Tage','exp.price1':'ab €2.800/Tag','exp.price2':'ab €1.900/Tag','exp.price3':'ab €4.500/Tag','exp.desc1':'Starten Sie bei Sonnenaufgang von Ibiza, ankern Sie in Ses Illetes und genießen Sie den Sonnenuntergang über dem Mittelmeer.','exp.desc2':'Entdecken Sie unberührte Buchten, die nur vom Meer aus erreichbar sind. Kristallklares türkisfarbenes Wasser.','exp.desc3':'Italiens ikonischste Route: Capri, Positano und Amalfi vom Meer aus. Eine Symphonie aus Klippen und saphirblauen Gewässern.','exp.day1':'Tag 1','exp.day2':'Tag 2','exp.day3':'Tage 3-5','exp.day4':'Tag 6','exp.day5':'Tag 7','exp.btn1':'Diese Route buchen','exp.btn2':'Reiseprogramm','test.loc1':'Ibiza · Juni 2025','test.loc2':'Menorca · August 2025','test.loc3':'Formentera · Juli 2025','test.text1':'Ein absolut erhabenes Erlebnis. Der Service an Bord hat alle unsere Erwartungen übertroffen. Wir kommen definitiv wieder.','test.text2':'Die Crew war tadellos. Jedes Detail, vom Sonnenaufgang bis zum Anker, war mit Meisterschaft gepflegt.','test.text3':'Wir segelten zu Buchten, die auf anderem Wege unmöglich zu erreichen sind. Azure hat unsere Vorstellung von Luxus neu definiert.','nav.fleet':'Flotte','nav.experiences':'Routen','nav.gallery':'Galerie','nav.testimonials':'Bewertungen','nav.cta':'Buchen','hero.sub':'Mittelmeer · Karibik · Atlantik','hero.title':'Segeln jenseits<br>des <em>Gewöhnlichen</em>','hero.desc':'Maßgeschneiderte Luxus-Segelabenteuer. Drei außergewöhnliche Schiffe, unvergessliche Routen und ein 24/7 KI-Concierge.','hero.btn1':'Flotte ansehen','hero.btn2':'Jetzt buchen','hero.badge1':'Schiffe','hero.badge2':'Ziele','hero.badge3':'KI-Concierge','hero.scroll':'Entdecken','fleet.sub':'Unsere Flotte','fleet.title':'Außergewöhnliche <em>Schiffe</em>','fleet.hint':'Klicken Sie auf eine Karte für vollständige technische Daten.','fleet.all':'Alle Schiffe','fleet.captain':'Mit Skipper','fleet.nocaptain':'Ohne Skipper','fleet.reserve':'Buchen','fleet.details':'+ Details','exp.sub':'Routen & Ziele','exp.title':'Einzigartige <em>Erlebnisse</em>','gallery.sub':'Galerie','gallery.title':'Einzigartige <em>Momente</em>','test.sub':'Bewertungen','test.title':'Was unsere <em>Gäste</em> sagen','res.sub':'Direktbuchung · Bestpreis-Garantie','res.title':'Buchen Sie Ihr <em>Erlebnis</em>','res.desc':'Oder nutzen Sie den KI-Concierge — hilft Ihnen direkt im Chat zu buchen ⚓','form.name':'Vollständiger Name','form.name.ph':'Ihr Name','form.phone':'Telefon','form.date':'Abfahrtsdatum','form.boat':'Schiff','form.boat.ph':'Schiff auswählen...','form.guests':'Anzahl Gäste','form.guests.ph':'Auswählen...','form.route':'Ziel / Route','form.route.ph':'Ziel auswählen...','form.route.formentera':'Sonnenuntergang auf Formentera · 7 Tage','form.route.menorca':'Geheime Buchten von Menorca · 5 Tage','form.route.amalfi':'Capri & Amalfiküste · 10 Tage','form.route.mallorca':'Mallorca-Buchten · 3 Tage','form.route.ibiza':'Ibiza & Formentera · 5 Tage','form.route.custom':'Individuelle Route','form.notes':'Besondere Wünsche (Feiern, Allergien, etc.)','form.notes.ph':'Optional...','form.submit':'Anfrage senden','form.note':'Bestätigung innerhalb von 24h · Kostenlose Stornierung 48h vorher','form.success.title':'✓ Anfrage erhalten','form.success.desc':'Unser Team wird Sie innerhalb von 24 Stunden kontaktieren.','sticky.text':'Direktbuchung — <strong>Bestpreis-Garantie</strong> · Kostenlose Stornierung 48h','sticky.btn':'Verfügbarkeit prüfen','search.dest':'Ziel','search.dest.ph':'Wohin segeln wir?','search.from':'Ankunft','search.to':'Abfahrt','search.btn':'Suchen','chat.status':'KI-Concierge · Online','chat.welcome':'Willkommen bei Azure Luxury Charters. Ich bin Ihr persönlicher Assistent ⚓','chat.ph':'Schreiben Sie uns in jeder Sprache...','chat.sug1':'Welches Schiff empfehlen Sie für 8 Personen?','chat.sug2':'Ich möchte im Juli um Formentera segeln','chat.sug3':'Was ist in der Capri-Route enthalten?','concierge.label':'KI-Concierge','bubble.welcome':'Willkommen. Darf ich Ihnen helfen, das perfekte Schiff zu finden?','proactive.flota':'Alle drei Schiffe sind für die Saison 2026 verfügbar. Haben Sie Termine im Sinn?','proactive.exp':'Dies sind unsere meistgebuchten Routen. Möchten Sie eine anpassen?','proactive.gallery':'Jedes Bild ist ein echtes Reiseziel. Darf ich das perfekte Programm vorschlagen?','proactive.test':'Unsere Gäste kommen jede Saison wieder. Möchten Sie ein ähnliches Erlebnis?','proactive.reserva':'Darf ich Ihnen bei der Buchung helfen? Bestätigung innerhalb von 24 Stunden.','boat.captain.yes':'✓ Inkl.','boat.captain.no':'Führerschein','boat.guests.label':'Gäste','boat.cabins.label':'Kabinen','boat.speed.label':'Geschw.','boat.range.label':'Reichweite'}};
 
-const T = {
-  es: {
-    'boat.type.motor':'Yate de Motor','boat.type.cat':'Catamarán','boat.type.sail':'Velero',
-    'boat.badge.available':'Disponibilidad inmediata','boat.badge.family':'Ideal familias','boat.badge.classic':'Experiencia clásica',
-    'exp.tag1':'Más popular','exp.tag2':'Exclusivo','exp.tag3':'Premium',
-    'exp.title1':'Puesta de sol en Formentera','exp.title2':'Calas Secretas de Menorca','exp.title3':'Capri & Costa Amalfitana',
-    'exp.dur1':'7 días','exp.dur2':'5 días','exp.dur3':'10 días',
-    'exp.price1':'desde €2.800/día','exp.price2':'desde €1.900/día','exp.price3':'desde €4.500/día',
-    'exp.desc1':'Zarpa desde Ibiza al amanecer, fondea en Ses Illetes y contempla el atardecer sobre el Mediterráneo en una de las rutas más solicitadas del año.',
-    'exp.desc2':'Descubre calas vírgenes accesibles únicamente desde el mar. Aguas de turquesa puro y playas de arena blanca sin turistas.',
-    'exp.desc3':'La ruta italiana más icónica: Capri, Positano y Amalfi desde el mar. Una sinfonía de acantilados, limoneros y aguas color zafiro.',
-    'exp.day1':'Día 1','exp.day2':'Día 2','exp.day3':'Días 3-5','exp.day4':'Día 6','exp.day5':'Día 7',
-    'exp.btn1':'Reservar Esta Ruta','exp.btn2':'Itinerario',
-    'test.loc1':'Ibiza · Junio 2025','test.loc2':'Menorca · Agosto 2025','test.loc3':'Formentera · Julio 2025',
-    'test.text1':'Una experiencia absolutamente sublime. El servicio a bordo superó todas nuestras expectativas. Volveremos sin duda.',
-    'test.text2':'Die Crew war tadellos. Jedes Detail, vom Sonnenaufgang bis zum Anker, war mit Meisterschaft gepflegt.',
-    'test.text3':'We sailed to coves impossible to reach any other way. Azure redefined our idea of luxury at sea.',
-    'nav.fleet':'Flota','nav.experiences':'Experiencias','nav.gallery':'Galería','nav.testimonials':'Testimonios','nav.cta':'Reservar',
-    'hero.sub':'Mediterráneo · Caribe · Atlántico',
-    'hero.title':'Navega más allá<br>de lo <em>ordinario</em>',
-    'hero.desc':'Experiencias náuticas de lujo a medida. Tres embarcaciones excepcionales, rutas irrepetibles y un servicio concierge disponible 24/7.',
-    'hero.btn1':'Ver la flota','hero.btn2':'Reservar ahora',
-    'hero.badge1':'Embarcaciones','hero.badge2':'Destinos','hero.badge3':'AI Concierge','hero.scroll':'Descubrir',
-    'fleet.sub':'Nuestra Flota','fleet.title':'Embarcaciones de <em>Excepción</em>',
-    'fleet.all':'Toda la Flota','fleet.captain':'Con Patrón','fleet.nocaptain':'Sin Patrón',
-    'exp.sub':'Rutas & Destinos','exp.title':'Experiencias <em>Únicas</em>',
-    'gallery.sub':'Galería','gallery.title':'Momentos <em>Únicos</em>',
-    'test.sub':'Testimonios','test.title':'Lo que dicen nuestros <em>clientes</em>',
-    'res.sub':'Reserva Directa · Mejor Precio Garantizado','res.title':'Reserve su <em>Experiencia</em>',
-    'res.desc':'O use el AI Concierge — le ayuda a reservar directamente desde el chat ⚓',
-    'form.name':'Nombre completo','form.name.ph':'Su nombre','form.phone':'Teléfono','form.date':'Fecha de salida',
-    'form.boat':'Embarcación','form.boat.ph':'Seleccionar barco...','form.guests':'Nº de huéspedes','form.guests.ph':'Seleccionar...',
-    'form.route':'Destino / Ruta','form.route.ph':'Seleccionar destino...',
-    'form.route.formentera':'Puesta de sol en Formentera · 7 días','form.route.menorca':'Calas Secretas de Menorca · 5 días',
-    'form.route.amalfi':'Capri & Costa Amalfitana · 10 días','form.route.mallorca':'Calas de Mallorca · 3 días',
-    'form.route.ibiza':'Ibiza & Formentera · 5 días','form.route.custom':'Ruta personalizada',
-    'form.notes':'Notas especiales (celebraciones, alergias, etc.)','form.notes.ph':'Opcional...',
-    'form.submit':'Solicitar Reserva','form.note':'Confirmación en menos de 24h · Cancelación gratuita hasta 48h antes',
-    'form.success.title':'✓ Solicitud recibida','form.success.desc':'Nuestro equipo le contactará en menos de 24 horas para confirmar los detalles.',
-    'sticky.text':'Reserva directa — <strong>Mejor precio garantizado</strong> · Cancelación gratuita 48h',
-    'sticky.btn':'Consultar disponibilidad',
-    'chat.status':'AI Concierge · En línea',
-    'chat.welcome':'Bienvenido a Azure Luxury Charters. Soy su asistente personal — puedo ayudarle a elegir embarcación, diseñar su ruta y gestionar su reserva en español, inglés o alemán. ⚓',
-    'chat.ph':'Escríbanos en cualquier idioma...',
-    'chat.sug1':'¿Qué barco recomienda para 8 personas?','chat.sug2':'Quiero navegar por Formentera en julio','chat.sug3':'¿Qué incluye la ruta de Capri?',
-    'concierge.label':'AI Concierge',
-    'bubble.welcome':'Bienvenido. ¿Puedo ayudarle a encontrar la embarcación perfecta en el Mediterráneo?',
-    'proactive.flota':'Nuestros tres barcos están disponibles para la temporada 2026. ¿Tiene fechas en mente?',
-    'proactive.exp':'Estas rutas son las más solicitadas del Mediterráneo. ¿Le gustaría personalizar alguna?',
-    'proactive.gallery':'Cada imagen es un destino real. ¿Le ayudo a elegir el itinerario perfecto para su grupo?',
-    'proactive.test':'Nuestros clientes repiten cada temporada. ¿Desea una experiencia similar?',
-    'proactive.reserva':'¿Puedo ayudarle a completar su reserva? Confirmación en menos de 24 horas.',
-    'boat.captain.yes':'✓ Incluido','boat.captain.no':'Licencia','boat.guests.label':'Huéspedes',
-    'boat.cabins.label':'Cabinas','boat.speed.label':'Velocidad','boat.range.label':'Autonomía',
-  },
-  en: {
-    'boat.type.motor':'Motor Yacht','boat.type.cat':'Catamaran','boat.type.sail':'Sailing Yacht',
-    'boat.badge.available':'Immediate availability','boat.badge.family':'Ideal for families','boat.badge.classic':'Classic experience',
-    'exp.tag1':'Most popular','exp.tag2':'Exclusive','exp.tag3':'Premium',
-    'exp.title1':'Sunset in Formentera','exp.title2':'Secret Coves of Menorca','exp.title3':'Capri & Amalfi Coast',
-    'exp.dur1':'7 days','exp.dur2':'5 days','exp.dur3':'10 days',
-    'exp.price1':'from €2,800/day','exp.price2':'from €1,900/day','exp.price3':'from €4,500/day',
-    'exp.desc1':'Set sail from Ibiza at dawn, anchor at Ses Illetes and watch the sunset over the Mediterranean on one of the most sought-after routes of the year.',
-    'exp.desc2':'Discover virgin coves accessible only by sea. Crystal-clear turquoise waters and white sand beaches free from tourists.',
-    'exp.desc3':'Italy\'s most iconic route: Capri, Positano and Amalfi from the sea. A symphony of cliffs, lemon trees and sapphire-blue waters.',
-    'exp.day1':'Day 1','exp.day2':'Day 2','exp.day3':'Days 3-5','exp.day4':'Day 6','exp.day5':'Day 7',
-    'exp.btn1':'Book This Route','exp.btn2':'Itinerary',
-    'test.loc1':'Ibiza · June 2025','test.loc2':'Menorca · August 2025','test.loc3':'Formentera · July 2025',
-    'test.text1':'An absolutely sublime experience. The on-board service exceeded all our expectations. We will definitely return.',
-    'test.text2':'The crew was impeccable. Every detail, from sunrise to anchor, was handled with mastery.',
-    'test.text3':'We sailed to coves impossible to reach any other way. Azure redefined our idea of luxury at sea.',
-    'nav.fleet':'Fleet','nav.experiences':'Experiences','nav.gallery':'Gallery','nav.testimonials':'Reviews','nav.cta':'Book Now',
-    'hero.sub':'Mediterranean · Caribbean · Atlantic',
-    'hero.title':'Sail beyond<br>the <em>ordinary</em>',
-    'hero.desc':'Bespoke luxury nautical experiences. Three exceptional vessels, unforgettable routes and a 24/7 AI concierge service.',
-    'hero.btn1':'View the fleet','hero.btn2':'Book now',
-    'hero.badge1':'Vessels','hero.badge2':'Destinations','hero.badge3':'AI Concierge','hero.scroll':'Discover',
-    'fleet.sub':'Our Fleet','fleet.title':'Exceptional <em>Vessels</em>',
-    'fleet.all':'All Fleet','fleet.captain':'With Skipper','fleet.nocaptain':'Without Skipper',
-    'exp.sub':'Routes & Destinations','exp.title':'Unique <em>Experiences</em>',
-    'gallery.sub':'Gallery','gallery.title':'Unique <em>Moments</em>',
-    'test.sub':'Testimonials','test.title':'What our <em>clients</em> say',
-    'res.sub':'Direct Booking · Best Price Guaranteed','res.title':'Book your <em>Experience</em>',
-    'res.desc':'Or use the AI Concierge — helps you book directly from the chat ⚓',
-    'form.name':'Full name','form.name.ph':'Your name','form.phone':'Phone','form.date':'Departure date',
-    'form.boat':'Vessel','form.boat.ph':'Select vessel...','form.guests':'No. of guests','form.guests.ph':'Select...',
-    'form.route':'Destination / Route','form.route.ph':'Select destination...',
-    'form.route.formentera':'Sunset in Formentera · 7 days','form.route.menorca':'Secret Coves of Menorca · 5 days',
-    'form.route.amalfi':'Capri & Amalfi Coast · 10 days','form.route.mallorca':'Mallorca Coves · 3 days',
-    'form.route.ibiza':'Ibiza & Formentera · 5 days','form.route.custom':'Custom route',
-    'form.notes':'Special notes (celebrations, allergies, etc.)','form.notes.ph':'Optional...',
-    'form.submit':'Request Booking','form.note':'Confirmation within 24h · Free cancellation 48h before',
-    'form.success.title':'✓ Request received','form.success.desc':'Our team will contact you within 24 hours to confirm the details.',
-    'sticky.text':'Direct booking — <strong>Best price guaranteed</strong> · Free cancellation 48h',
-    'sticky.btn':'Check availability',
-    'chat.status':'AI Concierge · Online',
-    'chat.welcome':'Welcome to Azure Luxury Charters. I\'m your personal assistant — I can help you choose a vessel, design your route and manage your reservation in Spanish, English or German. ⚓',
-    'chat.ph':'Write to us in any language...',
-    'chat.sug1':'What vessel do you recommend for 8 people?','chat.sug2':'I want to sail around Formentera in July','chat.sug3':'What\'s included in the Capri route?',
-    'concierge.label':'AI Concierge',
-    'bubble.welcome':'Welcome. May I help you find the perfect vessel in the Mediterranean?',
-    'proactive.flota':'All three vessels are available for the 2026 season. Do you have dates in mind?',
-    'proactive.exp':'These are our most requested routes in the Mediterranean. Would you like to customize one?',
-    'proactive.gallery':'Every image is a real destination. May I help you choose the perfect itinerary for your group?',
-    'proactive.test':'Our guests return every season. Would you like a similar experience?',
-    'proactive.reserva':'May I help you complete your booking? Confirmation within 24 hours.',
-    'boat.captain.yes':'✓ Included','boat.captain.no':'Licence req.','boat.guests.label':'Guests',
-    'boat.cabins.label':'Cabins','boat.speed.label':'Speed','boat.range.label':'Range',
-  },
-  de: {
-    'boat.type.motor':'Motoryacht','boat.type.cat':'Katamaran','boat.type.sail':'Segelyacht',
-    'boat.badge.available':'Sofort verfügbar','boat.badge.family':'Ideal für Familien','boat.badge.classic':'Klassisches Erlebnis',
-    'exp.tag1':'Beliebteste','exp.tag2':'Exklusiv','exp.tag3':'Premium',
-    'exp.title1':'Sonnenuntergang auf Formentera','exp.title2':'Geheime Buchten von Menorca','exp.title3':'Capri & Amalfiküste',
-    'exp.dur1':'7 Tage','exp.dur2':'5 Tage','exp.dur3':'10 Tage',
-    'exp.price1':'ab €2.800/Tag','exp.price2':'ab €1.900/Tag','exp.price3':'ab €4.500/Tag',
-    'exp.desc1':'Starten Sie bei Sonnenaufgang von Ibiza, ankern Sie in Ses Illetes und genießen Sie den Sonnenuntergang über dem Mittelmeer auf einer der gefragtesten Routen des Jahres.',
-    'exp.desc2':'Entdecken Sie unberührte Buchten, die nur vom Meer aus erreichbar sind. Kristallklares türkisfarbenes Wasser und weiße Sandstrände frei von Touristen.',
-    'exp.desc3':'Italiens ikonischste Route: Capri, Positano und Amalfi vom Meer aus. Eine Symphonie aus Klippen, Zitronenbäumen und saphirblauen Gewässern.',
-    'exp.day1':'Tag 1','exp.day2':'Tag 2','exp.day3':'Tage 3-5','exp.day4':'Tag 6','exp.day5':'Tag 7',
-    'exp.btn1':'Diese Route buchen','exp.btn2':'Reiseprogramm',
-    'test.loc1':'Ibiza · Juni 2025','test.loc2':'Menorca · August 2025','test.loc3':'Formentera · Juli 2025',
-    'test.text1':'Ein absolut erhabenes Erlebnis. Der Service an Bord hat alle unsere Erwartungen übertroffen. Wir kommen definitiv wieder.',
-    'test.text2':'Die Crew war tadellos. Jedes Detail, vom Sonnenaufgang bis zum Anker, war mit Meisterschaft gepflegt.',
-    'test.text3':'Wir segelten zu Buchten, die auf anderem Wege unmöglich zu erreichen sind. Azure hat unsere Vorstellung von Luxus auf See neu definiert.',
-    'nav.fleet':'Flotte','nav.experiences':'Routen','nav.gallery':'Galerie','nav.testimonials':'Bewertungen','nav.cta':'Buchen',
-    'hero.sub':'Mittelmeer · Karibik · Atlantik',
-    'hero.title':'Segeln jenseits<br>des <em>Gewöhnlichen</em>',
-    'hero.desc':'Maßgeschneiderte Luxus-Segelabenteuer. Drei außergewöhnliche Schiffe, unvergessliche Routen und ein 24/7 KI-Concierge.',
-    'hero.btn1':'Flotte ansehen','hero.btn2':'Jetzt buchen',
-    'hero.badge1':'Schiffe','hero.badge2':'Ziele','hero.badge3':'KI-Concierge','hero.scroll':'Entdecken',
-    'fleet.sub':'Unsere Flotte','fleet.title':'Außergewöhnliche <em>Schiffe</em>',
-    'fleet.all':'Alle Schiffe','fleet.captain':'Mit Skipper','fleet.nocaptain':'Ohne Skipper',
-    'exp.sub':'Routen & Ziele','exp.title':'Einzigartige <em>Erlebnisse</em>',
-    'gallery.sub':'Galerie','gallery.title':'Einzigartige <em>Momente</em>',
-    'test.sub':'Bewertungen','test.title':'Was unsere <em>Gäste</em> sagen',
-    'res.sub':'Direktbuchung · Bestpreis-Garantie','res.title':'Buchen Sie Ihr <em>Erlebnis</em>',
-    'res.desc':'Oder nutzen Sie den KI-Concierge — hilft Ihnen direkt im Chat zu buchen ⚓',
-    'form.name':'Vollständiger Name','form.name.ph':'Ihr Name','form.phone':'Telefon','form.date':'Abfahrtsdatum',
-    'form.boat':'Schiff','form.boat.ph':'Schiff auswählen...','form.guests':'Anzahl Gäste','form.guests.ph':'Auswählen...',
-    'form.route':'Ziel / Route','form.route.ph':'Ziel auswählen...',
-    'form.route.formentera':'Sonnenuntergang auf Formentera · 7 Tage','form.route.menorca':'Geheime Buchten von Menorca · 5 Tage',
-    'form.route.amalfi':'Capri & Amalfiküste · 10 Tage','form.route.mallorca':'Mallorca-Buchten · 3 Tage',
-    'form.route.ibiza':'Ibiza & Formentera · 5 Tage','form.route.custom':'Individuelle Route',
-    'form.notes':'Besondere Wünsche (Feiern, Allergien, etc.)','form.notes.ph':'Optional...',
-    'form.submit':'Anfrage senden','form.note':'Bestätigung innerhalb von 24h · Kostenlose Stornierung 48h vorher',
-    'form.success.title':'✓ Anfrage erhalten','form.success.desc':'Unser Team wird Sie innerhalb von 24 Stunden kontaktieren.',
-    'sticky.text':'Direktbuchung — <strong>Bestpreis-Garantie</strong> · Kostenlose Stornierung 48h',
-    'sticky.btn':'Verfügbarkeit prüfen',
-    'chat.status':'KI-Concierge · Online',
-    'chat.welcome':'Willkommen bei Azure Luxury Charters. Ich bin Ihr persönlicher Assistent — ich kann Ihnen helfen, ein Schiff zu wählen, Ihre Route zu gestalten und Ihre Reservierung auf Deutsch, Englisch oder Spanisch zu verwalten. ⚓',
-    'chat.ph':'Schreiben Sie uns in jeder Sprache...',
-    'chat.sug1':'Welches Schiff empfehlen Sie für 8 Personen?','chat.sug2':'Ich möchte im Juli um Formentera segeln','chat.sug3':'Was ist in der Capri-Route enthalten?',
-    'concierge.label':'KI-Concierge',
-    'bubble.welcome':'Willkommen. Darf ich Ihnen helfen, das perfekte Schiff im Mittelmeer zu finden?',
-    'proactive.flota':'Alle drei Schiffe sind für die Saison 2026 verfügbar. Haben Sie Termine im Sinn?',
-    'proactive.exp':'Dies sind unsere meistgebuchten Routen im Mittelmeer. Möchten Sie eine anpassen?',
-    'proactive.gallery':'Jedes Bild ist ein echtes Reiseziel. Darf ich Ihnen das perfekte Reiseprogramm vorschlagen?',
-    'proactive.test':'Unsere Gäste kommen jede Saison wieder. Möchten Sie ein ähnliches Erlebnis?',
-    'proactive.reserva':'Darf ich Ihnen bei der Buchung helfen? Bestätigung innerhalb von 24 Stunden.',
-    'boat.captain.yes':'✓ Inkl.','boat.captain.no':'Führerschein','boat.guests.label':'Gäste',
-    'boat.cabins.label':'Kabinen','boat.speed.label':'Geschw.','boat.range.label':'Reichweite',
-  }
-};
-
-// Función t() — obtener traducción
-function t(key) { return T[currentLang]?.[key] || T.es[key] || key; }
-
-// Aplicar todas las traducciones al DOM
-function applyTranslations() {
-  // data-i18n → innerHTML
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    const val = t(key);
-    if (val) el.innerHTML = val;
-  });
-  // data-i18n-ph → placeholder
-  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-    const key = el.getAttribute('data-i18n-ph');
-    const val = t(key);
-    if (val) el.placeholder = val;
-  });
-  // Chat UI
-  const chatStatus = document.querySelector('.chat-hdr-status');
-  if (chatStatus) chatStatus.innerHTML = `<span class="dot-green"></span>${t('chat.status')}`;
-  const chatInp = document.getElementById('chatInp');
-  if (chatInp) chatInp.placeholder = t('chat.ph');
-  const launcher = document.querySelector('.concierge-launcher-label');
-  if (launcher) launcher.textContent = t('concierge.label');
-  // Sugerencias del chat
-  const sugs = document.querySelectorAll('.chat-sug');
-  if (sugs[0]) sugs[0].textContent = t('chat.sug1');
-  if (sugs[1]) sugs[1].textContent = t('chat.sug2');
-  if (sugs[2]) sugs[2].textContent = t('chat.sug3');
-  if (sugs[0]) sugs[0].onclick = () => quickMsg(t('chat.sug1'));
-  if (sugs[1]) sugs[1].onclick = () => quickMsg(t('chat.sug2'));
-  if (sugs[2]) sugs[2].onclick = () => quickMsg(t('chat.sug3'));
-  // Sticky bar
-  const stickyText = document.querySelector('.sticky-text');
-  if (stickyText) stickyText.innerHTML = t('sticky.text');
-  const stickyBtn = document.querySelector('.sticky-btn');
-  if (stickyBtn) stickyBtn.textContent = t('sticky.btn');
-  // Re-renderizar secciones dinámicas
-  renderFlota();
-  renderExps();
-  renderTestimonials();
-  // html lang
-  document.documentElement.lang = currentLang;
+function t(k){return(T[currentLang]&&T[currentLang][k])||T.es[k]||k;}
+function applyTranslations(){
+  document.querySelectorAll('[data-i18n]').forEach(function(el){var v=t(el.getAttribute('data-i18n'));if(v)el.innerHTML=v;});
+  document.querySelectorAll('[data-i18n-ph]').forEach(function(el){var v=t(el.getAttribute('data-i18n-ph'));if(v)el.placeholder=v;});
+  var cs=document.querySelector('.chat-hdr-status');if(cs)cs.innerHTML='<span class="dot-green"></span>'+t('chat.status');
+  var ci=document.getElementById('chatInp');if(ci)ci.placeholder=t('chat.ph');
+  var cl=document.querySelector('.concierge-launcher-label');if(cl)cl.textContent=t('concierge.label');
+  var sugs=document.querySelectorAll('.chat-sug');
+  var s1=t('chat.sug1'),s2=t('chat.sug2'),s3=t('chat.sug3');
+  if(sugs[0]){sugs[0].textContent=s1;sugs[0].onclick=function(){quickMsg(s1);};}
+  if(sugs[1]){sugs[1].textContent=s2;sugs[1].onclick=function(){quickMsg(s2);};}
+  if(sugs[2]){sugs[2].textContent=s3;sugs[2].onclick=function(){quickMsg(s3);};}
+  var st=document.querySelector('.sticky-text');if(st)st.innerHTML=t('sticky.text');
+  var sb=document.querySelector('.sticky-btn');if(sb)sb.textContent=t('sticky.btn');
+  renderFlota();renderExps();renderTestimonials();
+  document.documentElement.lang=currentLang;
 }
-
-// Cambiar idioma
-function setLang(lang) {
-  currentLang = lang;
-  // Actualizar botones activos
-  document.querySelectorAll('.lang-btn').forEach(b => {
-    b.classList.toggle('active', b.textContent === lang.toUpperCase());
-  });
-  // Aplicar traducciones
+function setLang(lang){
+  currentLang=lang;
+  document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.textContent===lang.toUpperCase());});
   applyTranslations();
-  // Resetear historial del chat para que la IA responda en el nuevo idioma
-  chatHist = [];
-  // Actualizar mensaje de bienvenida del chat
-  const msgs = document.getElementById('chatMsgs');
-  if (msgs) {
-    const bots = msgs.querySelectorAll('.chat-msg.bot');
-    if (bots.length === 1) bots[0].textContent = t('chat.welcome');
-  }
-  // Mostrar sugerencias de nuevo si el chat está limpio
-  const sugs = document.getElementById('chatSugs');
-  if (sugs && chatHist.length === 0) sugs.style.display = 'flex';
+  chatHist=[];
+  var msgs=document.getElementById('chatMsgs');
+  if(msgs){var bots=msgs.querySelectorAll('.chat-msg.bot');if(bots.length===1)bots[0].textContent=t('chat.welcome');}
+  var sugsEl=document.getElementById('chatSugs');if(sugsEl&&chatHist.length===0)sugsEl.style.display='flex';
 }
 
-// ── DATOS ────────────────────────────────────────────────────────
-const BOATS = [
-  { id:'azure_sovereign', name:'Azure Sovereign', typeKey:'boat.type.motor', length:65, price:4500, captain:true,  guests:12, cabins:4, speed:28, range:800,  img:'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&q=85', accent:'#c9a96e', badgeKey:'boat.badge.available' },
-  { id:'horizon_bleu',    name:'Horizon Bleu',    typeKey:'boat.type.cat',   length:48, price:2800, captain:false, guests:8,  cabins:3, speed:14, range:600,  img:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=85', accent:'#7bb3c9', badgeKey:'boat.badge.family' },
-  { id:'mistral_blanc',   name:'Mistral Blanc',   typeKey:'boat.type.sail',  length:52, price:1900, captain:true,  guests:6,  cabins:2, speed:12, range:1200, img:'https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=800&q=85', accent:'#a8c4b8', badgeKey:'boat.badge.classic' },
+var BOATS=[
+  {id:'azure_sovereign',name:'Azure Sovereign',typeKey:'boat.type.motor',length:65,beam:18,draft:4.2,price:4500,captain:true,guests:12,cabins:4,speed:28,range:800,img:'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=1200&q=90',accent:'#c9a96e',badgeKey:'boat.badge.available'},
+  {id:'horizon_bleu',name:'Horizon Bleu',typeKey:'boat.type.cat',length:48,beam:24,draft:1.2,price:2800,captain:false,guests:8,cabins:3,speed:14,range:600,img:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=90',accent:'#7bb3c9',badgeKey:'boat.badge.family'},
+  {id:'mistral_blanc',name:'Mistral Blanc',typeKey:'boat.type.sail',length:52,beam:14,draft:2.8,price:1900,captain:true,guests:6,cabins:2,speed:12,range:1200,img:'https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1200&q=90',accent:'#a8c4b8',badgeKey:'boat.badge.classic'}
+];
+var EXPERIENCES=[
+  {id:1,tagKey:'exp.tag1',titleKey:'exp.title1',durKey:'exp.dur1',priceKey:'exp.price1',descKey:'exp.desc1',img:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=85',routeColor:'#c9a96e',waypoints:[{label:'Ibiza',x:'22%',y:'35%',dayKey:'exp.day1'},{label:'Es Vedrà',x:'30%',y:'55%',dayKey:'exp.day2'},{label:'Formentera',x:'42%',y:'68%',dayKey:'exp.day3'},{label:'Espalmador',x:'52%',y:'58%',dayKey:'exp.day4'},{label:'Ibiza',x:'22%',y:'35%',dayKey:'exp.day5',end:true}]},
+  {id:2,tagKey:'exp.tag2',titleKey:'exp.title2',durKey:'exp.dur2',priceKey:'exp.price2',descKey:'exp.desc2',img:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=85',routeColor:'#7bb3c9',waypoints:[{label:'Mahón',x:'72%',y:'28%',dayKey:'exp.day1'},{label:'Cala Trebalúger',x:'48%',y:'52%',dayKey:'exp.day2'},{label:'Cala Macarella',x:'30%',y:'62%',dayKey:'exp.day3'},{label:'Ciudadela',x:'18%',y:'38%',dayKey:'exp.day4'}]},
+  {id:3,tagKey:'exp.tag3',titleKey:'exp.title3',durKey:'exp.dur3',priceKey:'exp.price3',descKey:'exp.desc3',img:'https://images.unsplash.com/photo-1519491050282-cf00c82424b0?w=900&q=85',routeColor:'#c9a96e',waypoints:[{label:'Nápoles',x:'28%',y:'25%',dayKey:'exp.day1'},{label:'Capri',x:'35%',y:'55%',dayKey:'exp.day2'},{label:'Positano',x:'52%',y:'42%',dayKey:'exp.day3'},{label:'Amalfi',x:'62%',y:'50%',dayKey:'exp.day4'},{label:'Ravello',x:'68%',y:'38%',dayKey:'exp.day5',end:true}]}
+];
+var GALLERY=[
+  {src:'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=1600&q=95',thumb:'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=700&q=85',cap:'Azure Sovereign · Ibiza'},
+  {src:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1600&q=95',thumb:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=700&q=85',cap:'Puesta de sol · Formentera'},
+  {src:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1600&q=95',thumb:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=700&q=85',cap:'Horizon Bleu · Menorca'},
+  {src:'https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1600&q=95',thumb:'https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=700&q=85',cap:'Mistral Blanc · Mallorca'},
+  {src:'https://images.unsplash.com/photo-1519491050282-cf00c82424b0?w=1600&q=95',thumb:'https://images.unsplash.com/photo-1519491050282-cf00c82424b0?w=700&q=85',cap:'Cubierta · Capri'},
+  {src:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=95',thumb:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=700&q=85',cap:'Calas · Costa Brava'}
+];
+var TESTIMONIALS=[
+  {name:'Claudia M.',locKey:'test.loc1',textKey:'test.text1',stars:5},
+  {name:'Thomas K.',locKey:'test.loc2',textKey:'test.text2',stars:5},
+  {name:'James W.',locKey:'test.loc3',textKey:'test.text3',stars:5}
 ];
 
-const EXPERIENCES = [
-  { id:'formentera', tagKey:'exp.tag1', titleKey:'exp.title1', durationKey:'exp.dur1', priceKey:'exp.price1', img:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&q=85', descKey:'exp.desc1', waypointKeys:[['Ibiza','exp.day1'],['Es Vedrà','exp.day2'],['Formentera','exp.day3'],['Espalmador','exp.day4'],['Ibiza','exp.day5']] },
-  { id:'menorca',    tagKey:'exp.tag2', titleKey:'exp.title2', durationKey:'exp.dur2', priceKey:'exp.price2', img:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=85', descKey:'exp.desc2', waypointKeys:[['Mahón','exp.day1'],['Cala Trebalúger','exp.day2'],['Cala Macarella','exp.day3'],['Ciudadela','exp.day4']] },
-  { id:'amalfi',     tagKey:'exp.tag3', titleKey:'exp.title3', durationKey:'exp.dur3', priceKey:'exp.price3', img:'https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?w=900&q=85', descKey:'exp.desc3', waypointKeys:[['Nápoles','exp.day1'],['Capri','exp.day2'],['Positano','exp.day3'],['Amalfi','exp.day4'],['Ravello','exp.day5']] },
-];
+window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);});
 
-const GALLERY = [
-  { src:'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=1200&q=90', cap:'Azure Sovereign · Ibiza' },
-  { src:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1200&q=90', cap:'Puesta de sol · Formentera' },
-  { src:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=90', cap:'Horizon Bleu · Menorca' },
-  { src:'https://images.unsplash.com/photo-1519491050282-cf00c82424b0?w=1200&q=90', cap:'Cubierta · Capri' },
-  { src:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=90', cap:'Calas · Menorca' },
-  { src:'https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?w=1200&q=90', cap:'Costa Amalfitana' },
-];
+// Video fallback
+var hv=document.getElementById('heroVideo');
+if(hv){hv.addEventListener('error',function(){hv.style.display='none';var f=document.getElementById('heroFallback');if(f)f.style.display='block';});}
 
-// ── NAV SCROLL ───────────────────────────────────────────────────
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
-});
-
-// ── RENDER FLOTA ─────────────────────────────────────────────────
-let flotaFilter = 'all';
-function filterFlota(f, btn) {
-  flotaFilter = f;
-  document.querySelectorAll('.flota-filter').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderFlota();
-}
-function renderFlota() {
-  const filtered = BOATS.filter(b => flotaFilter === 'patron' ? b.captain : flotaFilter === 'no-patron' ? !b.captain : true);
-  document.getElementById('flotaGrid').innerHTML = filtered.map(b => `
-    <div class="boat-card">
-      <div class="boat-img">
-        <img src="${b.img}" alt="${b.name}" loading="lazy">
-        <div class="boat-img-overlay"></div>
-        <div class="boat-tag">${t(b.badgeKey)}</div>
-        <div class="boat-price">
-          <div class="boat-price-from">${currentLang==='de'?'ab':currentLang==='en'?'from':'desde'}</div>
-          <div class="boat-price-num" style="color:${b.accent}">€${b.price.toLocaleString()}<span class="boat-price-per">${currentLang==='de'?'/Tag':currentLang==='en'?'/day':'/día'}</span></div>
-        </div>
-      </div>
-      <div class="boat-info">
-        <div class="boat-name pf">${b.name}</div>
-        <div class="boat-type" style="color:${b.accent}">${t(b.typeKey)}</div>
-        <div class="boat-specs">
-          <div class="spec"><strong>${b.length}ft</strong>${currentLang==='de'?'Länge':currentLang==='en'?'Length':'Eslora'}</div>
-          <div class="spec"><strong>${b.guests} pax</strong>${t('boat.guests.label')}</div>
-          <div class="spec"><strong>${b.cabins}</strong>${t('boat.cabins.label')}</div>
-          <div class="spec"><strong>${b.speed}kn</strong>${t('boat.speed.label')}</div>
-          <div class="spec"><strong>${b.range}nm</strong>${t('boat.range.label')}</div>
-          <div class="spec"><strong>${b.captain ? t('boat.captain.yes') : t('boat.captain.no')}</strong>${currentLang==='de'?'Skipper':currentLang==='en'?'Skipper':'Patrón'}</div>
-        </div>
-      </div>
-    </div>
-  `).join('');
+var flotaFilter='all';
+function filterFlota(f,btn){flotaFilter=f;document.querySelectorAll('.flota-filter').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');renderFlota();}
+function renderFlota(){
+  var from=currentLang==='de'?'ab':currentLang==='en'?'from':'desde';
+  var perDay=currentLang==='de'?'/Tag':currentLang==='en'?'/day':'/dia';
+  var filtered=BOATS.filter(function(b){return flotaFilter==='patron'?b.captain:flotaFilter==='no-patron'?!b.captain:true;});
+  var grid=document.getElementById('flotaGrid');
+  grid.innerHTML='';
+  filtered.forEach(function(b){
+    var specs=[{l:currentLang==='de'?'Lange':currentLang==='en'?'Length':'Eslora',v:b.length+'ft'},{l:t('boat.guests.label'),v:b.guests+' pax'},{l:t('boat.cabins.label'),v:b.cabins},{l:t('boat.speed.label'),v:b.speed+'kn'},{l:t('boat.range.label'),v:b.range+'nm'},{l:currentLang==='de'?'Skipper':currentLang==='en'?'Skipper':'Patron',v:b.captain?t('boat.captain.yes'):t('boat.captain.no')}];
+    var card=document.createElement('div');
+    card.className='boat-card';
+    card.dataset.boat=b.id;
+    card.innerHTML=
+      '<img class="boat-img-full" src="'+b.img+'" alt="'+b.name+'" loading="lazy">'+
+      '<div class="boat-gradient"></div>'+
+      '<div class="boat-badges">'+
+        '<div class="boat-badge-avail">'+t(b.badgeKey)+'</div>'+
+        '<div class="boat-badge-type">'+t(b.typeKey)+'</div>'+
+      '</div>'+
+      '<div class="glass-panel">'+
+        '<div class="glass-hdr">'+
+          '<div><div class="boat-type-lbl" style="color:'+b.accent+'">'+t(b.typeKey)+'</div><div class="boat-name-big">'+b.name+'</div></div>'+
+          '<div><div class="boat-from-lbl">'+from+'</div><div class="boat-price-big" style="color:'+b.accent+'">'+
+            '<span class="price-num">&#8364;'+b.price.toLocaleString()+'</span>'+
+            '<span style="font-family:Inter,sans-serif;font-size:0.68rem;color:rgba(77,96,112,1)">'+perDay+'</span>'+
+          '</div></div>'+
+        '</div>'+
+        '<div class="boat-specs-grid">'+specs.map(function(s){return '<div class="spec-item"><div class="spec-lbl">'+s.l+'</div><div class="spec-val">'+s.v+'</div></div>';}).join('')+'</div>'+
+        '<div class="boat-cta-row">'+
+          '<button class="boat-cta-main" data-action="reserve" style="background:'+b.accent+'">'+t('fleet.reserve')+'</button>'+
+          '<button class="boat-cta-sec" data-action="expand">'+t('fleet.details')+'</button>'+
+        '</div>'+
+      '</div>';
+    card.addEventListener('click',function(e){
+      var action=e.target.closest('[data-action]');
+      if(action){
+        e.stopPropagation();
+        if(action.dataset.action==='reserve'){document.getElementById('az-reserva').scrollIntoView({behavior:'smooth'});}
+        else if(action.dataset.action==='expand'){card.classList.toggle('expanded');}
+      } else {card.classList.toggle('expanded');}
+    });
+    card.addEventListener('mouseenter',function(){card.style.boxShadow='0 32px 64px rgba(0,0,0,0.5),0 0 0 1px rgba(201,169,110,0.15)';card.querySelector('.boat-img-full').style.transform='scale(1.08)';});
+    card.addEventListener('mouseleave',function(){card.style.boxShadow='0 8px 32px rgba(0,0,0,0.35)';card.querySelector('.boat-img-full').style.transform='scale(1)';});
+    grid.appendChild(card);
+  });
 }
 renderFlota();
 
-// ── RENDER EXPERIENCIAS ───────────────────────────────────────────
-let activeExp = 0;
-function renderExps() {
-  document.getElementById('expTabs').innerHTML = EXPERIENCES.map((e, i) => `
-    <button class="exp-tab ${i === activeExp ? 'active' : ''}" onclick="setExp(${i})">${t(e.tagKey)} · ${t(e.titleKey).split(' ')[0]}</button>
-  `).join('');
-  const e = EXPERIENCES[activeExp];
-  const fromWord = currentLang==='de'?'ab':currentLang==='en'?'from':'desde';
-  document.getElementById('expContent').innerHTML = `
-    <div class="exp-img">
-      <img src="${e.img}" alt="${t(e.titleKey)}" loading="lazy">
-      <div class="exp-img-overlay"></div>
-      <div class="exp-tag">${t(e.tagKey)}</div>
-      <div class="exp-duration">⏱ ${t(e.durationKey)}</div>
-      <div class="exp-price-tag" style="text-align:right;bottom:1rem;right:1rem;position:absolute">
-        <div style="font-size:0.5rem;color:rgba(255,255,255,0.4);letter-spacing:0.08em;text-transform:uppercase">${fromWord}</div>
-        <div style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold)">${t(e.priceKey)}</div>
-      </div>
-    </div>
-    <div class="exp-info">
-      <div>
-        <h3 class="pf" style="font-size:1.6rem;font-weight:400;color:#f5f0e8;margin-bottom:1rem">${t(e.titleKey)}</h3>
-        <p class="exp-desc">${t(e.descKey)}</p>
-      </div>
-      <div class="exp-waypoints">
-        ${e.waypointKeys.map(([loc, dayKey]) => `
-          <div class="waypoint">
-            <div class="waypoint-dot"></div>
-            <span class="waypoint-day">${t(dayKey)}</span>
-            <span style="font-size:0.82rem;color:var(--text)">${loc}</span>
-          </div>
-        `).join('')}
-      </div>
-      <div style="display:flex;gap:1rem">
-        <button class="btn-gold" onclick="document.getElementById('az-reserva').scrollIntoView({behavior:'smooth'})">${t('exp.btn1')}</button>
-        <button class="btn-ghost">↓ ${t('exp.btn2')}</button>
-      </div>
-    </div>
-  `;
+var activeExp=0;
+var routeAnimId=null;
+function renderExps(){
+  document.getElementById('expTabs').innerHTML=EXPERIENCES.map(function(e,i){
+    return '<button class="exp-tab'+(i===activeExp?' active':'')+'" onclick="setExp('+i+')">'+
+      '<span class="exp-tab-tag" style="color:'+(i===activeExp?'var(--gold)':'#3d5060')+'">'+t(e.tagKey)+'</span>'+
+      t(e.titleKey)+'</button>';
+  }).join('');
+  var e=EXPERIENCES[activeExp];
+  var from=currentLang==='de'?'ab':currentLang==='en'?'from':'desde';
+  var pts=e.waypoints.map(function(w){return{x:parseFloat(w.x),y:parseFloat(w.y)};});
+  var polyAll=pts.map(function(p){return p.x+','+p.y;}).join(' ');
+  var dotsHtml=pts.map(function(p,i){return '<g id="wpDot'+i+'" opacity="0"><circle cx="'+p.x+'" cy="'+p.y+'" r="1.6" fill="none" stroke="'+e.routeColor+'" stroke-width="0.22" opacity="0.5"/><circle cx="'+p.x+'" cy="'+p.y+'" r="0.75" fill="'+(i===0||e.waypoints[i].end?e.routeColor:'#f0ece4')+'"/></g>';}).join('');
+  var labelsHtml=e.waypoints.map(function(w,i){return '<div id="wpLabel'+i+'" class="map-lbl" style="left:'+w.x+';top:'+w.y+';opacity:0"><div class="map-lbl-day" style="color:'+e.routeColor+'">'+t(w.dayKey)+'</div><div class="map-lbl-name">'+w.label+'</div><div class="map-lbl-line" style="background:'+e.routeColor+'"></div></div>';}).join('');
+  var wayptsHtml=e.waypoints.map(function(w,j){return '<div class="exp-wp"><div class="wp-dot" style="background:'+(j===0||w.end?e.routeColor:'rgba(255,255,255,0.2)')+'"></div><span class="wp-day">'+t(w.dayKey)+'</span><span class="wp-lbl" style="color:'+(j===0||w.end?e.routeColor:'#9ba8b5')+'">'+w.label+'</span></div>';}).join('');
+  document.getElementById('expContent').innerHTML=
+    '<div class="exp-panel">'+
+      '<div class="exp-map-side">'+
+        '<img class="exp-map-img" src="'+e.img+'" alt="'+t(e.titleKey)+'">'+
+        '<div class="exp-map-overlay"></div>'+
+        '<svg class="exp-map-svg" viewBox="0 0 100 100" preserveAspectRatio="none">'+
+          '<polyline points="'+polyAll+'" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.35" stroke-dasharray="0.8 0.6"/>'+
+          '<polyline id="routeLine" points="'+pts.slice(0,2).map(function(p){return p.x+','+p.y;}).join(' ')+'" fill="none" stroke="'+e.routeColor+'" stroke-width="0.45" stroke-linecap="round" stroke-linejoin="round" opacity="0"/>'+
+          dotsHtml+
+        '</svg>'+
+        labelsHtml+
+      '</div>'+
+      '<div class="exp-info-side">'+
+        '<div>'+
+          '<div class="exp-tag-badge">'+t(e.tagKey)+'</div>'+
+          '<h3 class="exp-h3 pf">'+t(e.titleKey)+'</h3>'+
+          '<p class="exp-desc">'+t(e.descKey)+'</p>'+
+          '<div class="exp-waypoints">'+wayptsHtml+'</div>'+
+        '</div>'+
+        '<div class="exp-cta-row">'+
+          '<button class="exp-btn1" onclick="document.getElementById(&quot;az-reserva&quot;).scrollIntoView({behavior:&quot;smooth&quot;})">'+t('exp.btn1')+'</button>'+
+          '<button class="exp-btn2">&#8595; '+t('exp.btn2')+'</button>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  animateRoute(e,pts);
 }
-function setExp(i) { activeExp = i; renderExps(); }
+function animateRoute(e,pts){
+  if(routeAnimId)cancelAnimationFrame(routeAnimId);
+  var line=document.getElementById('routeLine');
+  if(!line)return;
+  var start=null,dur=900;
+  function step(ts){
+    if(!start)start=ts;
+    var prog=Math.min((ts-start)/dur,1);
+    var n=Math.max(2,Math.ceil(prog*pts.length));
+    line.setAttribute('points',pts.slice(0,n).map(function(p){return p.x+','+p.y;}).join(' '));
+    line.setAttribute('opacity',Math.min(prog*2,1));
+    pts.forEach(function(_,i){
+      var el=document.getElementById('wpDot'+i),lb=document.getElementById('wpLabel'+i);
+      var show=prog>i/(pts.length-1)*0.9?1:0;
+      if(el)el.setAttribute('opacity',show);
+      if(lb)lb.style.opacity=show;
+    });
+    if(prog<1)routeAnimId=requestAnimationFrame(step);
+  }
+  routeAnimId=requestAnimationFrame(step);
+}
+function setExp(i){activeExp=i;renderExps();}
 renderExps();
 
-// ── RENDER GALERÍA ────────────────────────────────────────────────
-document.getElementById('galleryGrid').innerHTML = GALLERY.map((g, i) => `
-  <div class="gal-item" onclick="openLightbox(${i})">
-    <img src="${g.src}" alt="${g.cap}" loading="lazy">
-    <div class="gal-overlay"><span class="gal-caption">${g.cap}</span></div>
-  </div>
-`).join('');
+document.getElementById('galleryGrid').innerHTML=GALLERY.map(function(g,i){
+  return '<div class="gal-item" onclick="openLightbox('+i+')">'+
+    '<img src="'+g.thumb+'" alt="'+g.cap+'" loading="lazy">'+
+    '<div class="gal-overlay">'+
+      '<div class="gal-zoom">⊕</div>'+
+      '<div class="gal-cap-wrap"><div class="gal-cap-lbl">'+(currentLang==='de'?'Hohe Auflösung':currentLang==='en'?'High resolution':'Alta resolución')+'</div><div class="gal-cap-txt pf">'+g.cap+'</div></div>'+
+    '</div></div>';
+}).join('');
 
-// ── RENDER TESTIMONIALES ──────────────────────────────────────────
-const TESTIMONIALS = [
-  { name:'Claudia M.', locKey:'test.loc1', textKey:'test.text1', stars:5 },
-  { name:'Thomas K.', locKey:'test.loc2', textKey:'test.text2', stars:5 },
-  { name:'James W.',  locKey:'test.loc3', textKey:'test.text3', stars:5 },
-];
-function renderTestimonials() {
-  document.getElementById('testGrid').innerHTML = TESTIMONIALS.map(item => `
-    <div class="test-card">
-      <div class="test-stars">${'★'.repeat(item.stars)}</div>
-      <p class="test-text">"${t(item.textKey)}"</p>
-      <div class="test-author">${item.name}</div>
-      <div class="test-loc">${t(item.locKey)}</div>
-    </div>
-  `).join('');
+function renderTestimonials(){
+  document.getElementById('testGrid').innerHTML=TESTIMONIALS.map(function(item){
+    return '<div class="test-card">'+
+      '<div class="test-stars">'+'★'.repeat(item.stars)+'</div>'+
+      '<p class="test-text">"'+t(item.textKey)+'"</p>'+
+      '<div class="test-footer"><span class="test-name">'+item.name+'</span><span class="test-loc">'+t(item.locKey)+'</span></div>'+
+    '</div>';
+  }).join('');
 }
 renderTestimonials();
 
-// ── LIGHTBOX ──────────────────────────────────────────────────────
-let lbIdx = 0;
-function openLightbox(i) { lbIdx = i; document.getElementById('lightboxImg').src = GALLERY[i].src; document.getElementById('lightboxCaption').textContent = GALLERY[i].cap; document.getElementById('lightbox').classList.add('open'); }
-function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
-function moveLightbox(d) { lbIdx = (lbIdx + d + GALLERY.length) % GALLERY.length; openLightbox(lbIdx); }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); if (e.key === 'ArrowRight') moveLightbox(1); if (e.key === 'ArrowLeft') moveLightbox(-1); });
-
-// ── FORMULARIO DE RESERVA ─────────────────────────────────────────
-async function enviarReserva() {
-  const nombre = document.getElementById('fNombre').value.trim();
-  const email = document.getElementById('fEmail').value.trim();
-  const tel = document.getElementById('fTel').value.trim();
-  const fecha = document.getElementById('fFecha').value;
-  const barco = document.getElementById('fBarco').value;
-  const huespedes = document.getElementById('fHuespedes').value;
-  const ruta = document.getElementById('fRuta').value;
-  const notas = document.getElementById('fNotas').value.trim();
-  if (!nombre || !email || !fecha || !barco || !huespedes) { alert('Por favor complete los campos obligatorios.'); return; }
-  const btn = document.getElementById('btnReservar');
-  btn.textContent = 'Enviando...'; btn.disabled = true;
-  try {
-    const msgs = [{ role: 'user', content: `[Language: respond in Spanish]` }, { role: 'assistant', content: 'Entendido.' }, { role: 'user', content: `Quiero hacer una reserva: Nombre: ${nombre}, Email: ${email}, Teléfono: ${tel||'no indicado'}, Fecha de salida: ${fecha}, Barco: ${barco}, Huéspedes: ${huespedes}, Ruta: ${ruta||'por confirmar'}, Notas: ${notas||'ninguna'}. Procede con la reserva.` }];
-    const res = await fetch(BASE + '/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: msgs }) });
-    const data = await res.json();
-    document.getElementById('formSuccess').style.display = 'block';
-    document.getElementById('formSuccess').querySelector('p').textContent = data.reply || 'Solicitud recibida. Nuestro equipo le contactará en menos de 24 horas.';
-    btn.style.display = 'none';
-  } catch (e) {
-    alert('Error al enviar la reserva. Por favor inténtelo de nuevo.');
-    btn.textContent = 'Solicitar Reserva'; btn.disabled = false;
+// Event delegation para botones generados dinamicamente
+document.addEventListener('click',function(e){
+  var btn=e.target.closest('[data-action]');
+  if(btn){
+    if(btn.dataset.action==='go-reserva'){document.getElementById('az-reserva').scrollIntoView({behavior:'smooth'});}
   }
+  var expBtn=e.target.closest('[data-expidx]');
+  if(expBtn){setExp(parseInt(expBtn.dataset.expidx));}
+});
+
+var lbIdx=0;
+function openLightbox(i){lbIdx=i;document.getElementById('lbImg').src=GALLERY[i].src;document.getElementById('lbCaption').textContent=GALLERY[i].cap;document.getElementById('lightbox').classList.add('open');}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
+function moveLightbox(d){lbIdx=(lbIdx+d+GALLERY.length)%GALLERY.length;openLightbox(lbIdx);}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();if(e.key==='ArrowRight')moveLightbox(1);if(e.key==='ArrowLeft')moveLightbox(-1);});
+
+var BASE=window.location.protocol==='file:'?'https://azure-luxury-charters-production.up.railway.app':window.location.origin;
+async function enviarReserva(){
+  var nombre=document.getElementById('fNombre').value.trim();
+  var email=document.getElementById('fEmail').value.trim();
+  var fecha=document.getElementById('fFecha').value;
+  var barco=document.getElementById('fBarco').value;
+  var huespedes=document.getElementById('fHuespedes').value;
+  if(!nombre||!email||!fecha||!barco||!huespedes){alert(currentLang==='de'?'Bitte füllen Sie alle Pflichtfelder aus.':currentLang==='en'?'Please fill in all required fields.':'Por favor complete los campos obligatorios.');return;}
+  var btn=document.getElementById('btnReservar');
+  btn.textContent=currentLang==='de'?'Senden...':currentLang==='en'?'Sending...':'Enviando...';btn.disabled=true;
+  try{
+    var langNames={es:'Spanish',en:'English',de:'German'};
+    var msgs=[{role:'user',content:'[Language: respond exclusively in '+langNames[currentLang]+']'},{role:'assistant',content:'Understood.'},{role:'user',content:'Reserva: Nombre: '+nombre+', Email: '+email+', Fecha: '+fecha+', Barco: '+barco+', Huéspedes: '+huespedes+', Ruta: '+(document.getElementById('fRuta').value||'por confirmar')+', Notas: '+(document.getElementById('fNotas').value||'ninguna')+'. Procede con la reserva.'}];
+    var res=await fetch(BASE+'/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:msgs})});
+    var data=await res.json();
+    var se=document.getElementById('formSuccess');se.style.display='block';
+    var sm=document.getElementById('successMsg');if(sm)sm.textContent=data.reply||t('form.success.desc');
+    btn.style.display='none';
+  }catch(e){alert(currentLang==='de'?'Verbindungsfehler.':currentLang==='en'?'Connection error. Please try again.':'Error de conexión. Inténtalo de nuevo.');btn.textContent=t('form.submit');btn.disabled=false;}
 }
 
-// ── AI CONCIERGE ──────────────────────────────────────────────────
-const BASE = window.location.protocol === 'file:' ? 'https://azure-luxury-charters-production.up.railway.app' : window.location.origin;
-let chatOpen = false, chatLoading = false, chatHist = [];
-let shownSections = new Set();
-let bubbleTimer = null;
+var chatOpen=false,chatLoading=false,chatHist=[];
+var shownSections=new Set(),bubbleTimer=null;
+var PROACTIVE_KEYS={'az-flota':['proactive.flota',3000],'az-experiencias':['proactive.exp',2800],'az-galeria':['proactive.gallery',2500],'az-testimoniales':['proactive.test',2000],'az-reserva':['proactive.reserva',1500]};
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting&&entry.intersectionRatio>0.35){var id=entry.target.id;if(!shownSections.has(id)&&!chatOpen&&PROACTIVE_KEYS[id]){shownSections.add(id);var key=PROACTIVE_KEYS[id][0],delay=PROACTIVE_KEYS[id][1];clearTimeout(bubbleTimer);bubbleTimer=setTimeout(function(){showBubble(t(key));},delay);}}});},{threshold:0.35});
+Object.keys(PROACTIVE_KEYS).forEach(function(id){var el=document.getElementById(id);if(el)obs.observe(el);});
+setTimeout(function(){if(!chatOpen)showBubble(t('bubble.welcome'));},2500);
 
-const PROACTIVE_KEYS = {
-  'az-flota':         ['proactive.flota',   3000],
-  'az-experiencias':  ['proactive.exp',     2800],
-  'az-galeria':       ['proactive.gallery', 2500],
-  'az-testimoniales': ['proactive.test',    2000],
-  'az-reserva':       ['proactive.reserva', 1500],
-};
+function showBubble(text){if(chatOpen)return;document.getElementById('bubbleText').textContent=text;var b=document.getElementById('conciergeBubble');b.style.display='block';b.style.animation='bubbleIn 0.3s cubic-bezier(0.34,1.56,0.64,1) both';document.getElementById('pingRing').style.display='block';clearTimeout(bubbleTimer);bubbleTimer=setTimeout(dismissBubble,8000);}
+function dismissBubble(){document.getElementById('conciergeBubble').style.display='none';document.getElementById('pingRing').style.display='none';}
+function openFromBubble(){dismissBubble();openChat();}
+function toggleChat(){chatOpen?closeChat():openChat();}
+function openChat(){chatOpen=true;document.getElementById('chatWin').classList.add('open');document.getElementById('conciergeLauncher').style.display='none';dismissBubble();}
+function closeChat(){chatOpen=false;document.getElementById('chatWin').classList.remove('open');document.getElementById('conciergeLauncher').style.display='flex';}
+document.getElementById('conciergeLauncher').onclick=openFromBubble;
+document.getElementById('chatWin').querySelector('.chat-close-btn').onclick=toggleChat;
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && entry.intersectionRatio > 0.35) {
-      const id = entry.target.id;
-      if (!shownSections.has(id) && !chatOpen && PROACTIVE_KEYS[id]) {
-        shownSections.add(id);
-        const [key, delay] = PROACTIVE_KEYS[id];
-        clearTimeout(bubbleTimer);
-        bubbleTimer = setTimeout(() => showBubble(t(key)), delay);
-      }
-    }
-  });
-}, { threshold: 0.35 });
-Object.keys(PROACTIVE_KEYS).forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
-
-// Bienvenida inicial
-setTimeout(() => { if (!chatOpen) showBubble(t('bubble.welcome')); }, 2500);
-
-function showBubble(text) {
-  if (chatOpen) return;
-  document.getElementById('bubbleText').textContent = text;
-  document.getElementById('conciergeBubble').style.display = 'block';
-  document.getElementById('pingRing').style.display = 'block';
-  clearTimeout(bubbleTimer);
-  bubbleTimer = setTimeout(dismissBubble, 8000);
+function addMsg(text,role){var c=document.getElementById('chatMsgs');var d=document.createElement('div');d.className='chat-msg '+role;d.textContent=text;c.appendChild(d);c.scrollTop=999;}
+function showTyping(){var c=document.getElementById('chatMsgs');var d=document.createElement('div');d.className='chat-msg bot';d.id='typing';d.innerHTML='<div class="typing-dots"><span></span><span></span><span></span></div>';c.appendChild(d);c.scrollTop=999;}
+function removeTyping(){var tx=document.getElementById('typing');if(tx)tx.remove();}
+async function sendChat(msg){
+  if(!msg.trim()||chatLoading)return;
+  chatLoading=true;
+  document.getElementById('chatSugs').style.display='none';
+  addMsg(msg,'user');chatHist.push({role:'user',content:msg});showTyping();
+  var langNames={es:'Spanish',en:'English',de:'German'};
+  var langName=langNames[currentLang]||'Spanish';
+  var messages=chatHist.length===1?[{role:'user',content:'[Language: respond exclusively in '+langName+' for the entire conversation]'},{role:'assistant',content:'Understood, I will respond exclusively in '+langName+'.'}].concat(chatHist):chatHist;
+  try{
+    var res=await fetch(BASE+'/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:messages})});
+    var data=await res.json();removeTyping();
+    var reply=data.reply||'Error. Please contact reservas@azureluxury.com';
+    chatHist.push({role:'assistant',content:reply});addMsg(reply,'bot');
+  }catch(e){removeTyping();addMsg('⚓ Connection error. Please try again.','bot');}
+  chatLoading=false;
 }
-function dismissBubble() { document.getElementById('conciergeBubble').style.display = 'none'; document.getElementById('pingRing').style.display = 'none'; }
-document.getElementById('bubbleX').onclick = dismissBubble;
-document.getElementById('bubbleCta').onclick = openFromBubble;
-
-function openFromBubble() { dismissBubble(); openChat(); }
-function toggleChat() { chatOpen ? closeChat() : openChat(); }
-function openChat() { chatOpen = true; document.getElementById('chatWin').classList.add('open'); document.getElementById('conciergeLauncher').style.display = 'none'; document.getElementById('conciergeBadge').style.display = 'none'; dismissBubble(); }
-function closeChat() { chatOpen = false; document.getElementById('chatWin').classList.remove('open'); document.getElementById('conciergeLauncher').style.display = 'flex'; document.getElementById('conciergeBadge').style.display = 'block'; }
-document.getElementById('conciergeLauncher').onclick = openFromBubble;
-
-function addMsg(text, role) {
-  const c = document.getElementById('chatMsgs');
-  const d = document.createElement('div'); d.className = 'chat-msg ' + role; d.textContent = text;
-  c.appendChild(d); c.scrollTop = 999;
-}
-function showTyping() {
-  const c = document.getElementById('chatMsgs');
-  const d = document.createElement('div'); d.className = 'chat-msg bot'; d.id = 'typing';
-  d.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
-  c.appendChild(d); c.scrollTop = 999;
-}
-function removeTyping() { const t = document.getElementById('typing'); if (t) t.remove(); }
-
-async function sendChat(msg) {
-  if (!msg.trim() || chatLoading) return;
-  chatLoading = true;
-  document.getElementById('chatSugs').style.display = 'none';
-  addMsg(msg, 'user');
-  chatHist.push({ role: 'user', content: msg });
-  showTyping();
-  const langNames = { es:'Spanish', en:'English', de:'German' };
-  const langName = langNames[currentLang] || 'Spanish';
-  const messages = chatHist.length === 1
-    ? [{ role:'user', content:`[Language: respond exclusively in ${langName} for the entire conversation]` }, { role:'assistant', content:`Understood, I will respond exclusively in ${langName}.` }, ...chatHist]
-    : chatHist;
-  try {
-    const res = await fetch(BASE + '/chat', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ messages }) });
-    const data = await res.json();
-    removeTyping();
-    const reply = data.reply || 'Error. Please contact us at reservas@azureluxury.com';
-    chatHist.push({ role:'assistant', content:reply });
-    addMsg(reply, 'bot');
-  } catch {
-    removeTyping();
-    addMsg('⚓ Connection error. Please try again.', 'bot');
-  }
-  chatLoading = false;
-}
-function sendMsg() { const inp = document.getElementById('chatInp'); sendChat(inp.value); inp.value = ''; }
-function quickMsg(m) { sendChat(m); }
-document.getElementById('chatInp').addEventListener('keydown', e => { if (e.key === 'Enter') { sendChat(e.target.value); e.target.value = ''; } });
-
-// Aplicar traducciones iniciales (ES por defecto)
+function sendMsg(){var inp=document.getElementById('chatInp');sendChat(inp.value);inp.value='';}
+function quickMsg(m){sendChat(m);}
+document.getElementById('chatInp').addEventListener('keydown',function(e){if(e.key==='Enter'){sendChat(e.target.value);e.target.value='';}});
 applyTranslations();
 </script>
 </body>
