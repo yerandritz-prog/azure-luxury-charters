@@ -19,6 +19,11 @@ nav.scrolled{background:rgba(4,9,18,0.97);backdrop-filter:blur(12px);border-bott
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{font-size:0.72rem;color:rgba(255,255,255,0.6);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
 .nav-links a:hover{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.lang-selector{display:flex;gap:0.25rem}
+.lang-btn{background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);padding:0.28rem 0.55rem;font-size:0.62rem;font-weight:600;letter-spacing:0.06em;cursor:pointer;border-radius:2px;transition:all 0.2s;font-family:'Inter',sans-serif}
+.lang-btn:hover{border-color:rgba(201,169,110,0.5);color:rgba(201,169,110,0.8)}
+.lang-btn.active{border-color:var(--gold);color:var(--gold);background:var(--gold2)}
 .nav-cta{background:var(--gold);color:var(--dark);padding:0.5rem 1.4rem;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border:none;border-radius:2px;transition:all 0.2s;font-family:'Inter',sans-serif}
 .nav-cta:hover{background:#d4b07a}
 
@@ -225,12 +230,19 @@ footer .sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;t
 <nav id="nav">
   <div class="nav-logo pf">Azure · <em>Luxury</em></div>
   <ul class="nav-links">
-    <li><a href="#az-flota">Flota</a></li>
-    <li><a href="#az-experiencias">Experiencias</a></li>
-    <li><a href="#az-galeria">Galería</a></li>
-    <li><a href="#az-testimoniales">Testimonios</a></li>
+    <li><a href="#az-flota" data-i18n="nav.fleet">Flota</a></li>
+    <li><a href="#az-experiencias" data-i18n="nav.experiences">Experiencias</a></li>
+    <li><a href="#az-galeria" data-i18n="nav.gallery">Galería</a></li>
+    <li><a href="#az-testimoniales" data-i18n="nav.testimonials">Testimonios</a></li>
   </ul>
-  <button class="nav-cta" onclick="document.getElementById('az-reserva').scrollIntoView({behavior:'smooth'})">Reservar</button>
+  <div class="nav-right">
+    <div class="lang-selector">
+      <button class="lang-btn active" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('de')">DE</button>
+    </div>
+    <button class="nav-cta" data-i18n="nav.cta" onclick="document.getElementById('az-reserva').scrollIntoView({behavior:'smooth'})">Reservar</button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -238,17 +250,17 @@ footer .sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;t
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-sub">Mediterráneo · Caribe · Atlántico</div>
-    <h1 class="hero-title pf">Navega más allá<br>de lo <em>ordinario</em></h1>
-    <p class="hero-desc">Experiencias náuticas de lujo a medida. Tres embarcaciones excepcionales, rutas irrepetibles y un servicio concierge disponible 24/7.</p>
+    <div class="hero-sub" data-i18n="hero.sub">Mediterráneo · Caribe · Atlántico</div>
+    <h1 class="hero-title pf" data-i18n="hero.title">Navega más allá<br>de lo <em>ordinario</em></h1>
+    <p class="hero-desc" data-i18n="hero.desc">Experiencias náuticas de lujo a medida. Tres embarcaciones excepcionales, rutas irrepetibles y un servicio concierge disponible 24/7.</p>
     <div class="hero-btns">
-      <button class="btn-gold" onclick="document.getElementById('az-flota').scrollIntoView({behavior:'smooth'})">Ver la flota</button>
-      <button class="btn-ghost" onclick="document.getElementById('az-reserva').scrollIntoView({behavior:'smooth'})">Reservar ahora</button>
+      <button class="btn-gold" data-i18n="hero.btn1" onclick="document.getElementById('az-flota').scrollIntoView({behavior:'smooth'})">Ver la flota</button>
+      <button class="btn-ghost" data-i18n="hero.btn2" onclick="document.getElementById('az-reserva').scrollIntoView({behavior:'smooth'})">Reservar ahora</button>
     </div>
     <div class="hero-badges">
-      <div><div class="badge-num pf">3</div><div class="badge-lbl">Embarcaciones</div></div>
-      <div><div class="badge-num pf">12</div><div class="badge-lbl">Destinos</div></div>
-      <div><div class="badge-num pf">24/7</div><div class="badge-lbl">AI Concierge</div></div>
+      <div><div class="badge-num pf">3</div><div class="badge-lbl" data-i18n="hero.badge1">Embarcaciones</div></div>
+      <div><div class="badge-num pf">12</div><div class="badge-lbl" data-i18n="hero.badge2">Destinos</div></div>
+      <div><div class="badge-num pf">24/7</div><div class="badge-lbl" data-i18n="hero.badge3">AI Concierge</div></div>
     </div>
   </div>
   <div class="scroll-ind">
@@ -260,24 +272,22 @@ footer .sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;t
 <!-- FLOTA -->
 <section id="az-flota">
   <div style="max-width:1100px;margin:0 auto">
-    <div class="section-sub">Nuestra Flota</div>
-    <h2 class="section-title pf">Embarcaciones de <em>Excepción</em></h2>
+    <div class="section-sub" data-i18n="fleet.sub">Nuestra Flota</div>
+    <h2 class="section-title pf" data-i18n="fleet.title">Embarcaciones de <em>Excepción</em></h2>
     <div class="flota-filters">
-      <button class="flota-filter active" onclick="filterFlota('all',this)">Toda la Flota</button>
-      <button class="flota-filter" onclick="filterFlota('patron',this)">Con Patrón</button>
-      <button class="flota-filter" onclick="filterFlota('no-patron',this)">Sin Patrón</button>
+      <button class="flota-filter active" data-i18n="fleet.all" onclick="filterFlota('all',this)">Toda la Flota</button>
+      <button class="flota-filter" data-i18n="fleet.captain" onclick="filterFlota('patron',this)">Con Patrón</button>
+      <button class="flota-filter" data-i18n="fleet.nocaptain" onclick="filterFlota('no-patron',this)">Sin Patrón</button>
     </div>
-    <div class="flota-grid" id="flotaGrid">
-      <!-- generado por JS -->
-    </div>
+    <div class="flota-grid" id="flotaGrid"></div>
   </div>
 </section>
 
 <!-- EXPERIENCIAS -->
 <section id="az-experiencias">
   <div style="max-width:1100px;margin:0 auto">
-    <div class="section-sub">Rutas & Destinos</div>
-    <h2 class="section-title pf">Experiencias <em>Únicas</em></h2>
+    <div class="section-sub" data-i18n="exp.sub">Rutas & Destinos</div>
+    <h2 class="section-title pf" data-i18n="exp.title">Experiencias <em>Únicas</em></h2>
     <div class="exp-tabs" id="expTabs"></div>
     <div class="exp-content" id="expContent"></div>
   </div>
@@ -286,8 +296,8 @@ footer .sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;t
 <!-- GALERÍA -->
 <section id="az-galeria">
   <div style="max-width:1100px;margin:0 auto">
-    <div class="section-sub">Galería</div>
-    <h2 class="section-title pf" style="margin-bottom:2.5rem">Momentos <em>Únicos</em></h2>
+    <div class="section-sub" data-i18n="gallery.sub">Galería</div>
+    <h2 class="section-title pf" style="margin-bottom:2.5rem" data-i18n="gallery.title">Momentos <em>Únicos</em></h2>
     <div class="gallery-grid" id="galleryGrid"></div>
   </div>
 </section>
@@ -295,8 +305,8 @@ footer .sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;t
 <!-- TESTIMONIALES -->
 <section id="az-testimoniales">
   <div style="max-width:1100px;margin:0 auto">
-    <div class="section-sub">Testimonios</div>
-    <h2 class="section-title pf" style="margin-bottom:3rem">Lo que dicen nuestros <em>clientes</em></h2>
+    <div class="section-sub" data-i18n="test.sub">Testimonios</div>
+    <h2 class="section-title pf" style="margin-bottom:3rem" data-i18n="test.title">Lo que dicen nuestros <em>clientes</em></h2>
     <div class="test-grid" id="testGrid"></div>
   </div>
 </section>
@@ -305,50 +315,50 @@ footer .sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;t
 <section id="az-reserva">
   <div class="reserva-inner">
     <div style="text-align:center;margin-bottom:3rem">
-      <div class="section-sub">Reserva Directa · Mejor Precio Garantizado</div>
-      <h2 class="section-title pf">Reserve su <em>Experiencia</em></h2>
-      <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;margin-top:0.75rem">O use el AI Concierge — le ayuda a reservar directamente desde el chat ⚓</p>
+      <div class="section-sub" data-i18n="res.sub">Reserva Directa · Mejor Precio Garantizado</div>
+      <h2 class="section-title pf" data-i18n="res.title">Reserve su <em>Experiencia</em></h2>
+      <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;margin-top:0.75rem" data-i18n="res.desc">O use el AI Concierge — le ayuda a reservar directamente desde el chat ⚓</p>
     </div>
     <div class="form-grid">
-      <div class="form-group"><div class="form-label">Nombre completo</div><input class="form-input" id="fNombre" type="text" placeholder="Su nombre"></div>
+      <div class="form-group"><div class="form-label" data-i18n="form.name">Nombre completo</div><input class="form-input" id="fNombre" type="text" data-i18n-ph="form.name.ph" placeholder="Su nombre"></div>
       <div class="form-group"><div class="form-label">Email</div><input class="form-input" id="fEmail" type="email" placeholder="su@email.com"></div>
-      <div class="form-group"><div class="form-label">Teléfono</div><input class="form-input" id="fTel" type="tel" placeholder="+34 600..."></div>
-      <div class="form-group"><div class="form-label">Fecha de salida</div><input class="form-input" id="fFecha" type="date"></div>
-      <div class="form-group"><div class="form-label">Embarcación</div>
+      <div class="form-group"><div class="form-label" data-i18n="form.phone">Teléfono</div><input class="form-input" id="fTel" type="tel" placeholder="+34 600..."></div>
+      <div class="form-group"><div class="form-label" data-i18n="form.date">Fecha de salida</div><input class="form-input" id="fFecha" type="date"></div>
+      <div class="form-group"><div class="form-label" data-i18n="form.boat">Embarcación</div>
         <select class="form-select" id="fBarco">
-          <option value="">Seleccionar barco...</option>
+          <option value="" data-i18n="form.boat.ph">Seleccionar barco...</option>
           <option value="azure_sovereign">Azure Sovereign · Yate de Motor · €4.500/día</option>
           <option value="horizon_bleu">Horizon Bleu · Catamarán · €2.800/día</option>
           <option value="mistral_blanc">Mistral Blanc · Velero · €1.900/día</option>
         </select>
       </div>
-      <div class="form-group"><div class="form-label">Nº de huéspedes</div>
+      <div class="form-group"><div class="form-label" data-i18n="form.guests">Nº de huéspedes</div>
         <select class="form-select" id="fHuespedes">
-          <option value="">Seleccionar...</option>
+          <option value="" data-i18n="form.guests.ph">Seleccionar...</option>
           <option>2</option><option>4</option><option>6</option><option>8</option><option>10</option><option>12</option>
         </select>
       </div>
-      <div class="form-group full"><div class="form-label">Destino / Ruta</div>
+      <div class="form-group full"><div class="form-label" data-i18n="form.route">Destino / Ruta</div>
         <select class="form-select" id="fRuta">
-          <option value="">Seleccionar destino...</option>
-          <option value="formentera">Puesta de sol en Formentera · 7 días</option>
-          <option value="menorca">Calas Secretas de Menorca · 5 días</option>
-          <option value="amalfi">Capri & Costa Amalfitana · 10 días</option>
-          <option value="mallorca">Calas de Mallorca · 3 días</option>
-          <option value="ibiza">Ibiza & Formentera · 5 días</option>
-          <option value="personalizada">Ruta personalizada</option>
+          <option value="" data-i18n="form.route.ph">Seleccionar destino...</option>
+          <option value="formentera" data-i18n="form.route.formentera">Puesta de sol en Formentera · 7 días</option>
+          <option value="menorca" data-i18n="form.route.menorca">Calas Secretas de Menorca · 5 días</option>
+          <option value="amalfi" data-i18n="form.route.amalfi">Capri & Costa Amalfitana · 10 días</option>
+          <option value="mallorca" data-i18n="form.route.mallorca">Calas de Mallorca · 3 días</option>
+          <option value="ibiza" data-i18n="form.route.ibiza">Ibiza & Formentera · 5 días</option>
+          <option value="personalizada" data-i18n="form.route.custom">Ruta personalizada</option>
         </select>
       </div>
-      <div class="form-group full"><div class="form-label">Notas especiales (celebraciones, alergias, etc.)</div>
-        <input class="form-input" id="fNotas" type="text" placeholder="Opcional...">
+      <div class="form-group full"><div class="form-label" data-i18n="form.notes">Notas especiales (celebraciones, alergias, etc.)</div>
+        <input class="form-input" id="fNotas" type="text" data-i18n-ph="form.notes.ph" placeholder="Opcional...">
       </div>
     </div>
-    <button class="btn-reserva" id="btnReservar" onclick="enviarReserva()">Solicitar Reserva</button>
+    <button class="btn-reserva" id="btnReservar" data-i18n="form.submit" onclick="enviarReserva()">Solicitar Reserva</button>
     <div id="formSuccess" class="form-success">
-      <h4>✓ Solicitud recibida</h4>
-      <p>Nuestro equipo le contactará en menos de 24 horas para confirmar los detalles. Recibirá un email de confirmación en breve.</p>
+      <h4 data-i18n="form.success.title">✓ Solicitud recibida</h4>
+      <p data-i18n="form.success.desc">Nuestro equipo le contactará en menos de 24 horas para confirmar los detalles.</p>
     </div>
-    <p class="form-note">Confirmación en menos de 24h · Cancelación gratuita hasta 48h antes</p>
+    <p class="form-note" data-i18n="form.note">Confirmación en menos de 24h · Cancelación gratuita hasta 48h antes</p>
   </div>
 </section>
 
@@ -420,6 +430,195 @@ footer .sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;t
 </div>
 
 <script>
+// ── SISTEMA DE TRADUCCIONES ──────────────────────────────────────
+let currentLang = 'es';
+
+const T = {
+  es: {
+    'nav.fleet':'Flota','nav.experiences':'Experiencias','nav.gallery':'Galería','nav.testimonials':'Testimonios','nav.cta':'Reservar',
+    'hero.sub':'Mediterráneo · Caribe · Atlántico',
+    'hero.title':'Navega más allá<br>de lo <em>ordinario</em>',
+    'hero.desc':'Experiencias náuticas de lujo a medida. Tres embarcaciones excepcionales, rutas irrepetibles y un servicio concierge disponible 24/7.',
+    'hero.btn1':'Ver la flota','hero.btn2':'Reservar ahora',
+    'hero.badge1':'Embarcaciones','hero.badge2':'Destinos','hero.badge3':'AI Concierge','hero.scroll':'Descubrir',
+    'fleet.sub':'Nuestra Flota','fleet.title':'Embarcaciones de <em>Excepción</em>',
+    'fleet.all':'Toda la Flota','fleet.captain':'Con Patrón','fleet.nocaptain':'Sin Patrón',
+    'exp.sub':'Rutas & Destinos','exp.title':'Experiencias <em>Únicas</em>',
+    'gallery.sub':'Galería','gallery.title':'Momentos <em>Únicos</em>',
+    'test.sub':'Testimonios','test.title':'Lo que dicen nuestros <em>clientes</em>',
+    'res.sub':'Reserva Directa · Mejor Precio Garantizado','res.title':'Reserve su <em>Experiencia</em>',
+    'res.desc':'O use el AI Concierge — le ayuda a reservar directamente desde el chat ⚓',
+    'form.name':'Nombre completo','form.name.ph':'Su nombre','form.phone':'Teléfono','form.date':'Fecha de salida',
+    'form.boat':'Embarcación','form.boat.ph':'Seleccionar barco...','form.guests':'Nº de huéspedes','form.guests.ph':'Seleccionar...',
+    'form.route':'Destino / Ruta','form.route.ph':'Seleccionar destino...',
+    'form.route.formentera':'Puesta de sol en Formentera · 7 días','form.route.menorca':'Calas Secretas de Menorca · 5 días',
+    'form.route.amalfi':'Capri & Costa Amalfitana · 10 días','form.route.mallorca':'Calas de Mallorca · 3 días',
+    'form.route.ibiza':'Ibiza & Formentera · 5 días','form.route.custom':'Ruta personalizada',
+    'form.notes':'Notas especiales (celebraciones, alergias, etc.)','form.notes.ph':'Opcional...',
+    'form.submit':'Solicitar Reserva','form.note':'Confirmación en menos de 24h · Cancelación gratuita hasta 48h antes',
+    'form.success.title':'✓ Solicitud recibida','form.success.desc':'Nuestro equipo le contactará en menos de 24 horas para confirmar los detalles.',
+    'sticky.text':'Reserva directa — <strong>Mejor precio garantizado</strong> · Cancelación gratuita 48h',
+    'sticky.btn':'Consultar disponibilidad',
+    'chat.status':'AI Concierge · En línea',
+    'chat.welcome':'Bienvenido a Azure Luxury Charters. Soy su asistente personal — puedo ayudarle a elegir embarcación, diseñar su ruta y gestionar su reserva en español, inglés o alemán. ⚓',
+    'chat.ph':'Escríbanos en cualquier idioma...',
+    'chat.sug1':'¿Qué barco recomienda para 8 personas?','chat.sug2':'Quiero navegar por Formentera en julio','chat.sug3':'¿Qué incluye la ruta de Capri?',
+    'concierge.label':'AI Concierge',
+    'bubble.welcome':'Bienvenido. ¿Puedo ayudarle a encontrar la embarcación perfecta en el Mediterráneo?',
+    'proactive.flota':'Nuestros tres barcos están disponibles para la temporada 2026. ¿Tiene fechas en mente?',
+    'proactive.exp':'Estas rutas son las más solicitadas del Mediterráneo. ¿Le gustaría personalizar alguna?',
+    'proactive.gallery':'Cada imagen es un destino real. ¿Le ayudo a elegir el itinerario perfecto para su grupo?',
+    'proactive.test':'Nuestros clientes repiten cada temporada. ¿Desea una experiencia similar?',
+    'proactive.reserva':'¿Puedo ayudarle a completar su reserva? Confirmación en menos de 24 horas.',
+    'boat.captain.yes':'✓ Incluido','boat.captain.no':'Licencia','boat.guests.label':'Huéspedes',
+    'boat.cabins.label':'Cabinas','boat.speed.label':'Velocidad','boat.range.label':'Autonomía',
+  },
+  en: {
+    'nav.fleet':'Fleet','nav.experiences':'Experiences','nav.gallery':'Gallery','nav.testimonials':'Reviews','nav.cta':'Book Now',
+    'hero.sub':'Mediterranean · Caribbean · Atlantic',
+    'hero.title':'Sail beyond<br>the <em>ordinary</em>',
+    'hero.desc':'Bespoke luxury nautical experiences. Three exceptional vessels, unforgettable routes and a 24/7 AI concierge service.',
+    'hero.btn1':'View the fleet','hero.btn2':'Book now',
+    'hero.badge1':'Vessels','hero.badge2':'Destinations','hero.badge3':'AI Concierge','hero.scroll':'Discover',
+    'fleet.sub':'Our Fleet','fleet.title':'Exceptional <em>Vessels</em>',
+    'fleet.all':'All Fleet','fleet.captain':'With Skipper','fleet.nocaptain':'Without Skipper',
+    'exp.sub':'Routes & Destinations','exp.title':'Unique <em>Experiences</em>',
+    'gallery.sub':'Gallery','gallery.title':'Unique <em>Moments</em>',
+    'test.sub':'Testimonials','test.title':'What our <em>clients</em> say',
+    'res.sub':'Direct Booking · Best Price Guaranteed','res.title':'Book your <em>Experience</em>',
+    'res.desc':'Or use the AI Concierge — helps you book directly from the chat ⚓',
+    'form.name':'Full name','form.name.ph':'Your name','form.phone':'Phone','form.date':'Departure date',
+    'form.boat':'Vessel','form.boat.ph':'Select vessel...','form.guests':'No. of guests','form.guests.ph':'Select...',
+    'form.route':'Destination / Route','form.route.ph':'Select destination...',
+    'form.route.formentera':'Sunset in Formentera · 7 days','form.route.menorca':'Secret Coves of Menorca · 5 days',
+    'form.route.amalfi':'Capri & Amalfi Coast · 10 days','form.route.mallorca':'Mallorca Coves · 3 days',
+    'form.route.ibiza':'Ibiza & Formentera · 5 days','form.route.custom':'Custom route',
+    'form.notes':'Special notes (celebrations, allergies, etc.)','form.notes.ph':'Optional...',
+    'form.submit':'Request Booking','form.note':'Confirmation within 24h · Free cancellation 48h before',
+    'form.success.title':'✓ Request received','form.success.desc':'Our team will contact you within 24 hours to confirm the details.',
+    'sticky.text':'Direct booking — <strong>Best price guaranteed</strong> · Free cancellation 48h',
+    'sticky.btn':'Check availability',
+    'chat.status':'AI Concierge · Online',
+    'chat.welcome':'Welcome to Azure Luxury Charters. I\'m your personal assistant — I can help you choose a vessel, design your route and manage your reservation in Spanish, English or German. ⚓',
+    'chat.ph':'Write to us in any language...',
+    'chat.sug1':'What vessel do you recommend for 8 people?','chat.sug2':'I want to sail around Formentera in July','chat.sug3':'What\'s included in the Capri route?',
+    'concierge.label':'AI Concierge',
+    'bubble.welcome':'Welcome. May I help you find the perfect vessel in the Mediterranean?',
+    'proactive.flota':'All three vessels are available for the 2026 season. Do you have dates in mind?',
+    'proactive.exp':'These are our most requested routes in the Mediterranean. Would you like to customize one?',
+    'proactive.gallery':'Every image is a real destination. May I help you choose the perfect itinerary for your group?',
+    'proactive.test':'Our guests return every season. Would you like a similar experience?',
+    'proactive.reserva':'May I help you complete your booking? Confirmation within 24 hours.',
+    'boat.captain.yes':'✓ Included','boat.captain.no':'Licence req.','boat.guests.label':'Guests',
+    'boat.cabins.label':'Cabins','boat.speed.label':'Speed','boat.range.label':'Range',
+  },
+  de: {
+    'nav.fleet':'Flotte','nav.experiences':'Routen','nav.gallery':'Galerie','nav.testimonials':'Bewertungen','nav.cta':'Buchen',
+    'hero.sub':'Mittelmeer · Karibik · Atlantik',
+    'hero.title':'Segeln jenseits<br>des <em>Gewöhnlichen</em>',
+    'hero.desc':'Maßgeschneiderte Luxus-Segelabenteuer. Drei außergewöhnliche Schiffe, unvergessliche Routen und ein 24/7 KI-Concierge.',
+    'hero.btn1':'Flotte ansehen','hero.btn2':'Jetzt buchen',
+    'hero.badge1':'Schiffe','hero.badge2':'Ziele','hero.badge3':'KI-Concierge','hero.scroll':'Entdecken',
+    'fleet.sub':'Unsere Flotte','fleet.title':'Außergewöhnliche <em>Schiffe</em>',
+    'fleet.all':'Alle Schiffe','fleet.captain':'Mit Skipper','fleet.nocaptain':'Ohne Skipper',
+    'exp.sub':'Routen & Ziele','exp.title':'Einzigartige <em>Erlebnisse</em>',
+    'gallery.sub':'Galerie','gallery.title':'Einzigartige <em>Momente</em>',
+    'test.sub':'Bewertungen','test.title':'Was unsere <em>Gäste</em> sagen',
+    'res.sub':'Direktbuchung · Bestpreis-Garantie','res.title':'Buchen Sie Ihr <em>Erlebnis</em>',
+    'res.desc':'Oder nutzen Sie den KI-Concierge — hilft Ihnen direkt im Chat zu buchen ⚓',
+    'form.name':'Vollständiger Name','form.name.ph':'Ihr Name','form.phone':'Telefon','form.date':'Abfahrtsdatum',
+    'form.boat':'Schiff','form.boat.ph':'Schiff auswählen...','form.guests':'Anzahl Gäste','form.guests.ph':'Auswählen...',
+    'form.route':'Ziel / Route','form.route.ph':'Ziel auswählen...',
+    'form.route.formentera':'Sonnenuntergang auf Formentera · 7 Tage','form.route.menorca':'Geheime Buchten von Menorca · 5 Tage',
+    'form.route.amalfi':'Capri & Amalfiküste · 10 Tage','form.route.mallorca':'Mallorca-Buchten · 3 Tage',
+    'form.route.ibiza':'Ibiza & Formentera · 5 Tage','form.route.custom':'Individuelle Route',
+    'form.notes':'Besondere Wünsche (Feiern, Allergien, etc.)','form.notes.ph':'Optional...',
+    'form.submit':'Anfrage senden','form.note':'Bestätigung innerhalb von 24h · Kostenlose Stornierung 48h vorher',
+    'form.success.title':'✓ Anfrage erhalten','form.success.desc':'Unser Team wird Sie innerhalb von 24 Stunden kontaktieren.',
+    'sticky.text':'Direktbuchung — <strong>Bestpreis-Garantie</strong> · Kostenlose Stornierung 48h',
+    'sticky.btn':'Verfügbarkeit prüfen',
+    'chat.status':'KI-Concierge · Online',
+    'chat.welcome':'Willkommen bei Azure Luxury Charters. Ich bin Ihr persönlicher Assistent — ich kann Ihnen helfen, ein Schiff zu wählen, Ihre Route zu gestalten und Ihre Reservierung auf Deutsch, Englisch oder Spanisch zu verwalten. ⚓',
+    'chat.ph':'Schreiben Sie uns in jeder Sprache...',
+    'chat.sug1':'Welches Schiff empfehlen Sie für 8 Personen?','chat.sug2':'Ich möchte im Juli um Formentera segeln','chat.sug3':'Was ist in der Capri-Route enthalten?',
+    'concierge.label':'KI-Concierge',
+    'bubble.welcome':'Willkommen. Darf ich Ihnen helfen, das perfekte Schiff im Mittelmeer zu finden?',
+    'proactive.flota':'Alle drei Schiffe sind für die Saison 2026 verfügbar. Haben Sie Termine im Sinn?',
+    'proactive.exp':'Dies sind unsere meistgebuchten Routen im Mittelmeer. Möchten Sie eine anpassen?',
+    'proactive.gallery':'Jedes Bild ist ein echtes Reiseziel. Darf ich Ihnen das perfekte Reiseprogramm vorschlagen?',
+    'proactive.test':'Unsere Gäste kommen jede Saison wieder. Möchten Sie ein ähnliches Erlebnis?',
+    'proactive.reserva':'Darf ich Ihnen bei der Buchung helfen? Bestätigung innerhalb von 24 Stunden.',
+    'boat.captain.yes':'✓ Inkl.','boat.captain.no':'Führerschein','boat.guests.label':'Gäste',
+    'boat.cabins.label':'Kabinen','boat.speed.label':'Geschw.','boat.range.label':'Reichweite',
+  }
+};
+
+// Función t() — obtener traducción
+function t(key) { return T[currentLang]?.[key] || T.es[key] || key; }
+
+// Aplicar todas las traducciones al DOM
+function applyTranslations() {
+  // data-i18n → innerHTML
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = t(key);
+    if (val) el.innerHTML = val;
+  });
+  // data-i18n-ph → placeholder
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    const val = t(key);
+    if (val) el.placeholder = val;
+  });
+  // Chat UI
+  const chatStatus = document.querySelector('.chat-hdr-status');
+  if (chatStatus) chatStatus.innerHTML = `<span class="dot-green"></span>${t('chat.status')}`;
+  const chatInp = document.getElementById('chatInp');
+  if (chatInp) chatInp.placeholder = t('chat.ph');
+  const launcher = document.querySelector('.concierge-launcher-label');
+  if (launcher) launcher.textContent = t('concierge.label');
+  // Sugerencias del chat
+  const sugs = document.querySelectorAll('.chat-sug');
+  if (sugs[0]) sugs[0].textContent = t('chat.sug1');
+  if (sugs[1]) sugs[1].textContent = t('chat.sug2');
+  if (sugs[2]) sugs[2].textContent = t('chat.sug3');
+  if (sugs[0]) sugs[0].onclick = () => quickMsg(t('chat.sug1'));
+  if (sugs[1]) sugs[1].onclick = () => quickMsg(t('chat.sug2'));
+  if (sugs[2]) sugs[2].onclick = () => quickMsg(t('chat.sug3'));
+  // Sticky bar
+  const stickyText = document.querySelector('.sticky-text');
+  if (stickyText) stickyText.innerHTML = t('sticky.text');
+  const stickyBtn = document.querySelector('.sticky-btn');
+  if (stickyBtn) stickyBtn.textContent = t('sticky.btn');
+  // Re-renderizar secciones dinámicas
+  renderFlota();
+  renderExps();
+  // html lang
+  document.documentElement.lang = currentLang;
+}
+
+// Cambiar idioma
+function setLang(lang) {
+  currentLang = lang;
+  // Actualizar botones activos
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent === lang.toUpperCase());
+  });
+  // Aplicar traducciones
+  applyTranslations();
+  // Resetear historial del chat para que la IA responda en el nuevo idioma
+  chatHist = [];
+  // Actualizar mensaje de bienvenida del chat
+  const msgs = document.getElementById('chatMsgs');
+  if (msgs) {
+    const bots = msgs.querySelectorAll('.chat-msg.bot');
+    if (bots.length === 1) bots[0].textContent = t('chat.welcome');
+  }
+  // Mostrar sugerencias de nuevo si el chat está limpio
+  const sugs = document.getElementById('chatSugs');
+  if (sugs && chatHist.length === 0) sugs.style.display = 'flex';
+}
+
 // ── DATOS ────────────────────────────────────────────────────────
 const BOATS = [
   { id:'azure_sovereign', name:'Azure Sovereign', type:'Yate de Motor', length:65, price:4500, captain:true, guests:12, cabins:4, speed:28, range:800, img:'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&q=85', accent:'#c9a96e', badge:'Disponibilidad inmediata' },
@@ -470,7 +669,7 @@ function renderFlota() {
         <div class="boat-img-overlay"></div>
         <div class="boat-tag">${b.badge}</div>
         <div class="boat-price">
-          <div class="boat-price-from">desde</div>
+          <div class="boat-price-from">${currentLang==='de'?'ab':currentLang==='en'?'from':'desde'}</div>
           <div class="boat-price-num" style="color:${b.accent}">€${b.price.toLocaleString()}<span class="boat-price-per">/día</span></div>
         </div>
       </div>
@@ -478,12 +677,12 @@ function renderFlota() {
         <div class="boat-name pf">${b.name}</div>
         <div class="boat-type" style="color:${b.accent}">${b.type}</div>
         <div class="boat-specs">
-          <div class="spec"><strong>${b.length}ft</strong>Eslora</div>
-          <div class="spec"><strong>${b.guests} pax</strong>Huéspedes</div>
-          <div class="spec"><strong>${b.cabins} cab.</strong>Cabinas</div>
-          <div class="spec"><strong>${b.speed}kn</strong>Velocidad</div>
-          <div class="spec"><strong>${b.range}nm</strong>Autonomía</div>
-          <div class="spec"><strong>${b.captain ? '✓ Incl.' : 'Licencia'}</strong>Patrón</div>
+          <div class="spec"><strong>${b.length}ft</strong>${currentLang==='de'?'Länge':currentLang==='en'?'Length':'Eslora'}</div>
+          <div class="spec"><strong>${b.guests} pax</strong>${t('boat.guests.label')}</div>
+          <div class="spec"><strong>${b.cabins}</strong>${t('boat.cabins.label')}</div>
+          <div class="spec"><strong>${b.speed}kn</strong>${t('boat.speed.label')}</div>
+          <div class="spec"><strong>${b.range}nm</strong>${t('boat.range.label')}</div>
+          <div class="spec"><strong>${b.captain ? t('boat.captain.yes') : t('boat.captain.no')}</strong>${currentLang==='de'?'Skipper':currentLang==='en'?'Skipper':'Patrón'}</div>
         </div>
       </div>
     </div>
@@ -590,31 +789,31 @@ let chatOpen = false, chatLoading = false, chatHist = [];
 let shownSections = new Set();
 let bubbleTimer = null;
 
-const PROACTIVE = {
-  'az-flota':         ['Nuestros tres barcos están disponibles para la temporada 2026. ¿Tiene fechas en mente?', 3000],
-  'az-experiencias':  ['Estas rutas son las más solicitadas del Mediterráneo. ¿Le gustaría personalizar alguna?', 2800],
-  'az-galeria':       ['Cada imagen es un destino real. ¿Le ayudo a elegir el itinerario perfecto para su grupo?', 2500],
-  'az-testimoniales': ['Nuestros clientes repiten cada temporada. ¿Desea una experiencia similar?', 2000],
-  'az-reserva':       ['¿Puedo ayudarle a completar su reserva? Confirmación en menos de 24 horas.', 1500],
+const PROACTIVE_KEYS = {
+  'az-flota':         ['proactive.flota',   3000],
+  'az-experiencias':  ['proactive.exp',     2800],
+  'az-galeria':       ['proactive.gallery', 2500],
+  'az-testimoniales': ['proactive.test',    2000],
+  'az-reserva':       ['proactive.reserva', 1500],
 };
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting && entry.intersectionRatio > 0.35) {
       const id = entry.target.id;
-      if (!shownSections.has(id) && !chatOpen && PROACTIVE[id]) {
+      if (!shownSections.has(id) && !chatOpen && PROACTIVE_KEYS[id]) {
         shownSections.add(id);
-        const [msg, delay] = PROACTIVE[id];
+        const [key, delay] = PROACTIVE_KEYS[id];
         clearTimeout(bubbleTimer);
-        bubbleTimer = setTimeout(() => showBubble(msg), delay);
+        bubbleTimer = setTimeout(() => showBubble(t(key)), delay);
       }
     }
   });
 }, { threshold: 0.35 });
-Object.keys(PROACTIVE).forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
+Object.keys(PROACTIVE_KEYS).forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
 
 // Bienvenida inicial
-setTimeout(() => { if (!chatOpen) { showBubble('Bienvenido. ¿Puedo ayudarle a encontrar la embarcación perfecta en el Mediterráneo?'); } }, 2500);
+setTimeout(() => { if (!chatOpen) showBubble(t('bubble.welcome')); }, 2500);
 
 function showBubble(text) {
   if (chatOpen) return;
@@ -654,25 +853,30 @@ async function sendChat(msg) {
   addMsg(msg, 'user');
   chatHist.push({ role: 'user', content: msg });
   showTyping();
+  const langNames = { es:'Spanish', en:'English', de:'German' };
+  const langName = langNames[currentLang] || 'Spanish';
   const messages = chatHist.length === 1
-    ? [{ role: 'user', content: '[Language: respond in Spanish]' }, { role: 'assistant', content: 'Entendido.' }, ...chatHist]
+    ? [{ role:'user', content:`[Language: respond exclusively in ${langName} for the entire conversation]` }, { role:'assistant', content:`Understood, I will respond exclusively in ${langName}.` }, ...chatHist]
     : chatHist;
   try {
-    const res = await fetch(BASE + '/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages }) });
+    const res = await fetch(BASE + '/chat', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ messages }) });
     const data = await res.json();
     removeTyping();
-    const reply = data.reply || 'Disculpe, ha habido un error. Contacte con nosotros en reservas@azureluxury.com';
-    chatHist.push({ role: 'assistant', content: reply });
+    const reply = data.reply || 'Error. Please contact us at reservas@azureluxury.com';
+    chatHist.push({ role:'assistant', content:reply });
     addMsg(reply, 'bot');
   } catch {
     removeTyping();
-    addMsg('Error de conexión. Por favor inténtelo de nuevo. ⚓', 'bot');
+    addMsg('⚓ Connection error. Please try again.', 'bot');
   }
   chatLoading = false;
 }
 function sendMsg() { const inp = document.getElementById('chatInp'); sendChat(inp.value); inp.value = ''; }
 function quickMsg(m) { sendChat(m); }
 document.getElementById('chatInp').addEventListener('keydown', e => { if (e.key === 'Enter') { sendChat(e.target.value); e.target.value = ''; } });
+
+// Aplicar traducciones iniciales (ES por defecto)
+applyTranslations();
 </script>
 </body>
 </html>
